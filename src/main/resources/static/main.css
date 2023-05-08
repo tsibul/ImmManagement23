@@ -32,37 +32,6 @@ p {
 
 }
 
-.header{
-    color: white;
-    padding: 12px;
-    background-color: #3B83BD;
-    margin: 10px;
-    border-radius: 10px;
-}
-
-.main_menu{
-    margin: 6px;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    padding: 2px;
-}
-.nav_button{
-    display: none;
-}
-
-.menu_button_selected{
-    color: white;
-    font-weight: bold;
-}
-
-.menu_button{
-    color: white;
-}
-
-.menu_button:hover, .menu_button_selected:hover{
-    color: #293133;
-}
 
 .container {
     padding-top: 16px;
@@ -84,12 +53,3 @@ p {
     width: 33%;
 }
 
-.footer{
-    flex: 0 0 auto;
-    color: white;
-    padding: 12px;
-    background-color:#293133;
-    margin: 10px;
-    border-radius: 10px;
-
-}
