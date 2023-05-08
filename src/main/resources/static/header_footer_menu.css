@@ -16,6 +16,8 @@
 .dropdown_menu{
     display: none;
     position: relative;
+    background-color: #3B83BD;
+
 }
 
 .dropdown_menu:hover .dropdown-content {
@@ -28,6 +30,10 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+}
+
+.dropdown_content:hover{
+    color: #293133;
 }
 
 .nav_button{
