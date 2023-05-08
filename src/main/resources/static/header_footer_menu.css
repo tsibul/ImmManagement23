@@ -1,4 +1,4 @@
-.header{
+.header {
     color: white;
     padding: 12px;
     background-color: #3B83BD;
@@ -6,57 +6,90 @@
     border-radius: 10px;
 }
 
-.main_menu{
+.main_menu {
     margin: 6px;
     display: flex;
     justify-content: space-around;
     list-style: none;
     padding: 2px;
 }
-.dropdown_menu{
+
+@media screen and (max-width: 600px) {
+    .main_menu {
+        display: none;
+    }
+
+}
+
+.dropdown_menu {
     display: none;
-    position: relative;
     background-color: #3B83BD;
-
 }
 
-.dropdown_menu:hover .dropdown-content {
-    display: block;
-}
+@media screen and (max-width: 600px) {
+    .dropdown_menu {
+        margin: 2px;
+        padding: 2px;
+        display: inline-block;
+        position: relative;
+    }
 
-.dropdown_content{
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
 
-.dropdown_content:hover{
-    color: #293133;
-}
+    .dropdown_menu:hover .dropdown_content {
+        display: block;
+    }
 
-.nav_button{
-}
+    .dropdown_list{
+        list-style: none;
+        background-color: #3B83BD;
+        padding: 12px;
+        border-radius: 10px;
+    }
 
-.menu_button_selected{
+    .dropdown_content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        z-index: 1;
+    }
+
+    .dropdown_button:hover, .dropdown_button_selected:hover {
+        color: #293133;
+    }
+
+    .nav_button {
+    }
+
+    .dropdown_button_selected {
+        font-weight: bold;
+        padding: 8px;
+        margin: 16px;
+    }
+
+    .dropdown_button {
+        padding: 8px;
+        margin: 16px;
+    }
+
+}
+.menu_button_selected {
     color: white;
     font-weight: bold;
 }
 
-.menu_button{
+.menu_button {
     color: white;
 }
 
-.menu_button:hover, .menu_button_selected:hover{
+.menu_button:hover, .menu_button_selected:hover {
     color: #293133;
 }
 
-.footer{
+.footer {
     flex: 0 0 auto;
     color: white;
     padding: 12px;
-    background-color:#293133;
+    background-color: #293133;
     margin: 10px;
     border-radius: 10px;
 
