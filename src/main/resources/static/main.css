@@ -17,6 +17,14 @@ body {
   flex: 1 0 auto;
 }
 
+.inner_content{
+    background-image: url("../static/demag.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    
+}
+
 p {
     font-size: 16px;
     line-height: 26px;
