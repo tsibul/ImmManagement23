@@ -41,7 +41,7 @@ p {
 }
 
 .main_menu{
-    margin: 8px 6px;
+    margin: 6px;
     display: flex;
     justify-content: space-around;
     list-style: none;
