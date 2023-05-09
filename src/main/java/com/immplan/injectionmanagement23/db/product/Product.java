@@ -2,12 +2,10 @@ package com.immplan.injectionmanagement23.db.product;
 
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "product")
 public class Product {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
