@@ -11,7 +11,6 @@
     display: flex;
     list-style: none;
     padding: 2px;
-    justify-content: space-around;
 
 }
 
@@ -24,7 +23,7 @@
     list-style: none;
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 70%;
 }
 
 .nav_button:hover, .dropdown_button_selected:hover, .a_menu:hover {
