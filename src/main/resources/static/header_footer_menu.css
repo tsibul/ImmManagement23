@@ -27,13 +27,18 @@
     width: 100%;
 }
 
-.nav_button:hover, .dropdown_button:hover, .dropdown_button_selected:hover {
+.nav_button:hover, .dropdown_button_selected:hover, .a_menu:hover {
     color: #293133;
 }
 
 
 .menu_active {
     font-weight: bold;
+}
+
+.a_menu{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 
@@ -63,9 +68,10 @@
     .nav_button {
         display: block;
     }
-    .dropdown_button, .dropdown_button_selected {
-        padding: 8px;
+    .dropdown_button {
+        padding: 6px;
     }
+
 
 }
 
