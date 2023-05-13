@@ -33,7 +33,7 @@ public abstract class Equipment {
     @Column(unique = true, name = "part_number")
     private String partNumber;
     @Column(length = 4, name = "year_production")
-    private Year yearProduction;
+    private Date yearProduction;
     @Column(name = "receive_date")
     private Date receiveDate;
 
@@ -89,11 +89,15 @@ public abstract class Equipment {
         this.partNumber = partNumber;
     }
 
-    public Year getYearProduction() {
+    public void setEquipmentId(Long equipmentId) {
+        this.equipmentId = equipmentId;
+    }
+
+    public Date getYearProduction() {
         return yearProduction;
     }
 
-    public void setYearProduction(Year yearProduction) {
+    public void setYearProduction(Date yearProduction) {
         this.yearProduction = yearProduction;
     }
 
