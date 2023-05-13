@@ -18,7 +18,8 @@ body {
 }
 
 .inner_content{
-    background-image: url("demag.png");
+    background-image: url("demag_o.png");
+    background-blend-mode: soft-light;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50%;
@@ -34,8 +35,7 @@ p {
 
 
 .container {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 16px 6px;
     max-width: 1140px;
     margin: 0 auto;
 }
