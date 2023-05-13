@@ -57,7 +57,7 @@ public class InjectionMoldingMachine extends Equipment {
     private int ejectorStrokeMm;
     @Column(name = "ejector_central")
     private boolean ejectorCentral;
-    @Column(length = 50)
+    @Column(name = "imm_type", length = 50)
     private String immType;
 
 
