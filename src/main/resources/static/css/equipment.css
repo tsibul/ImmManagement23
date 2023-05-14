@@ -47,10 +47,11 @@
     font-size: 100%;
 }
 
+/*
 .tech_menu:hover .tech_list {
     display: block;
 }
-
+*/
 
 .tech_list {
     margin-top: 30px;
@@ -58,14 +59,13 @@
     background-color: #3B83BD;
     display: none;
     list-style: none;
-    flex-direction: column;
     position: absolute;
     min-width: 160px;
     z-index: 1;
     border-radius: 6px;
-
 }
 
+.show {display:block;}
 
 .imm_tech {
     display: none;

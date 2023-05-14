@@ -44,8 +44,8 @@
                         <input type="number" readonly placeholder="clamping force" id="imm_force" class="imm_input"
                                th:value="${imm.clampingForceKn}">kN
                         <div class="tech_menu">
-                            <button type="button" class="imm_button">Характеристики</button>
-                            <ul class="tech_list">
+                            <button type="button" class="imm_button" th:onclick="'dropDownShow(\'drop_' + ${imm.equipmentId} + '\')'">Характеристики</button>
+                            <ul class="tech_list" th:id="'drop_' + ${imm.equipmentId}">
                                 <li class="tech_button"><a
                                         th:href="'javascript:showTech(\'plate_' + ${imm.equipmentId} + '\')'"
                                         class="a_menu">Плиты</a></li>
