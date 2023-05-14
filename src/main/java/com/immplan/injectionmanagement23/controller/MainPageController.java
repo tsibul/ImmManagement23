@@ -8,7 +8,6 @@ import com.immplan.injectionmanagement23.db.equipment.injectionmoldingmachine.re
 import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,18 +42,21 @@ public class MainPageController {
     @GetMapping("/")
     public String mainPage(Model model) {
         populateModel(model);
+        model.addAttribute("activePage", "home");
         return "index";
     }
 
     @GetMapping("/techcard")
     public String techCard(Model model) {
         populateModel(model);
+        model.addAttribute("activePage", "techcard");
         return "techcard";
     }
 
     @GetMapping("/products")
     public String productsPage(Model model) {
         populateModel(model);
+        model.addAttribute("activePage", "products");
         return "products";
     }
 
@@ -63,12 +65,14 @@ public class MainPageController {
         List<InjectionMoldingMachine> immList = injectionMoldingMachineRepository.findAll();
         model.addAttribute("immList", immList);
         populateModel(model);
+        model.addAttribute("activePage", "equipment");
         return "equipment";
     }
 
     @GetMapping("/colors")
     public String colorsPage(Model model) {
         populateModel(model);
+        model.addAttribute("activePage", "colors");
         return "colors";
     }
 
