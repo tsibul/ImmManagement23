@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ColorRepository extends JpaRepository<Color, Long> {
 
-    public List<Color> findColorByColorGroup(ColorGroup colorGroup);
+    List<Color> findColorByColorGroup(ColorGroup colorGroup);
 }
