@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header">
+    <div class="header">
+        <div class="main_menu">
+            <div class="nav_button"><img src="/image/list.svg" alt="navi"></div>
+            <ul class="dropdown_list">
+                <li class="dropdown_button" th:classappend="${activePage == 'home' ? 'menu_active' : ''}">
+                    <a href="/" class="a_menu">Главная</a>
+                </li>
+                <li class="dropdown_button" th:classappend="${activePage == 'techcard' ? 'menu_active' : ''}">
+                    <a href="/techcard" class="a_menu">Техкарта</a>
+                </li>
+                <li class="dropdown_button" th:classappend="${activePage == 'products' ? 'menu_active' : ''}">
+                    <a href="/products" class="a_menu">Продукция</a>
+                </li>
+                <li class="dropdown_button" th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">
+                    <a href="/equipment" class="a_menu">Оборудование</a>
+                </li>
+                <li class="dropdown_button" th:classappend="${activePage == 'colors' ? 'menu_active' : ''}">
+                    <a href="/colors" class="a_menu">Цвета</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
