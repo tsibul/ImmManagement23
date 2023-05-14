@@ -36,7 +36,7 @@
                     <div class="imm_main">
                         <label for="imm_no" class="imm_label">номер</label>
                         <input type="number" readonly placeholder="number" id="imm_no" class="imm_input"
-                               th:value="${imm.equipmentCode}">
+                               th:value="${imm.internalNo}">
                         <label for="imm_name" class="imm_label">название</label>
                         <input type="text" readonly placeholder="name" id="imm_name" class="imm_name_input"
                                th:value="${imm.equipmentName}">
@@ -51,7 +51,8 @@
                                         class="a_menu">Плиты</a></li>
                                 <li class="tech_button"><a
                                         th:href="'javascript:showTech(\'clamping_' + ${imm.equipmentId} + '\')'"
-                                        class="a_menu">Узел смыкания</a>></li>
+                                        class="a_menu">Узел смыкания</a>>
+                                </li>
                                 <li class="tech_button"><a
                                         th:href="'javascript:showTech(\'air_' + ${imm.equipmentId} + '\')'"
                                         class="a_menu">Знаки и воздух</a></li>
@@ -281,7 +282,8 @@
                             </div>
                             <div class="tech_block">
                                 <label for="hot_runners_no" class="tech_comment">количество горячих каналов</label>
-                                <input type="text" readonly placeholder="number" id="hot_runners_no" class="imm_input">
+                                <input type="text" readonly placeholder="number" id="hot_runners_no" class="imm_input"
+                                       th:value="${imm.hotRunnersNo}">
                                 <span class="tech_size"></span>
                             </div>
                         </div>
