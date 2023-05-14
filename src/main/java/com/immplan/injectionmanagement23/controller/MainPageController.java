@@ -18,59 +18,57 @@ import java.util.List;
 @Controller
 public class MainPageController {
 
-    @Autowired
-    private InjectionMoldingMachineRepository injectionMoldingMachineRepository;
-    @Autowired
-    private EquipmentTypeRepository equipmentTypeRepository;
-    @Autowired
-    private ColorGroupRepository colorGroupRepository;
-    @Autowired
-    private ColorRepository colorRepository;
+    private final InjectionMoldingMachineRepository injectionMoldingMachineRepository;
+    private final EquipmentTypeRepository equipmentTypeRepository;
+    private final ColorGroupRepository colorGroupRepository;
+    private final ColorRepository colorRepository;
 
-    @GetMapping("/")
-    public String mainPage(Model model) {
+    public MainPageController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
+                              EquipmentTypeRepository equipmentTypeRepository,
+                              ColorGroupRepository colorGroupRepository,
+                              ColorRepository colorRepository) {
+        this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
+        this.equipmentTypeRepository = equipmentTypeRepository;
+        this.colorGroupRepository = colorGroupRepository;
+        this.colorRepository = colorRepository;
+    }
+
+    private void populateModel(Model model) {
         List<EquipmentType> equipmentTypeList = equipmentTypeRepository.findAll();
         List<ColorGroup> colorGroupList = colorGroupRepository.findAll();
         model.addAttribute("colorGroups", colorGroupList);
         model.addAttribute("equipmentTypes", equipmentTypeList);
+    }
+
+    @GetMapping("/")
+    public String mainPage(Model model) {
+        populateModel(model);
         return "index";
     }
 
     @GetMapping("/techcard")
     public String techCard(Model model) {
-        List<EquipmentType> equipmentTypeList = equipmentTypeRepository.findAll();
-        List<ColorGroup> colorGroupList = colorGroupRepository.findAll();
-        model.addAttribute("colorGroups", colorGroupList);
-        model.addAttribute("equipmentTypes", equipmentTypeList);
+        populateModel(model);
         return "techcard";
     }
 
-
     @GetMapping("/products")
     public String productsPage(Model model) {
-        List<EquipmentType> equipmentTypeList = equipmentTypeRepository.findAll();
-        List<ColorGroup> colorGroupList = colorGroupRepository.findAll();
-        model.addAttribute("colorGroups", colorGroupList);
-        model.addAttribute("equipmentTypes", equipmentTypeList);
+        populateModel(model);
         return "products";
     }
+
     @GetMapping("/equipment")
     public String equipmentPage(Model model) {
         List<InjectionMoldingMachine> immList = injectionMoldingMachineRepository.findAll();
         model.addAttribute("immList", immList);
-        List<EquipmentType> equipmentTypeList = equipmentTypeRepository.findAll();
-        List<ColorGroup> colorGroupList = colorGroupRepository.findAll();
-        model.addAttribute("colorGroups", colorGroupList);
-        model.addAttribute("equipmentTypes", equipmentTypeList);
+        populateModel(model);
         return "equipment";
     }
 
     @GetMapping("/colors")
-    public String colorsPage (Model model) {
-        List<EquipmentType> equipmentTypeList = equipmentTypeRepository.findAll();
-        List<ColorGroup> colorGroupList = colorGroupRepository.findAll();
-        model.addAttribute("colorGroups", colorGroupList);
-        model.addAttribute("equipmentTypes", equipmentTypeList);
+    public String colorsPage(Model model) {
+        populateModel(model);
         return "colors";
     }
 
