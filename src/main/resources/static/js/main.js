@@ -1,10 +1,6 @@
 function showTech(showId) {
     var techObj = document.getElementById(showId);
-    if (techObj.style.display === "block") {
-        techObj.style.display = "none";
-    } else {
-        techObj.style.display = "block";
-    }
+    techObj.style.display = (techObj.style.display === "block") ? "none" : "block";
 }
 
 function dropDownShow(showId) {
