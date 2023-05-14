@@ -18,7 +18,7 @@ body {
 }
 
 .inner_content{
-    background-image: url("demag_o.png");
+    background-image: url("../image/demag_o.png");
     background-blend-mode: soft-light;
     background-repeat: no-repeat;
     background-size: contain;
