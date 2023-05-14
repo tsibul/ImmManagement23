@@ -40,9 +40,9 @@
                         <label for="imm_name" class="imm_label">название</label>
                         <input type="text" readonly placeholder="name" id="imm_name" class="imm_name_input"
                                th:value="${imm.equipmentName}">
-                        <label for="imm_force" class="imm_label">сила сжатия</label>
+                        <label for="imm_force" class="imm_label">сила&nbsp;сжатия</label>
                         <input type="number" readonly placeholder="clamping force" id="imm_force" class="imm_input"
-                               th:value="${imm.clampingForceKn}">kN
+                               th:value="${imm.clampingForceKn}">&nbsp;kN
                         <div class="tech_menu">
                             <button type="button" class="imm_button" th:onclick="'dropDownShow(\'drop_' + ${imm.equipmentId} + '\')'">Характеристики</button>
                             <ul class="tech_list" th:id="'drop_' + ${imm.equipmentId}">
@@ -51,7 +51,7 @@
                                         class="a_menu">Плиты</a></li>
                                 <li class="tech_button"><a
                                         th:href="'javascript:showTech(\'clamping_' + ${imm.equipmentId} + '\')'"
-                                        class="a_menu">Узел смыкания</a>>
+                                        class="a_menu">Узел смыкания</a>
                                 </li>
                                 <li class="tech_button"><a
                                         th:href="'javascript:showTech(\'air_' + ${imm.equipmentId} + '\')'"

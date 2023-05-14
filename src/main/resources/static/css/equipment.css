@@ -107,7 +107,14 @@
 
 @media screen and (max-width: 850px) {
     .imm_main {
-        flex-direction: column;
+        font-size: 80%;
+        display: block;
+        align-items: end;
+/*        flex-direction: column; */
+    }
+
+    .imm_input, .imm_name_input{
+        margin-top: 2px;
     }
 
     .tech_row{
