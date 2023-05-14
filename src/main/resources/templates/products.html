@@ -14,18 +14,7 @@
 <body>
 <div class="wrapper">
     <div class="content">
-        <div class="header">
-            <div class="main_menu">
-                <div class="nav_button"><img src="/image/list.svg" alt="navi"></div>
-                <ul class="dropdown_list">
-                    <li class="dropdown_button"><a href="/" class="a_menu" >Главная</a></li>
-                    <li class="dropdown_button"><a href="/techcard" class="a_menu">Техкарта</a></li>
-                    <li class="dropdown_button menu_active"><a href="/products" class="a_menu">Продукция</a></li>
-                    <li class="dropdown_button"><a href="/equipment" class="a_menu">Оборудование</a></li>
-                    <li class="dropdown_button"><a href="/colors" class="a_menu">Цвета</a></li>
-                </ul>
-            </div>
-        </div>
+        <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
             <h1>Продукция</h1>
         </div>
@@ -43,12 +32,7 @@
 -->
         </div>
     </div>
-    <div class="footer">
-        <div class="main_menu">
-            <div class="nav_button"><img src="/image/logoVV.svg" alt="logo"></div>
-            <div class="dropdown_list">VikiVostok LTD all rights reserved</div>
-        </div>
-    </div>
+    <div th:insert="~{menu/footer :: footer}"></div>
 </div>
 </body>
 
