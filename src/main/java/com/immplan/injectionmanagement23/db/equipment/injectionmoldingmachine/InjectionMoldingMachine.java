@@ -9,6 +9,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "injection_molding_machine")
 public class InjectionMoldingMachine extends Equipment {
+    @Column(name = "internal_no", length = 2)
+    private String internalNo;
+
     @Column(name = "clamping_force_kN", nullable = false)
     private int clampingForceKn;
     @Column(name = "plate_height_mm", nullable = false)
@@ -53,6 +56,8 @@ public class InjectionMoldingMachine extends Equipment {
     private int hydraulicConnectionDiameterMm;
     @Column(name = "euromap_interface", nullable = false)
     private boolean euroMapInterface;
+    @Column(name = "hot_runners_no")
+    private int hotRunnersNo;
     @Column(name = "ejector_stroke")
     private int ejectorStrokeMm;
     @Column(name = "ejector_central")
@@ -60,6 +65,22 @@ public class InjectionMoldingMachine extends Equipment {
     @Column(name = "imm_type", length = 50)
     private String immType;
 
+
+    public String getInternalNo() {
+        return internalNo;
+    }
+
+    public void setInternalNo(String internalNo) {
+        this.internalNo = internalNo;
+    }
+
+    public int getHotRunnersNo() {
+        return hotRunnersNo;
+    }
+
+    public void setHotRunnersNo(int hotRunnersNo) {
+        this.hotRunnersNo = hotRunnersNo;
+    }
 
     public int getClampingForceKn() {
         return clampingForceKn;
