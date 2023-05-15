@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Оборудование</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header_footer_menu.css">
+    <link rel="stylesheet" href="/css/equipment.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div th:insert="~{menu/header :: header}"></div>
+        <div class="inner_content">
+            <div class="container">
+                <h1>Оборудование</h1>
+            </div>
+            <div class="container" th:each="imm : ${immList}">
+                <div class="imm_block">
+                    <div class="imm_main">
+                        <label for="imm_no" class="imm_label">номер</label>
+                        <input type="number" readonly placeholder="number" id="imm_no" class="imm_input"
+                               th:value="${imm.internalNo}">
+                        <label for="imm_name" class="imm_label">название</label>
+                        <input type="text" readonly placeholder="name" id="imm_name" class="imm_name_input"
+                               th:value="${imm.equipmentName}">
+                        <label for="imm_force" class="imm_label">сила&nbsp;сжатия</label>
+                        <input type="number" readonly placeholder="clamping force" id="imm_force" class="imm_input"
+                               th:value="${imm.clampingForceKn}">&nbsp;kN
+                        <div class="tech_menu">
+                            <button type="button" class="imm_button" th:onclick="'dropDownShow(\'drop_' + ${imm.equipmentId} + '\')'">Характеристики</button>
+                            <ul class="tech_list" th:id="'drop_' + ${imm.equipmentId}">
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'plate_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Плиты</a></li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'clamping_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Узел смыкания</a>
+                                </li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'air_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Знаки и воздух</a></li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'injection_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Узел впрыска</a></li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'ejector_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Выталкиватель</a></li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'capacity_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Электрическая мощность</a></li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'size_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Габариты и вес</a></li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'interfaces_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Интерфейсы</a></li>
+                                <li class="tech_button"><a
+                                        th:href="'javascript:showTech(\'producer_info_' + ${imm.equipmentId} + '\')'"
+                                        class="a_menu">Данные производителя</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'plate_' + ${imm.equipmentId}"> <!-- Плиты -->
+                        <div class="tech_row">
+                            <p class="tech_title">Межколонное расстояние: </p>
+                            <div class="tech_block">
+                                <label for="hor_column_gap" class="tech_comment">по горизонтали</label>
+                                <input type="text" readonly placeholder="number" id="hor_column_gap" class="imm_input"
+                                       th:value="${imm.columnGapMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="ver_column_gap" class="tech_comment">по вертикали</label>
+                                <input type="text" readonly placeholder="number" id="ver_column_gap" class="imm_input"
+                                       th:value="${imm.columnGapVerticalMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                        </div>
+                        <div class="tech_row">
+                            <p class="tech_title">Размер плит: </p>
+                            <div class="tech_block">
+                                <label for="plate_width" class="tech_comment">по горизонтали</label>
+                                <input type="text" readonly placeholder="number" id="plate_width" class="imm_input"
+                                       th:value="${imm.plateWidthMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="plate_height" class="tech_comment">по вертикали</label>
+                                <input type="text" readonly placeholder="number" id="plate_height" class="imm_input"
+                                       th:value="${imm.plateHeightMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                        </div>
+                        <div class="tech_row">
+                            <p class="tech_title">Диаметр фланца: </p>
+                            <div class="tech_block">
+                                <label for="mov_plate_diameter" class="tech_comment">подвижная плита</label>
+                                <input type="text" readonly placeholder="number" id="mov_plate_diameter"
+                                       class="imm_input" th:value="${imm.movingPlateRingDiameterMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="fix_plate_diameter" class="tech_comment">неподвижная плита</label>
+                                <input type="text" readonly placeholder="number" id="fix_plate_diameter"
+                                       class="imm_input" th:value="${imm.fixedPlateRingDiameterMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'clamping_' + ${imm.equipmentId}"> <!-- Узел запирания -->
+                        <div class="tech_row">
+                            <p class="tech_title">Прессформа: </p>
+                            <div class="tech_block">
+                                <label for="min_mold_height" class="tech_comment">минимальная высота</label>
+                                <input type="text" readonly placeholder="number" id="min_mold_height" class="imm_input"
+                                       th:value="${imm.minMoldHeightMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="max_mold_weight" class="tech_comment">макс. вес пресс-формы</label>
+                                <input type="text" readonly placeholder="number" id="max_mold_weight" class="imm_input"
+                                       th:value="${imm.maxMoldWeightKg}">
+                                <span class="tech_size">кг</span>
+                            </div>
+                        </div>
+                        <div class="tech_row">
+                            <p class="tech_title">Узел запирания:</p>
+                            <div class="tech_block">
+                                <label for="imm_type" class="tech_size">тип узла</label>
+                                <input type="text" readonly placeholder="number" id="imm_type" class="imm_name_input"
+                                       th:value="${imm.immType}">
+                                <span class="tech_size"></span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="mold_openning" class="tech_comment">ход открытия</label>
+                                <input type="text" readonly placeholder="number" id="mold_openning" class="imm_input"
+                                       th:value="${imm.maxOpeningMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'air_' + ${imm.equipmentId}"> <!-- Знаки и воздух -->
+                        <div class="tech_row">
+                            <p class="tech_title">Гидравлика: </p>
+                            <div class="tech_block">
+                                <label for="hydraulic_connection_diameter" class="tech_comment">диаметр
+                                    соединения</label>
+                                <input type="text" readonly placeholder="number" id="hydraulic_connection_diameter"
+                                       class="imm_input" th:value="${imm.hydraulicConnectionDiameterMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="hydraulic_valves_no" class="tech_comment">количество клапанов</label>
+                                <input type="text" readonly placeholder="number" id="hydraulic_valves_no"
+                                       class="imm_input" th:value="${imm.numberHydraulicValves}">
+                                <span class="tech_size"></span>
+                            </div>
+                        </div>
+                        <div class="tech_row">
+                            <p class="tech_title">Воздух:</p>
+                            <div class="tech_block">
+                                <span class="tech_comment"></span>
+                                <span class="imm_input"></span>
+                                <span class="tech_size"></span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="air_valves_no" class="tech_comment">количество клапанов</label>
+                                <input type="text" readonly placeholder="number" id="air_valves_no" class="imm_input"
+                                       th:value="${imm.numberAirValves}">
+                                <span class="tech_size"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'injection_' + ${imm.equipmentId}"> <!-- Впрыск -->
+                        <div class="tech_row">
+                            <p class="tech_title">Впрыск: </p>
+                            <div class="tech_block">
+                                <label for="max_injection_volume" class="tech_comment">максимальный объем</label>
+                                <input type="text" readonly placeholder="number" id="max_injection_volume"
+                                       class="imm_input" th:value="${imm.strokeVolumeCm3}">
+                                <span class="tech_size">см3</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="max_injection_weight" class="tech_comment">макс. вес впрыска</label>
+                                <input type="text" readonly placeholder="number" id="max_injection_weight"
+                                       class="imm_input" th:value="${imm.strokeWeightG}">
+                                <span class="tech_size">г</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'ejector_' + ${imm.equipmentId}"> <!-- Выталкиватель -->
+                        <div class="tech_row">
+                            <p class="tech_title">Выталкиватель: </p>
+                            <div class="tech_block">
+                                <label for="max_stroke" class="tech_comment">ход выталкивателя</label>
+                                <input type="text" readonly placeholder="number" id="max_stroke" class="imm_input"
+                                       th:value="${imm.ejectorStrokeMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="ejector_central" class="tech_comment">центральный толкатель</label>
+                                <input type="text" readonly placeholder="number" id="ejector_central" class="imm_input"
+                                       th:value="${imm.ejectorCentral}">
+                                <span class="tech_size"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'capacity_' + ${imm.equipmentId}"> <!-- Энергопотребление -->
+                        <div class="tech_row">
+                            <p class="tech_title">Энергопотребление: </p>
+                            <div class="tech_block">
+                                <label for="electric_capacity" class="tech_comment">нагрев</label>
+                                <input type="text" readonly placeholder="number" id="electric_capacity"
+                                       class="imm_input" th:value="${imm.electricHeatCapacityW}">
+                                <span class="tech_size">W</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="hydraulic_capacity" class="tech_comment">гидравлика</label>
+                                <input type="text" readonly placeholder="number" id="hydraulic_capacity"
+                                       class="imm_input" th:value="${imm.electricHydraulicCapacityW}">
+                                <span class="tech_size">W</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'size_' + ${imm.equipmentId}"> <!-- Габариты и вес -->
+                        <div class="tech_row">
+                            <p class="tech_title">Габариты и вес: </p>
+                            <div class="tech_block">
+                                <label for="imm_length" class="tech_comment">длина</label>
+                                <input type="text" readonly placeholder="number" id="imm_length"
+                                       class="imm_input" th:value="${imm.lengthMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="imm_width" class="tech_comment">ширина</label>
+                                <input type="text" readonly placeholder="number" id="imm_width"
+                                       class="imm_input" th:value="${imm.widthMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                        </div>
+                        <div class="tech_row">
+                            <p class="tech_title"></p>
+                            <div class="tech_block">
+                                <label for="imm_height" class="tech_comment">высота</label>
+                                <input type="text" readonly placeholder="number" id="imm_height"
+                                       class="imm_input" th:value="${imm.heightMm}">
+                                <span class="tech_size">мм</span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="imm_weight" class="tech_comment">вес</label>
+                                <input type="text" readonly placeholder="number" id="imm_weight"
+                                       class="imm_input" th:value="${imm.weightKg}">
+                                <span class="tech_size">кг</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'interfaces_' + ${imm.equipmentId}"> <!-- Дополнительные интерфесы -->
+                        <div class="tech_row">
+                            <p class="tech_title">Интерфейсы: </p>
+                            <div class="tech_block">
+                                <label for="euromap" class="tech_comment">евромап</label>
+                                <input type="text" readonly placeholder="number" id="euromap" class="imm_input"
+                                       th:value="${imm.euroMapInterface}">
+                                <span class="tech_size"></span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="hot_runners_no" class="tech_comment">количество горячих каналов</label>
+                                <input type="text" readonly placeholder="number" id="hot_runners_no" class="imm_input"
+                                       th:value="${imm.hotRunnersNo}">
+                                <span class="tech_size"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imm_tech" th:id="'producer_info_' + ${imm.equipmentId}"> <!-- Заводская информации -->
+                        <div class="tech_row">
+                            <p class="tech_title">Даты:</p>
+                            <div class="tech_block">
+                                <label for="year_produce" class="tech_comment">год выпуска</label>
+                                <input type="text" readonly placeholder="number" id="year_produce" class="imm_input"
+                                       th:value="${imm.yearProduction}">
+                                <span class="tech_size"></span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="year_receive" class="tech_comment">год получения</label>
+                                <input type="text" readonly placeholder="number" id="year_receive" class="imm_input"
+                                       th:value="${imm.receiveDate}">
+                                <span class="tech_size"></span>
+                            </div>
+                        </div>
+                        <div class="tech_row">
+                            <p class="tech_title">Номера: </p>
+                            <div class="tech_block">
+                                <label for="inv_no" class="tech_size">инв. номер</label>
+                                <input type="text" readonly placeholder="number" id="inv_no" class="imm_name_input"
+                                       th:value="${imm.inventoryCode}">
+                                <span class="tech_size"></span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="producer_no" class="tech_size">зав. номер</label>
+                                <input type="text" readonly placeholder="number" id="producer_no"
+                                       class="imm_name_input" th:value="${imm.partNumber}">
+                                <span class="tech_size"></span>
+                            </div>
+                        </div>
+                        <div class="tech_row">
+                            <p class="tech_title">Производитель: </p>
+                            <div class="tech_block">
+                                <label for="producer" class="tech_size">назв.</label>
+                                <input type="text" readonly placeholder="number" id="producer" class="imm_name_input"
+                                       th:value="${imm.equipmentProducer.producerName}">
+                                <span class="tech_size"></span>
+                            </div>
+                            <div class="tech_block">
+                                <label for="country" class="tech_size">страна</label>
+                                <input type="text" readonly placeholder="number" id="country" class="imm_name_input"
+                                       th:value="${imm.equipmentProducer.country.countryName}">
+                                <span class="tech_size"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{menu/footer :: footer}"></div>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/header.js"></script>
+</body>
+
+</html>
