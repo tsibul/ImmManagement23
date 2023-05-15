@@ -14,15 +14,32 @@
                 <li class="dropdown_button" th:classappend="${activePage == 'products' ? 'menu_active' : ''}">
                     <a href="/products" class="a_menu">Продукция</a>
                 </li>
-                <li class="dropdown_button" th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">
+                <li class="dropdown_button equipment_button" th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">
                     <a href="/equipment" class="a_menu">Оборудование</a>
+                    <ul class="equipment_menu">
+                        <li class="drop_button" th:each="eqType : ${equipmentTypes}">
+                            <a th:href="'/equipment/' + ${eqType.id}" class="a_menu" th:text="${eqType.typeName}"></a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="dropdown_button" th:classappend="${activePage == 'colors' ? 'menu_active' : ''}">
-                    <a href="/colors" class="a_menu">Цвета</a>
+                <li class="dropdown_button color_button"
+                    th:classappend="${activePage == 'colors' ? 'menu_active' : ''}">
+                    <a href="" class="a_menu">Цвета</a>
+                    <ul class="color_menu">
+                        <li class="drop_button" th:each="color_group : ${colorGroups}">
+                            <a th:href="'/colors/'+ ${color_group.colorGroupId}" class="a_menu" th:text="${color_group.colorGroupName}"></a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
+        <ul class="color_menu">
+            <li class="drop_button" th:each="color_group : ${colorGroups}">
+                <a th:href="${color_group.colorGroupId}" class="a_menu" th:text="${color_group.colorGroupName}"></a>
+            </li>
+        </ul>
     </div>
+
 </div>
 </body>
 </html>

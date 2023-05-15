@@ -6,3 +6,8 @@ function showTech(showId) {
 function dropDownShow(showId) {
     document.getElementById(showId).classList.toggle("show");
 }
+
+function dropDownShowClass(showClass) {
+    document.querySelector(showClass).classList.toggle("show_class");
+}
+

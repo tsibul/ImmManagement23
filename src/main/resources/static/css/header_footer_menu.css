@@ -40,6 +40,34 @@
     color: #ffffff;
 }
 
+.color_menu{
+    font-weight: normal;
+    background-color: #3B83BD;
+    padding: 12px;
+    list-style: none;
+    display: none;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 1;
+    transform: translateX(-16px);
+}
+
+.equipment_menu{
+    font-weight: normal;
+    background-color: #3B83BD;
+    padding: 12px;
+    list-style: none;
+    display: none;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 1;
+    transform: translateX(-16px);
+}
+
+
+.drop_button{
+    padding: 6px;
+}
 
 @media screen and (max-width: 600px) {
     .main_menu {
@@ -62,15 +90,27 @@
         position: absolute;
         min-width: 160px;
         z-index: 1;
+        transform: translateX(-16px);
+
     }
 
     .nav_button {
         display: block;
     }
+
     .dropdown_button {
         padding: 6px;
     }
 
+    .color_menu {
+        right: -80%;
+        top: 70%;
+    }
+
+    .equipment_menu {
+        right: -80%;
+        top: 70%;
+    }
 
 }
 
