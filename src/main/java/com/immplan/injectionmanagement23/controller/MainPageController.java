@@ -15,28 +15,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class MainPageController {
+public class MainPageController  extends BaseController{
 
     private final InjectionMoldingMachineRepository injectionMoldingMachineRepository;
-    private final EquipmentTypeRepository equipmentTypeRepository;
-    private final ColorGroupRepository colorGroupRepository;
-    private final ColorRepository colorRepository;
 
     public MainPageController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
                               EquipmentTypeRepository equipmentTypeRepository,
-                              ColorGroupRepository colorGroupRepository,
-                              ColorRepository colorRepository) {
-        this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
-        this.equipmentTypeRepository = equipmentTypeRepository;
-        this.colorGroupRepository = colorGroupRepository;
-        this.colorRepository = colorRepository;
-    }
+                              ColorGroupRepository colorGroupRepository) {
+        super(equipmentTypeRepository, colorGroupRepository);
 
-    private void populateModel(Model model) {
-        List<EquipmentType> equipmentTypeList = equipmentTypeRepository.findAll();
-        List<ColorGroup> colorGroupList = colorGroupRepository.findAll();
-        model.addAttribute("colorGroups", colorGroupList);
-        model.addAttribute("equipmentTypes", equipmentTypeList);
+        this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
     }
 
     @GetMapping("/")
