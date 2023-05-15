@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
 
+//    public List<Equipment> findEquipmentByEquipmentTypeId (int equipmentId);
 //    public List<Equipment> findEquipmentByEquipmentType (EquipmentType equipmentType);
 }
