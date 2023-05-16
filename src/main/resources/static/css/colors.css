@@ -1,0 +1,54 @@
+/* Основные стили таблицы */
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.responsive-table tr {
+    border: 1px solid #3B83BD;
+    border-radius: 10px !important;
+}
+
+
+.responsive-table th,
+.responsive-table td {
+    padding: 6px;
+}
+
+.responsive-table td {
+    text-align: center;
+}
+
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 600px) {
+    /* Скрытие заголовка таблицы при маленьком экране */
+    .responsive-table thead {
+        display: none;
+    }
+
+    /* Отображение каждой ячейки таблицы в отдельной строке */
+    .responsive-table tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #3B83BD;
+        border-radius: 10px;
+    }
+
+    .responsive-table td {
+        display: flex;
+        justify-content: space-between;
+        text-align: right;
+        font-size: 14px;
+        border: none;
+        padding: 4px;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        display: block;
+    }
+}
