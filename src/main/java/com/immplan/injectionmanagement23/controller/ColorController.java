@@ -31,7 +31,7 @@ public class ColorController  extends BaseController{
     public String getColor(@PathVariable("id") int id, Model model) {
         long idLong = (long) id;
         ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(idLong);
-        List<Color> colors = colorRepository.findColorByColorGroup(colorGroup);
+        List<Color> colors = colorRepository.findColorByColorGroupOrderByColorCode(colorGroup);
         populateModel(model);
         model.addAttribute("colorGroup", colorGroup);
         model.addAttribute("activePage", "colors");
