@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ColorRepository extends JpaRepository<Color, Long> {
 
-    List<Color> findColorByColorGroup(ColorGroup colorGroup);
+    List<Color> findColorByColorGroupOrderByColorCode(ColorGroup colorGroup);
     List<Color> findColorByColorGroupColorGroupId(long colorGroupId);
 }
