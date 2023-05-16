@@ -6,7 +6,7 @@
     <title>Цвета</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header_footer_menu.css">
-
+    <link rel="stylesheet" href="/css/colors.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
 </head>
@@ -16,11 +16,29 @@
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
-            <h1>Цвета</h1>
-            <p th:text="${colorGroup.colorGroupName}"></p>
+            <h1 th:text="'Цвета (' + ${colorGroup.colorGroupName} + ')'">Цвета</h1>
         </div>
         <div class="inner_content">
             <div class="container">
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th>код цвета</th>
+                        <th>название</th>
+                        <th>pantone</th>
+                        <th>HEX</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="color:${colors}">
+                        <td th:text="${color.colorCode}" data-label="код цвета"></td>
+                        <td th:text="${color.colorName}" data-label="название"></td>
+                        <td th:text="${color.colorPantone}" data-label="pantone"></td>
+                        <td th:text="${color.colorHEX}" data-label="HEX"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>
