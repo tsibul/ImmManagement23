@@ -20,6 +20,9 @@
         </div>
         <div class="inner_content">
             <div class="container">
+                <button id="add-color-btn" class="button">Добавить новый цвет</button>
+            </div>
+            <div class="container">
                 <table class="responsive-table">
                     <thead>
                     <tr>
@@ -30,7 +33,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="color:${colors}">
+                    <tr th:each="color:${colors}" class="color-row">
                         <td th:text="${color.colorCode}" data-label="код цвета"></td>
                         <td th:text="${color.colorName}" data-label="название"></td>
                         <td th:text="${color.colorPantone}" data-label="pantone"></td>
@@ -38,7 +41,26 @@
                     </tr>
                     </tbody>
                 </table>
-
+            </div>
+            <!-- Модальное окно для добавления и редактирования цвета -->
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="modal-title">Добавить цвет</h2>
+                    <form id="color-form">
+                        <input type="hidden" id="color-id">
+                        <label for="color-code">Код цвета:</label>
+                        <input type="text" id="color-code" name="colorCode" required>
+                        <label for="color-name">Название:</label>
+                        <input type="text" id="color-name" name="colorName" required>
+                        <label for="color-pantone">Pantone:</label>
+                        <input type="text" id="color-pantone" name="colorPantone">
+                        <label for="color-hex">HEX:</label>
+                        <input type="text" id="color-hex" name="colorHEX" required>
+                        <button type="button" id="cancel-btn">Отмена</button>
+                        <button type="submit" id="color-submit-btn" class="button">Добавить</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -46,6 +68,7 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
+<script src="/js/colors.js"></script>
 </body>
 
 </html>

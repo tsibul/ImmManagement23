@@ -9,7 +9,9 @@ import com.immplan.injectionmanagement23.db.product.color.repository.ColorReposi
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -37,5 +39,14 @@ public class ColorController  extends BaseController{
         model.addAttribute("activePage", "colors");
         model.addAttribute("colors", colors);
         return "colors";
+    }
+
+    @PostMapping("/colors/{id}/addColor")
+    public String addColor(@PathVariable("id") int id, @ModelAttribute Color color) {
+        long idLong = (long) id;
+        ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(idLong);
+        color.setColorGroup(colorGroup);
+        colorRepository.save(color);
+        return "redirect:/colors/" + id;
     }
 }
