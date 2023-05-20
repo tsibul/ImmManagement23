@@ -2,7 +2,6 @@ package com.immplan.injectionmanagement23.db.product.detail;
 
 
 import com.immplan.injectionmanagement23.db.equipment.mold.MoldInsert;
-import com.immplan.injectionmanagement23.db.product.Product;
 import com.immplan.injectionmanagement23.db.rawmaterial.MaterialType;
 import jakarta.persistence.*;
 
@@ -13,6 +12,10 @@ public class Detail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "detail_id")
     private Long detailId;
+    @Column(name = "detail_code", length = 14)
+    private String detailCode;
+    @Column(name = "index_in_product", nullable = false)
+    private int indexInProduct;
     @Column(name = "detail_name", nullable = false)
     private String detailName;
     @Column(name = "detail_base_weight_g", precision = 1, nullable = false)
@@ -23,11 +26,6 @@ public class Detail {
     @ManyToOne(targetEntity = MoldInsert.class)
     @JoinColumn(name = "mold_insert", referencedColumnName = "equipment_id", nullable = false)
     private MoldInsert moldInsert;
-    @ManyToOne(targetEntity = Product.class)
-    @JoinColumn(name = "product", referencedColumnName = "product_id", nullable = false)
-    private Product product;
-    @Column(name = "index_in_product", nullable = false)
-    private int indexInProduct;
     @Column(name = "stroke_weight_g", precision = 1)
     private double stokeWeightG;
     @Column(name = "gate_weight_g", precision = 1)
@@ -37,23 +35,8 @@ public class Detail {
     @Column(name = "detail_active", columnDefinition = "boolean default true", nullable = false)
     private boolean detailActive = true;
 
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public int getIndexInProduct() {
         return indexInProduct;
-    }
-
-    public void setIndexInProduct(int indexInProduct) {
-        if (indexInProduct <= this.product.getNumberDetails() && indexInProduct > 0) {
-            this.indexInProduct = indexInProduct;
-        }
     }
 
     public Long getDetailId() {
@@ -130,5 +113,17 @@ public class Detail {
 
     public void setDetailActive(boolean detailActive) {
         this.detailActive = detailActive;
+    }
+
+    public String getDetailCode() {
+        return detailCode;
+    }
+
+    public void setDetailCode(String detailCode) {
+        this.detailCode = detailCode;
+    }
+
+    public void setIndexInProduct(int indexInProduct) {
+        this.indexInProduct = indexInProduct;
     }
 }
