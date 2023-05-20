@@ -18,7 +18,7 @@
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
             <div class="color-head">
-                <h2 th:text="${colorGroup.colorGroupName}">Цвета</h2>
+                <h2 th:text="'Цветовая группа: ' + ${colorGroup.colorGroupName}">Цвета</h2>
                 <button id="add-color-btn" class="button button-submit"
                         th:data-colorGroupId="${colorGroup.colorGroupId}">Добавить новый цвет
                 </button>
