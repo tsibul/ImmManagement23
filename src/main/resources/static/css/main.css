@@ -59,9 +59,9 @@ p {
     margin: 2px;
     padding: 8px 12px;
     border-style: solid;
+    border-width: thin;
     border-radius: 10px;
     font-size: 14px;
-    font-weight: bold;
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s;

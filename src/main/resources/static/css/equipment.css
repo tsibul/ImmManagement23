@@ -20,12 +20,16 @@
     padding: 6px;
     border-radius: 6px;
     border-color: #293133;
+    border-width: thin;
+    border-style: solid;
     width: 60px;
 }
 
 .imm_name_input {
     padding: 6px;
     border-radius: 6px;
+    border-width: thin;
+    border-style: solid;
     border-color: #293133;
     min-width: 140px;
 }
