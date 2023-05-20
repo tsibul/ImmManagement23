@@ -22,8 +22,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown_button color_button"
-                    >
+                <li class="dropdown_button color_button">
                     <a href="" class="a_menu" th:classappend="${activePage == 'colors' ? 'menu_active' : ''}">Цвета</a>
                     <ul class="color_menu">
                         <li class="drop_button" th:each="color_group : ${colorGroups}">
