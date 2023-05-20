@@ -1,3 +1,10 @@
+.color-head{
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    justify-content: space-between;
+}
+
 /* Основные стили таблицы */
 .responsive-table {
     width: 100%;
