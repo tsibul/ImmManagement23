@@ -1,6 +1,7 @@
-package com.immplan.injectionmanagement23.db.product;
+package com.immplan.injectionmanagement23.db.product.product;
 
-
+import com.immplan.injectionmanagement23.db.equipment.mold.MoldInsert;
+import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,12 @@ public class Product {
     private String productName;
     @Column(name = "number_details", nullable = false)
     private int numberDetails;
+    @ManyToOne(targetEntity = ColorGroup.class)
+    @JoinColumn(name = "color_group", referencedColumnName = "color_group_id")
+    private MoldInsert colorGroup;
+    @ManyToOne(targetEntity = ProductGroup.class)
+    @JoinColumn(name = "product_group", referencedColumnName = "product_group_id")
+    private ProductGroup productGroup;
     @Column(name = "product_active", columnDefinition = "boolean default true", nullable = false)
     private boolean productActive = true;
 
@@ -57,5 +64,21 @@ public class Product {
 
     public void setProductActive(boolean productActive) {
         this.productActive = productActive;
+    }
+
+    public MoldInsert getColorGroup() {
+        return colorGroup;
+    }
+
+    public void setColorGroup(MoldInsert colorGroup) {
+        this.colorGroup = colorGroup;
+    }
+
+    public ProductGroup getProductGroup() {
+        return productGroup;
+    }
+
+    public void setProductGroup(ProductGroup productGroup) {
+        this.productGroup = productGroup;
     }
 }

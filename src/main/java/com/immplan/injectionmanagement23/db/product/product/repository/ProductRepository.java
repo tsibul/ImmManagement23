@@ -1,5 +1,6 @@
-package com.immplan.injectionmanagement23.db.product;
+package com.immplan.injectionmanagement23.db.product.product.repository;
 
+import com.immplan.injectionmanagement23.db.product.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
