@@ -31,6 +31,8 @@
                             <th>артикул</th>
                             <th>название</th>
                             <th>количество деталей</th>
+                            <th>цветовая группа</th>
+                            <th>группа товара</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -39,13 +41,17 @@
                             <td th:text="${product.productCode}" data-label="артикул"></td>
                             <td th:text="${product.productName}" data-label="название"></td>
                             <td th:text="${product.numberDetails}" data-label="кол-во деталей"></td>
+                            <td th:text="${product.colorGroup.colorGroupName}" data-label="цветовая группа"></td>
+                            <td th:text="${product.productGroup.productGroupName}" data-label="группа товара"></td>
                             <td onclick="event.stopPropagation()">
-                                <a th:href="'/colors/details/'+ ${product.productId}" class="a_menu">
-                                    <button class="button button-submit">Детали</button>
-                                </a>&nbsp;
-                                <a th:href="'/products/'+ ${product.productId} + '/deleteproduct'">
-                                    <button class="button button-danger">Удалить</button>
-                                </a>
+                                <div class="button-block">
+                                    <a th:href="'/colors/details/'+ ${product.productId}" class="a_menu">
+                                        <button class="button button-submit">Детали</button>
+                                    </a>&nbsp;
+                                    <a th:href="'/products/'+ ${product.productId} + '/deleteproduct'">
+                                        <button class="button button-danger">Удалить</button>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
@@ -70,6 +76,24 @@
                                 <label for="number-details">Кол-во деталей:</label>
                                 <input type="text" id="number-details" name="numberDetails" required
                                        class="modal-input">
+                            </div>
+                            <div class="modal-block">
+                                <label for="color-group">Цветовая группа:</label>
+                                <select class="modal-select" id="color-group" name="colorGroup">
+                                    <option class="" th:each="color_group : ${colorGroups}"
+                                            th:value="${color_group.colorGroupId}"
+                                            th:text="${color_group.colorGroupName}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="modal-block">
+                                <label for="product-group">Группа товара:</label>
+                                <select class="modal-select" id="product-group" name="productGroup">
+                                    <option th:each="product_group : ${productGroups}"
+                                            th:text="${product_group.productGroupName}"
+                                            th:value="${product_group.productGroupId}">
+                                    </option>
+                                </select>
                             </div>
                             <div class="button-block">
                                 <button type="button" id="cancel-btn" class="button button-cancel">Отмена
