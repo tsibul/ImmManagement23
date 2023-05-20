@@ -5,12 +5,10 @@ import com.immplan.injectionmanagement23.db.product.color.Color;
 import com.immplan.injectionmanagement23.db.rawmaterial.MainMaterial;
 import com.immplan.injectionmanagement23.db.rawmaterial.MasterBatch;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "detail_to_produce")
 public class DetailToProduce {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "detail_to_produce_id")
@@ -33,6 +31,9 @@ public class DetailToProduce {
     private Color color;
     @Column(name = "items_per_box")
     private int itemsPerBox;
+    @Column(name = "detail_to_produce_active")
+    private boolean detailToProduceActive = true;
+
 
     public double getActualWeightG() {
         return actualWeightG;
@@ -100,5 +101,13 @@ public class DetailToProduce {
 
     public void setMasterBatchName(MasterBatch masterBatchName) {
         this.masterBatchName = masterBatchName;
+    }
+
+    public boolean isDetailToProduceActive() {
+        return detailToProduceActive;
+    }
+
+    public void setDetailToProduceActive(boolean detailToProduceActive) {
+        this.detailToProduceActive = detailToProduceActive;
     }
 }

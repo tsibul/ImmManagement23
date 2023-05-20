@@ -16,6 +16,8 @@ public class Product {
     private String productName;
     @Column(name = "number_details", nullable = false)
     private int numberDetails;
+    @Column(name = "product_active")
+    private boolean productActive = true;
 
     public Long getProductId() {
         return productId;
@@ -47,5 +49,13 @@ public class Product {
 
     public void setNumberDetails(int numberDetails) {
         this.numberDetails = numberDetails;
+    }
+
+    public boolean isProductActive() {
+        return productActive;
+    }
+
+    public void setProductActive(boolean productActive) {
+        this.productActive = productActive;
     }
 }

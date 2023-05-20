@@ -2,12 +2,10 @@ package com.immplan.injectionmanagement23.db.product.color;
 
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "color")
 public class Color {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "color_id")
@@ -23,6 +21,8 @@ public class Color {
     @ManyToOne(targetEntity = ColorGroup.class)
     @JoinColumn(name = "color_group", referencedColumnName = "color_group_id", nullable = false)
     private ColorGroup colorGroup;
+    @Column(name = "color_active")
+    private boolean colorActive = true;
 
     public Long getColorId() {
         return colorId;
@@ -70,5 +70,13 @@ public class Color {
 
     public void setColorGroup(ColorGroup colorGroup) {
         this.colorGroup = colorGroup;
+    }
+
+    public boolean isColorActive() {
+        return colorActive;
+    }
+
+    public void setColorActive(boolean colorActive) {
+        this.colorActive = colorActive;
     }
 }

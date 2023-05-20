@@ -5,12 +5,10 @@ import com.immplan.injectionmanagement23.db.equipment.mold.MoldInsert;
 import com.immplan.injectionmanagement23.db.product.Product;
 import com.immplan.injectionmanagement23.db.rawmaterial.MaterialType;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "detail")
 public class Detail {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "detail_id")
@@ -36,6 +34,9 @@ public class Detail {
     private double gateWeightG;
     @Column(name = "standard_items_per_box", nullable = false)
     private int standardItemsPerBox;
+    @Column(name = "detail_active")
+    private boolean detailActive = true;
+
 
     public Product getProduct() {
         return product;
@@ -121,5 +122,13 @@ public class Detail {
 
     public void setMaterialType(MaterialType materialType) {
         this.materialType = materialType;
+    }
+
+    public boolean isDetailActive() {
+        return detailActive;
+    }
+
+    public void setDetailActive(boolean detailActive) {
+        this.detailActive = detailActive;
     }
 }

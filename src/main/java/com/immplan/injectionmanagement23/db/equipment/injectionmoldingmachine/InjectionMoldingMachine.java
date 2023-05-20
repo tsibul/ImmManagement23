@@ -11,7 +11,6 @@ import jakarta.persistence.Table;
 public class InjectionMoldingMachine extends Equipment {
     @Column(name = "internal_no", length = 2)
     private String internalNo;
-
     @Column(name = "clamping_force_kN", nullable = false)
     private int clampingForceKn;
     @Column(name = "plate_height_mm", nullable = false)

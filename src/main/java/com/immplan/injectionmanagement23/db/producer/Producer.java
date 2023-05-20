@@ -2,12 +2,10 @@ package com.immplan.injectionmanagement23.db.producer;
 
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "producer")
 public class Producer {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,6 +14,8 @@ public class Producer {
     @ManyToOne(targetEntity = Country.class)
     @JoinColumn(name = "country", referencedColumnName = "id")
     private Country country;
+    @Column(name = "producer_active")
+    private boolean producerActive = true;
 
     public Long getId() {
         return id;
@@ -39,5 +39,13 @@ public class Producer {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public boolean isProducerActive() {
+        return producerActive;
+    }
+
+    public void setProducerActive(boolean producerActive) {
+        this.producerActive = producerActive;
     }
 }

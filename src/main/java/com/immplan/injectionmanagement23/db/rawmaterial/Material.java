@@ -1,20 +1,18 @@
 package com.immplan.injectionmanagement23.db.rawmaterial;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.MappedSuperclass;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class Material {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "material_id")
     private Long materialId;
     private String materialName;
+    @Column(name = "material_active")
+    private boolean materialActive = true;
+
 
     public Long getMaterialId() {
         return materialId;
@@ -38,4 +36,13 @@ public abstract class Material {
                 "materialName='" + materialName + '\'' +
                 '}';
     }
+
+    public boolean isMaterialActive() {
+        return materialActive;
+    }
+
+    public void setMaterialActive(boolean materialActive) {
+        this.materialActive = materialActive;
+    }
 }
+

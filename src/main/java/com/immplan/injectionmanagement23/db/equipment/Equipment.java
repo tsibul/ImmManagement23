@@ -2,7 +2,6 @@ package com.immplan.injectionmanagement23.db.equipment;
 
 import com.immplan.injectionmanagement23.db.producer.Producer;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.Year;
@@ -10,7 +9,6 @@ import java.util.Date;
 
 @MappedSuperclass
 public abstract class Equipment {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "equipment_id")
@@ -36,6 +34,8 @@ public abstract class Equipment {
     private Date yearProduction;
     @Column(name = "receive_date")
     private Date receiveDate;
+    @Column(name = "equipment_active")
+    private boolean equipmentActive = true;
 
     public Long getEquipmentId() {
         return equipmentId;
@@ -118,5 +118,13 @@ public abstract class Equipment {
     }
 
     public static interface EquipmentKindRepository extends JpaRepository<EquipmentKind, Long> {
+    }
+
+    public boolean isEquipmentActive() {
+        return equipmentActive;
+    }
+
+    public void setEquipmentActive(boolean equipmentActive) {
+        this.equipmentActive = equipmentActive;
     }
 }
