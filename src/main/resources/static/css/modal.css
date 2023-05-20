@@ -16,6 +16,7 @@
     background-color: #3B83BD;
     padding: 8px;
     border-radius: 6px;
+    margin: 6px;
 }
 
 .modal-content {
@@ -28,11 +29,11 @@
 }
 
 .close {
+    margin: 8px;
     float: right;
     font-size: 20px;
     cursor: pointer;
     color: white;
-    align-self: center;
 }
 
 .modal-block {
