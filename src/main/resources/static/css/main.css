@@ -99,7 +99,3 @@ p {
     background-color: crimson;
     color: #fff;
 }
-
-.on-top{
-    z-index: 100;
-}
