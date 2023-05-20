@@ -1,8 +1,8 @@
 package com.immplan.injectionmanagement23.controller;
 
 import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
-import com.immplan.injectionmanagement23.db.product.Product;
-import com.immplan.injectionmanagement23.db.product.ProductRepository;
+import com.immplan.injectionmanagement23.db.product.product.Product;
+import com.immplan.injectionmanagement23.db.product.product.repository.ProductRepository;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
