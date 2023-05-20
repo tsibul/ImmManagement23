@@ -39,6 +39,12 @@
                         <td th:text="${color.colorName}" data-label="название"></td>
                         <td th:text="${color.colorPantone}" data-label="pantone"></td>
                         <td th:text="${color.colorHEX}" data-label="HEX"></td>
+                        <td onclick="event.stopPropagation()">
+                            <a th:href="'/colors/'+ ${color.colorGroup.colorGroupId} + '/' + ${color.colorId} + '/deletecolor'">
+                            <button class="button button-danger on-top"
+                                    onclick="showTech(this)">Удалить
+                            </button></a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
