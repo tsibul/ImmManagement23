@@ -14,7 +14,7 @@ public class Drying {
         return dryingId;
     }
 
-    @Column(name = "temperature", length = 2, nullable = false)
+    @Column(name = "temperature", length = 3, nullable = false)
     private int temperature = 70;
 
     @Column(name = "hours", length = 2, nullable = false)
