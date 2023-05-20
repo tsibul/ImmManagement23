@@ -48,24 +48,19 @@
     cursor: pointer;
 }
 
-/* Стили кнопок */
-.button {
-    display: inline-block;
-    padding: 8px 12px;
-    border-style: none;
-    border-radius: 5px;
-    background-color: #3B83BD;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.modal-block {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
 }
 
-.button:hover {
-    background-color: #265a88;
+.button-block {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4px;
+
 }
+
 
 .button.cancel {
     background-color: #ddd;

@@ -53,3 +53,38 @@ p {
     width: 33%;
 }
 
+/* Стили кнопок */
+.button {
+    display: inline-block;
+    margin: 2px;
+    padding: 8px 12px;
+    border-style: solid;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-submit{
+    background-color: #fff;
+    color: #3B83BD;
+    border-color: #3B83BD;
+}
+
+.button-cancel{
+    background-color: #fff;
+    color: #293133;
+    border-color: #293133;
+}
+
+.button-submit:hover {
+    background-color: #3B83BD;
+    color: #fff;
+}
+
+.button-cancel:hover {
+    background-color: #293133;
+    color: #fff;
+}
