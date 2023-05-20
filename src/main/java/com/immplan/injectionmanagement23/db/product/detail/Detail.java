@@ -34,7 +34,7 @@ public class Detail {
     private double gateWeightG;
     @Column(name = "standard_items_per_box", nullable = false)
     private int standardItemsPerBox;
-    @Column(name = "detail_active")
+    @Column(name = "detail_active", columnDefinition = "boolean default true", nullable = false)
     private boolean detailActive = true;
 
 

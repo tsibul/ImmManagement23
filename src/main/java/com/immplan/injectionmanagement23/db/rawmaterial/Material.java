@@ -10,7 +10,7 @@ public abstract class Material {
     @Column(name = "material_id")
     private Long materialId;
     private String materialName;
-    @Column(name = "material_active")
+    @Column(name = "material_active", columnDefinition = "boolean default true", nullable = false)
     private boolean materialActive = true;
 
 

@@ -12,7 +12,7 @@ public class Country {
     private Long id;
     @Column(length = 50, nullable = false)
     private String countryName;
-    @Column(name = "country_active")
+    @Column(name = "country_active", columnDefinition = "boolean default true", nullable = false)
     private boolean countryActive = true;
 
 

@@ -16,7 +16,7 @@ public class Product {
     private String productName;
     @Column(name = "number_details", nullable = false)
     private int numberDetails;
-    @Column(name = "product_active")
+    @Column(name = "product_active", columnDefinition = "boolean default true", nullable = false)
     private boolean productActive = true;
 
     public Long getProductId() {

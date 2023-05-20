@@ -34,7 +34,7 @@ public abstract class Equipment {
     private Date yearProduction;
     @Column(name = "receive_date")
     private Date receiveDate;
-    @Column(name = "equipment_active")
+    @Column(name = "equipment_active", columnDefinition = "boolean default true", nullable = false)
     private boolean equipmentActive = true;
 
     public Long getEquipmentId() {

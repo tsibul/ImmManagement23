@@ -21,7 +21,7 @@ public class Color {
     @ManyToOne(targetEntity = ColorGroup.class)
     @JoinColumn(name = "color_group", referencedColumnName = "color_group_id", nullable = false)
     private ColorGroup colorGroup;
-    @Column(name = "color_active")
+    @Column(name = "color_active", nullable = false, columnDefinition = "boolean default true")
     private boolean colorActive = true;
 
     public Long getColorId() {

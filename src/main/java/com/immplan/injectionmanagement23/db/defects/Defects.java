@@ -16,7 +16,7 @@ public abstract class Defects {
     private String defectDescription;
     @Column(name = "defect_reason")
     private String defectReason;
-    @Column(name = "defect_active")
+    @Column(name = "defect_active", columnDefinition = "boolean default true", nullable = false)
     private boolean defectActive = true;
 
     public Long getDefectId() {

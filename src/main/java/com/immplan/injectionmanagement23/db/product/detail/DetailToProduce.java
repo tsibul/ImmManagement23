@@ -31,7 +31,7 @@ public class DetailToProduce {
     private Color color;
     @Column(name = "items_per_box")
     private int itemsPerBox;
-    @Column(name = "detail_to_produce_active")
+    @Column(name = "detail_to_produce_active", columnDefinition = "boolean default true", nullable = false)
     private boolean detailToProduceActive = true;
 
 

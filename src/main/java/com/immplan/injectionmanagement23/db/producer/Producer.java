@@ -14,7 +14,7 @@ public class Producer {
     @ManyToOne(targetEntity = Country.class)
     @JoinColumn(name = "country", referencedColumnName = "id")
     private Country country;
-    @Column(name = "producer_active")
+    @Column(name = "producer_active", columnDefinition = "boolean default true", nullable = false)
     private boolean producerActive = true;
 
     public Long getId() {

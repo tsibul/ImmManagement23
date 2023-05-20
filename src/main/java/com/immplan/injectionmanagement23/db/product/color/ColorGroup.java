@@ -12,8 +12,8 @@ public class ColorGroup {
     private Long colorGroupId;
     @Column(name = "color_group_name", length = 40, nullable = false)
     private String colorGroupName;
-    @Column(name = "color_group_active")
-    private boolean colorGroupActive;
+    @Column(name = "color_group_active", nullable = false, columnDefinition = "boolean default true")
+    private boolean colorGroupActive = true;
 
     public Long getColorGroupId() {
         return colorGroupId;
