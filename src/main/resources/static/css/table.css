@@ -1,4 +1,11 @@
 /* Основные стили таблицы */
+.table-head{
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    justify-content: space-between;
+}
+
 .responsive-table {
     width: 100%;
     border-collapse: collapse;
