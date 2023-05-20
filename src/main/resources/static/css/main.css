@@ -79,6 +79,12 @@ p {
     border-color: #293133;
 }
 
+.button-danger{
+    background-color: #fff;
+    color: crimson;
+    border-color: crimson;
+}
+
 .button-submit:hover {
     background-color: #3B83BD;
     color: #fff;
@@ -87,4 +93,13 @@ p {
 .button-cancel:hover {
     background-color: #293133;
     color: #fff;
+}
+
+.button-danger:hover{
+    background-color: crimson;
+    color: #fff;
+}
+
+.on-top{
+    z-index: 100;
 }
