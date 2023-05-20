@@ -3,11 +3,11 @@ package com.immplan.injectionmanagement23.db.technologyprocess;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "dryer")
+@Table(name = "drying")
 public class Drying {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dryer_id")
+    @Column(name = "drying_id")
     private Long dryingId;
 
     public Long getDryerId() {
