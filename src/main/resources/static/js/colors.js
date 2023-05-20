@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to open the modal for editing
     function openEditModal() {
         // Get the data from the clicked row
-        const colorId = this.dataset.colorId;
+        const colorId = this.dataset.colorid;
+        const colorGroupId = this.dataset.colorgroupid;
         const colorCode = this.querySelector("[data-label='код цвета']").textContent;
         const colorName = this.querySelector("[data-label='название']").textContent;
         const colorPantone = this.querySelector("[data-label='pantone']").textContent;
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const colorHEXInput = modal.querySelector("#color-hex");
 
         modalTitle.textContent = "Редактировать цвет";
-        colorForm.setAttribute("action", "/colors/" + colorId); // Set the form action for editing
+        colorForm.setAttribute("action", "/colors/" + colorGroupId + '/addcolor'); // Set the form action for editing
 
         colorIdInput.value = colorId;
         colorCodeInput.value = colorCode;
