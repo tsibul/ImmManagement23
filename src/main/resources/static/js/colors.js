@@ -46,11 +46,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const colorNameInput = modal.querySelector("#color-name");
         const colorPantoneInput = modal.querySelector("#color-pantone");
         const colorHEXInput = modal.querySelector("#color-hex");
+        const colorGroupId = this.dataset.colorgroupid;
+
 
         modalTitle.textContent = "Добавить цвет";
-        colorForm.setAttribute("action", "/colors"); // Set the form action for adding
+        colorForm.setAttribute("action", "/colors/" + colorGroupId + '/addcolor'); // Set the form action for adding
 
-        colorIdInput.value = "";
+        colorIdInput.value = 0;
         colorCodeInput.value = "";
         colorNameInput.value = "";
         colorPantoneInput.value = "";

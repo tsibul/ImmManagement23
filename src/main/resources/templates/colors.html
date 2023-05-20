@@ -16,12 +16,14 @@
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
-            <h2 th:text="${colorGroup.colorGroupName}">Цвета</h2>
+            <div class="color-head">
+                <h2 th:text="${colorGroup.colorGroupName}">Цвета</h2>
+                <button id="add-color-btn" class="button button-submit"
+                        th:data-colorGroupId="${colorGroup.colorGroupId}">Добавить новый цвет
+                </button>
+            </div>
         </div>
         <div class="inner_content">
-            <div class="container">
-                <button id="add-color-btn" class="button button-submit">Добавить новый цвет</button>
-            </div>
             <div class="container">
                 <table class="responsive-table">
                     <thead>
@@ -41,9 +43,10 @@
                         <td th:text="${color.colorHEX}" data-label="HEX"></td>
                         <td onclick="event.stopPropagation()">
                             <a th:href="'/colors/'+ ${color.colorGroup.colorGroupId} + '/' + ${color.colorId} + '/deletecolor'">
-                            <button class="button button-danger on-top"
-                                    onclick="showTech(this)">Удалить
-                            </button></a>
+                                <button class="button button-danger on-top"
+                                        onclick="showTech(this)">Удалить
+                                </button>
+                            </a>
                         </td>
                     </tr>
                     </tbody>
