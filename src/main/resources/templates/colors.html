@@ -16,11 +16,11 @@
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
-            <h1 th:text="'Цвета (' + ${colorGroup.colorGroupName} + ')'">Цвета</h1>
+            <h2 th:text="${colorGroup.colorGroupName}">Цвета</h2>
         </div>
         <div class="inner_content">
             <div class="container">
-                <button id="add-color-btn" class="button">Добавить новый цвет</button>
+                <button id="add-color-btn" class="button button-submit">Добавить новый цвет</button>
             </div>
             <div class="container">
                 <table class="responsive-table">
@@ -33,7 +33,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="color:${colors}" class="color-row">
+                    <tr th:each="color:${colors}" class="color-row"
+                        th:data-colorGroupId="${color.colorGroup.colorGroupId}" th:data-colorId="${color.colorId}">
                         <td th:text="${color.colorCode}" data-label="код цвета"></td>
                         <td th:text="${color.colorName}" data-label="название"></td>
                         <td th:text="${color.colorPantone}" data-label="pantone"></td>
@@ -47,18 +48,28 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2 id="modal-title">Добавить цвет</h2>
-                    <form id="color-form">
-                        <input type="hidden" id="color-id">
-                        <label for="color-code">Код цвета:</label>
-                        <input type="text" id="color-code" name="colorCode" required>
-                        <label for="color-name">Название:</label>
-                        <input type="text" id="color-name" name="colorName" required>
-                        <label for="color-pantone">Pantone:</label>
-                        <input type="text" id="color-pantone" name="colorPantone">
-                        <label for="color-hex">HEX:</label>
-                        <input type="text" id="color-hex" name="colorHEX" required>
-                        <button type="button" id="cancel-btn">Отмена</button>
-                        <button type="submit" id="color-submit-btn" class="button">Добавить</button>
+                    <form id="color-form" method="post">
+                        <div class="modal-block">
+                            <input type="hidden" id="color-id" name="colorId">
+                            <label for="color-code">Код цвета:</label>
+                            <input type="text" id="color-code" name="colorCode" required>
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-name">Название:</label>
+                            <input type="text" id="color-name" name="colorName" required>
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-pantone">Pantone:</label>
+                            <input type="text" id="color-pantone" name="colorPantone" required>
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-hex">HEX:</label>
+                            <input type="text" id="color-hex" name="colorHEX">
+                        </div>
+                        <div class="button-block">
+                            <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>
+                            <button type="submit" id="color-submit-btn" class="button button-submit">Добавить</button>
+                        </div>
                     </form>
                 </div>
             </div>
