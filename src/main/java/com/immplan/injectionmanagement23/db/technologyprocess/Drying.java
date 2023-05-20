@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "dryer")
-public class Dryer {
+public class Drying {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dryer_id")
-    private Long dryerId;
+    private Long dryingId;
 
     public Long getDryerId() {
-        return dryerId;
+        return dryingId;
     }
 
     @Column(name = "temperature", length = 2, nullable = false)
