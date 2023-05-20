@@ -18,10 +18,10 @@ public class Product {
     @Column(name = "number_details", nullable = false)
     private int numberDetails;
     @ManyToOne(targetEntity = ColorGroup.class)
-    @JoinColumn(name = "color_group", referencedColumnName = "color_group_id")
-    private MoldInsert colorGroup;
+    @JoinColumn(name = "color_group", referencedColumnName = "color_group_id", nullable = false)
+    private ColorGroup colorGroup;
     @ManyToOne(targetEntity = ProductGroup.class)
-    @JoinColumn(name = "product_group", referencedColumnName = "product_group_id")
+    @JoinColumn(name = "product_group", referencedColumnName = "product_group_id", nullable = false)
     private ProductGroup productGroup;
     @Column(name = "product_active", columnDefinition = "boolean default true", nullable = false)
     private boolean productActive = true;
@@ -66,19 +66,19 @@ public class Product {
         this.productActive = productActive;
     }
 
-    public MoldInsert getColorGroup() {
-        return colorGroup;
-    }
-
-    public void setColorGroup(MoldInsert colorGroup) {
-        this.colorGroup = colorGroup;
-    }
-
-    public ProductGroup getProductGroup() {
+     public ProductGroup getProductGroup() {
         return productGroup;
     }
 
     public void setProductGroup(ProductGroup productGroup) {
         this.productGroup = productGroup;
+    }
+
+    public ColorGroup getColorGroup() {
+        return colorGroup;
+    }
+
+    public void setColorGroup(ColorGroup colorGroup) {
+        this.colorGroup = colorGroup;
     }
 }
