@@ -9,5 +9,8 @@ import java.util.List;
 public interface ColorRepository extends JpaRepository<Color, Long> {
 
     List<Color> findColorByColorGroupOrderByColorCode(ColorGroup colorGroup);
+    List<Color> findColorByColorActiveAndColorGroupOrderByColorCode(boolean colorActive, ColorGroup colorGroup);
     List<Color> findColorByColorGroupColorGroupId(long colorGroupId);
+    Color findColorByColorId(long colorId);
+
 }
