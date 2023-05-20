@@ -8,21 +8,18 @@ import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupR
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @Controller
-public class ColorController  extends BaseController{
+public class ColorController extends BaseController {
 
     private final ColorRepository colorRepository;
 
     public ColorController(EquipmentTypeRepository equipmentTypeRepository, ColorRepository colorRepository,
-                              ColorGroupRepository colorGroupRepository) {
+                           ColorGroupRepository colorGroupRepository) {
         super(equipmentTypeRepository, colorGroupRepository);
 
         this.colorRepository = colorRepository;
@@ -41,9 +38,11 @@ public class ColorController  extends BaseController{
         return "colors";
     }
 
-    @PostMapping("/colors/{id}/addColor")
-    public String addColor(@PathVariable("id") int id, @ModelAttribute Color color) {
+    @PostMapping("/colors/{id}/addcolor")
+    public String addColor(@PathVariable("id") int id, @ModelAttribute Color color, @RequestParam("colorId") int colorId) {
         long idLong = (long) id;
+        long colorIdLong = (long) colorId;
+        color.setColorId(colorIdLong);
         ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(idLong);
         color.setColorGroup(colorGroup);
         colorRepository.save(color);
