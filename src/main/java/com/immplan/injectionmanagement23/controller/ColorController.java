@@ -28,9 +28,9 @@ public class ColorController extends BaseController {
 
     @GetMapping("/colors/{id}")
     public String getColor(@PathVariable("id") int id, Model model) {
-        long idLong = (long) id;
-        ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(idLong);
-        List<Color> colors = colorRepository.findColorByColorGroupOrderByColorCode(colorGroup);
+//        long idLong = (long) id;
+        ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(id);
+        List<Color> colors = colorRepository.findColorByColorActiveAndColorGroupOrderByColorCode(true, colorGroup);
         populateModel(model);
         model.addAttribute("colorGroup", colorGroup);
         model.addAttribute("activePage", "colors");
@@ -45,5 +45,13 @@ public class ColorController extends BaseController {
         color.setColorGroup(colorGroup);
         colorRepository.save(color);
         return "redirect:/colors/" + id;
+    }
+
+    @GetMapping("/colors/{groupId}/{id}/deletecolor")
+    public String deleteColor(@PathVariable int groupId, @PathVariable int id) {
+        Color color = colorRepository.findColorByColorId(id);
+        color.setColorActive(false);
+        colorRepository.save(color);
+        return "redirect:/colors/" + groupId;
     }
 }
