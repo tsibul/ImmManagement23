@@ -41,13 +41,6 @@ public class MainPageController  extends BaseController{
         return "techcard";
     }
 
-    @GetMapping("/products")
-    public String productsPage(Model model) {
-        populateModel(model);
-        model.addAttribute("activePage", "products");
-        return "products";
-    }
-
     @GetMapping("/equipment")
     public String equipmentPage(Model model) {
         List<InjectionMoldingMachine> immList = injectionMoldingMachineRepository.findAll();
@@ -55,13 +48,6 @@ public class MainPageController  extends BaseController{
         populateModel(model);
         model.addAttribute("activePage", "equipment");
         return "equipment";
-    }
-
-    @GetMapping("/colors")
-    public String colorsPage(Model model) {
-        populateModel(model);
-        model.addAttribute("activePage", "colors");
-        return "colors";
     }
 
 }
