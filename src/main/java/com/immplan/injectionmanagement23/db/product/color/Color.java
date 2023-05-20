@@ -28,6 +28,10 @@ public class Color {
         return colorId;
     }
 
+    public void setColorId(Long colorId) {
+        this.colorId = colorId;
+    }
+
     public String getColorCode() {
         return colorCode;
     }
