@@ -1,3 +1,4 @@
+/*
 let menuButtons = document.querySelectorAll('.menu-button');
 menuButtons.forEach(menuListen);
 function menuListen (item){
@@ -6,3 +7,5 @@ function menuListen (item){
     item.addEventListener('mouseout', function () {
         document.getElementById(item.dataset.menu).style.display = 'none';});
 }
+
+ */

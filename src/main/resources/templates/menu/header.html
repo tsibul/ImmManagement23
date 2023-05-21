@@ -5,11 +5,12 @@
         <div class="main_menu">
             <div class="nav_button"><img src="/image/list.svg" alt="navi"></div>
             <ul class="dropdown_list">
-                <li class="dropdown_button" >
+                <li class="dropdown_button">
                     <a href="/" class="a_menu" th:classappend="${activePage == 'home' ? 'menu_active' : ''}">Главная</a>
                 </li>
                 <li class="dropdown_button">
-                    <a href="/techcard" class="a_menu"  th:classappend="${activePage == 'techcard' ? 'menu_active' : ''}">Техкарта</a>
+                    <a href="/techcard" class="a_menu"
+                       th:classappend="${activePage == 'techcard' ? 'menu_active' : ''}">Техкарта</a>
                 </li>
                 <li class="dropdown_button menu-button" data-menu="product-menu">
                     <a href="" class="a_menu" th:classappend="${activePage == 'products' ? 'menu_active' : ''}">Продукция</a>
@@ -27,28 +28,31 @@
 
                 </li>
                 <li class="dropdown_button menu-button" data-menu="equipment-menu">
-                    <a href="/equipment" class="a_menu"  th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">Оборудование</a>
+                    <a href="/equipment" class="a_menu"
+                       th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">Оборудование</a>
                     <ul class="dropdown_menu" id="equipment-menu">
                         <li class="drop_button" th:each="eqType : ${equipmentTypes}">
-                            <a th:href="'/equipment/' + ${eqType.id}" class="a_menu menu_active" th:text="${eqType.typeName}"></a>
+                            <a th:href="'/equipment/' + ${eqType.id}" class="a_menu menu_active"
+                               th:text="${eqType.typeName}"></a>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown_button menu-button" data-menu="color-menu">
                     <a href="" class="a_menu" th:classappend="${activePage == 'colors' ? 'menu_active' : ''}">Цвета</a>
                     <ul class="dropdown_menu" id="color-menu">
-                        <li class="drop_button" th:each="color_group : ${colorGroups}">
-                            <a th:href="'/colors/'+ ${color_group.colorGroupId}" class="a_menu menu_active" th:text="${color_group.colorGroupName}"></a>
+                        <li class="drop_button">
+                            <a href="/colors/0" class="a_menu menu_active">Цвета</a>
+                        </li>
+                        <li class="drop_button">
+                            <a href="" class="a_menu menu_active">Группы цветов</a>
+                        </li>
+                        <li class="drop_button">
+                            <a href="" class="a_menu menu_active">Рецептуры</a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <!--<ul class="color_menu">
-            <li class="drop_button" th:each="color_group : ${colorGroups}">
-                <a th:href="${color_group.colorGroupId}" class="a_menu" th:text="${color_group.colorGroupName}"></a>
-            </li>
-        </ul>-->
     </div>
 
 </div>

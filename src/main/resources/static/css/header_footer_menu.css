@@ -55,6 +55,10 @@
     color: #ffffff;
 }
 
+.menu-button:hover .dropdown_menu{
+    display: block;
+}
+
 @media screen and (max-width: 600px) {
     .main_menu {
         margin: 2px;
