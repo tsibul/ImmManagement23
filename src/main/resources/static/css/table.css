@@ -26,6 +26,14 @@
     text-align: center;
 }
 
+.menu-select{
+    width: 100%;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    border-style: none;
+}
+
 /* Медиа-запросы для адаптивности */
 @media (max-width: 600px) {
     /* Скрытие заголовка таблицы при маленьком экране */
