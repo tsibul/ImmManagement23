@@ -1,5 +1,5 @@
 /* Основные стили таблицы */
-.table-head{
+.table-head {
     display: flex;
     align-items: center;
     padding: 6px;
@@ -26,7 +26,7 @@
     text-align: center;
 }
 
-.menu-select{
+.menu-select {
     width: 100%;
     font-size: 100%;
     font-weight: bold;
@@ -37,7 +37,7 @@
 /* Медиа-запросы для адаптивности */
 @media (max-width: 600px) {
     /* Скрытие заголовка таблицы при маленьком экране */
-    .responsive-table thead {
+    .responsive-table th {
         display: none;
     }
 
@@ -64,5 +64,11 @@
         text-transform: uppercase;
         margin-bottom: 5px;
         display: block;
+    }
+
+    /* Отображение селекторов на маленьком экране */
+    .responsive-table th.show-on-small-screen {
+        display: table-cell;
+        width: 40%
     }
 }

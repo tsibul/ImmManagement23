@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const productCode = this.querySelector("[data-label='артикул']").textContent;
         const productName = this.querySelector("[data-label='название']").textContent;
         const numberDetails = this.querySelector("[data-label='кол-во деталей']").textContent;
-        const colorGroup = this.querySelector("[data-label='цветовая группа']").dataset.id;
+        const colorGroup = this.querySelector("[data-label='группа цветов']").dataset.id;
         const productGroup = this.querySelector("[data-label='группа товара']").dataset.id;
 
         // Populate the modal fields with the data
