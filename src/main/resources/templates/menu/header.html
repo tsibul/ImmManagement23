@@ -11,9 +11,9 @@
                 <li class="dropdown_button">
                     <a href="/techcard" class="a_menu"  th:classappend="${activePage == 'techcard' ? 'menu_active' : ''}">Техкарта</a>
                 </li>
-                <li class="dropdown_button product_button">
+                <li class="dropdown_button menu-button" data-menu="product-menu">
                     <a href="" class="a_menu" th:classappend="${activePage == 'products' ? 'menu_active' : ''}">Продукция</a>
-                    <ul class="product_menu">
+                    <ul class="dropdown_menu" id="product-menu">
                         <li class="drop_button">
                             <a href="/products/0/0" class="a_menu menu_active">Готовая продукция</a>
                         </li>
@@ -26,17 +26,17 @@
                     </ul>
 
                 </li>
-                <li class="dropdown_button equipment_button">
+                <li class="dropdown_button menu-button" data-menu="equipment-menu">
                     <a href="/equipment" class="a_menu"  th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">Оборудование</a>
-                    <ul class="equipment_menu">
+                    <ul class="dropdown_menu" id="equipment-menu">
                         <li class="drop_button" th:each="eqType : ${equipmentTypes}">
                             <a th:href="'/equipment/' + ${eqType.id}" class="a_menu menu_active" th:text="${eqType.typeName}"></a>
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown_button color_button">
+                <li class="dropdown_button menu-button" data-menu="color-menu">
                     <a href="" class="a_menu" th:classappend="${activePage == 'colors' ? 'menu_active' : ''}">Цвета</a>
-                    <ul class="color_menu">
+                    <ul class="dropdown_menu" id="color-menu">
                         <li class="drop_button" th:each="color_group : ${colorGroups}">
                             <a th:href="'/colors/'+ ${color_group.colorGroupId}" class="a_menu menu_active" th:text="${color_group.colorGroupName}"></a>
                         </li>
@@ -44,11 +44,11 @@
                 </li>
             </ul>
         </div>
-        <ul class="color_menu">
+        <!--<ul class="color_menu">
             <li class="drop_button" th:each="color_group : ${colorGroups}">
                 <a th:href="${color_group.colorGroupId}" class="a_menu" th:text="${color_group.colorGroupName}"></a>
             </li>
-        </ul>
+        </ul>-->
     </div>
 
 </div>

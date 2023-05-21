@@ -35,7 +35,7 @@
     color: rgba(255,255,255,.55);
 }
 
-.color_menu{
+.dropdown_menu{
     font-weight: normal;
     background-color: #3B83BD;
     padding: 12px;
@@ -46,31 +46,6 @@
     z-index: 1;
     transform: translateX(-16px);
 }
-
-.product_menu{
-    font-weight: normal;
-    background-color: #3B83BD;
-    padding: 12px;
-    list-style: none;
-    display: none;
-    position: absolute;
-    border-radius: 10px;
-    z-index: 1;
-    transform: translateX(-16px);
-}
-
-.equipment_menu{
-    font-weight: normal;
-    background-color: #3B83BD;
-    padding: 12px;
-    list-style: none;
-    display: none;
-    position: absolute;
-    border-radius: 10px;
-    z-index: 1;
-    transform: translateX(-16px);
-}
-
 
 .drop_button{
     padding: 6px;
@@ -113,21 +88,10 @@
         padding: 6px;
     }
 
-    .color_menu {
-        right: -80%;
-        top: 70%;
-    }
-
-    .equipment_menu {
+    .dropdown_menu {
         left: 90%;
-        top: 55%;
+        transform: translateY(-36px);
     }
-    .product_menu {
-        right: -80%;
-        top: 70%;
-    }
-
-
 }
 
 .footer {
