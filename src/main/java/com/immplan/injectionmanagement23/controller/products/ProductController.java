@@ -7,11 +7,9 @@ import com.immplan.injectionmanagement23.db.product.product.ProductGroup;
 import com.immplan.injectionmanagement23.db.product.product.repository.ProductGroupRepository;
 import com.immplan.injectionmanagement23.db.product.product.repository.ProductRepository;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
