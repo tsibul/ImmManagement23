@@ -10,6 +10,7 @@ public interface ColorRepository extends JpaRepository<Color, Long> {
 
     List<Color> findColorByColorGroupOrderByColorCode(ColorGroup colorGroup);
     List<Color> findColorByColorActiveAndColorGroupOrderByColorCode(boolean colorActive, ColorGroup colorGroup);
+    List<Color> findColorByColorActiveOrderByColorGroupAscColorCode(boolean colorActive);
     List<Color> findColorByColorGroupColorGroupId(long colorGroupId);
     Color findColorByColorId(long colorId);
 
