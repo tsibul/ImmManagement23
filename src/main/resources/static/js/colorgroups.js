@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         modalTitle.textContent = "Добавить группу";
-        colorForm.setAttribute("action", "/colorgrops/addcolor"); // Set the form action for adding
+        colorForm.setAttribute("action", "/colorgroups/addcolor"); // Set the form action for adding
 
         colorGroupIdInput.value = 0;
         colorGroupNameInput.value = "";

@@ -36,6 +36,6 @@ public class ColorGroupController extends BaseController {
         ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(id);
         colorGroup.setColorGroupActive(false);
         colorGroupRepository.save(colorGroup);
-        return "redirect:/colorgroup";
+        return "redirect:/colorgroups";
     }
 }
