@@ -1,7 +1,8 @@
-package com.immplan.injectionmanagement23.db.product.product;
+package com.immplan.injectionmanagement23.db.product.color;
 
 import com.immplan.injectionmanagement23.db.equipment.mold.MoldInsert;
 import com.immplan.injectionmanagement23.db.product.color.Color;
+import com.immplan.injectionmanagement23.db.product.product.ProductGroup;
 import com.immplan.injectionmanagement23.db.rawmaterial.MasterBatch;
 import jakarta.persistence.*;
 
