@@ -29,10 +29,17 @@ public class ColorController extends BaseController {
     @GetMapping("/colors/{id}")
     public String getColor(@PathVariable("id") int id, Model model) {
 //        long idLong = (long) id;
-        ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(id);
-        List<Color> colors = colorRepository.findColorByColorActiveAndColorGroupOrderByColorCode(true, colorGroup);
+        ColorGroup colorGroup;
+        List<Color> colors;
+        if(id != 0) {
+            colorGroup = colorGroupRepository.findColorGroupByColorGroupId(id);
+            colors = colorRepository.findColorByColorActiveAndColorGroupOrderByColorCode(true, colorGroup);
+            model.addAttribute("colorGroupId", colorGroup.getColorGroupId());
+        }else {
+            colors = colorRepository.findColorByColorActiveOrderByColorGroupAscColorCode(true);
+            model.addAttribute("colorGroupId", 0);
+        }
         populateModel(model);
-        model.addAttribute("colorGroup", colorGroup);
         model.addAttribute("activePage", "colors");
         model.addAttribute("colors", colors);
         return "colors";
