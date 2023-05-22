@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Цвета</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header_footer_menu.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div th:insert="~{menu/header :: header}"></div>
+        <div class="container">
+            <div class="table-head">
+                <h2 >Цвета</h2>
+                <button id="add-color-btn" class="button button-submit">Добавить группу
+                </button>
+            </div>
+        </div>
+        <div class="inner_content">
+            <div class="container">
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th>название</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="colorGroup:${colorGroups}" class="color-row"
+                        th:data-colorGroupId="${colorGroup.colorGroupId}">
+                        <td th:text="${colorGroup.colorGroupName}" data-label="название"></td>
+                        <td onclick="event.stopPropagation()">
+                            <a th:href="'/colors/'+ ${color.colorGroup.colorGroupId} + '/' + ${color.colorId} + '/deletecolor'">
+                                <button class="button button-danger">Удалить
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Модальное окно для добавления и редактирования цвета -->
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modal-title" class="modal-title">Добавить группу</div>
+                    <form id="color-form" method="post">
+                        <div class="modal-block">
+                            <input type="hidden" id="color-group-id" name="colorGroupId">
+                            <label for="color-group-name">Название:</label>
+                            <input type="text" id="color-group-name" name="colorGroupName" required class="modal-input">
+                        </div>
+                        <div class="button-block">
+                            <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>
+                            <button type="submit" id="color-submit-btn" class="button button-submit">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{menu/footer :: footer}"></div>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/colorgroups.js"></script>
+</body>
+
+</html>
