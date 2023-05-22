@@ -1,6 +1,5 @@
 package com.immplan.injectionmanagement23.db.rawmaterial;
 
-
 import com.immplan.injectionmanagement23.db.producer.Producer;
 import com.immplan.injectionmanagement23.db.product.color.Color;
 import jakarta.persistence.*;
