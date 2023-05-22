@@ -14,6 +14,8 @@ public class EquipmentType {
     private String typeName;
     @Column(name = "type_code", length = 2)
     private String typeCode;
+    @Column(name = "equipment_type_active")
+    private boolean equipmentTypeActive;
 
     public Long getId() {
         return id;
@@ -37,5 +39,13 @@ public class EquipmentType {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public boolean isEquipmentTypeActive() {
+        return equipmentTypeActive;
+    }
+
+    public void setEquipmentTypeActive(boolean equipmentTypeActive) {
+        this.equipmentTypeActive = equipmentTypeActive;
     }
 }
