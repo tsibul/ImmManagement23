@@ -14,8 +14,8 @@ public class EquipmentType {
     private String typeName;
     @Column(name = "type_code", length = 2)
     private String typeCode;
-    @Column(name = "equipment_type_active")
-    private boolean equipmentTypeActive;
+    @Column(name = "equipment_type_active", columnDefinition = "boolean default true", nullable = false)
+    private boolean equipmentTypeActive = true;
 
     public Long getId() {
         return id;
