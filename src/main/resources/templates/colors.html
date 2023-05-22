@@ -13,14 +13,15 @@
 </head>
 
 <body>
+<div hidden th:data-colorgroupsid="${colorGroupId}" id="url-parameters"></div>
 <div class="wrapper">
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
             <div class="table-head">
-                <h2 th:text="'Цветовая группа: ' + ${colorGroup.colorGroupName}">Цвета</h2>
+                <h2 >Цвета</h2>
                 <button id="add-color-btn" class="button button-submit"
-                        th:data-colorGroupId="${colorGroup.colorGroupId}">Добавить новый цвет
+                        th:data-colorGroupId="${colorGroupId}">Добавить цвет
                 </button>
             </div>
         </div>
@@ -33,6 +34,17 @@
                         <th>название</th>
                         <th>pantone</th>
                         <th>HEX</th>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="color-filter" name="colorGroup"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option value="/colors/0">группа цветов</option>
+                                <option th:each="color_group : ${colorGroups}"
+                                        th:value="'/colors/' + ${color_group.colorGroupId}"
+                                        th:selected="${colorGroupId} == ${color_group.colorGroupId}"
+                                        th:text="${color_group.colorGroupName}">
+                                </option>
+                            </select>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,6 +54,7 @@
                         <td th:text="${color.colorName}" data-label="название"></td>
                         <td th:text="${color.colorPantone}" data-label="pantone"></td>
                         <td th:text="${color.colorHEX}" data-label="HEX"></td>
+                        <td th:text="${color.colorGroup.colorGroupName}" data-label="цветовая группа"></td>
                         <td onclick="event.stopPropagation()">
                             <a th:href="'/colors/'+ ${color.colorGroup.colorGroupId} + '/' + ${color.colorId} + '/deletecolor'">
                                 <button class="button button-danger">Удалить
@@ -74,6 +87,15 @@
                         <div class="modal-block">
                             <label for="color-hex">HEX:</label>
                             <input type="text" id="color-hex" name="colorHEX" class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-group">Цветовая группа:</label>
+                            <select class="modal-select" id="color-group" name="colorGroup" required>
+                                <option class="" th:each="color_group : ${colorGroups}"
+                                        th:value="${color_group.colorGroupId}"
+                                        th:text="${color_group.colorGroupName}">
+                                </option>
+                            </select>
                         </div>
                         <div class="button-block">
                             <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>
