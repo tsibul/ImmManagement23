@@ -19,8 +19,10 @@ public abstract class BaseController {
     }
 
     protected void populateModel(Model model) {
-        List<EquipmentType> equipmentTypeList = equipmentTypeRepository.findAll();
-        List<ColorGroup> colorGroupList = colorGroupRepository.findAll();
+        List<EquipmentType> equipmentTypeList = equipmentTypeRepository
+                .findEquipmentTypeByEquipmentTypeActiveOrderById(true);
+        List<ColorGroup> colorGroupList = colorGroupRepository
+                .findColorGroupByColorGroupActiveOrderByColorGroupName(true);
         model.addAttribute("colorGroups", colorGroupList);
         model.addAttribute("equipmentTypes", equipmentTypeList);
     }
