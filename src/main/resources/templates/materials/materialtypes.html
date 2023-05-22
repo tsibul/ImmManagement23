@@ -39,7 +39,7 @@
                         <td th:text="${materialType.drying ? 'да' : 'нет'}" data-label="сушка"
                             th:data-drying="${materialType.drying}"></td>
                         <td onclick="event.stopPropagation()">
-                            <a th:href="'/materialtypes/'+  ${materialType.materialId} + '/deletematerialtype'">
+                            <a th:href="'/materialtypes/'+  ${materialType.materialId} + '/deletematerial'">
                                 <button class="button button-danger">Удалить
                                 </button>
                             </a>
@@ -56,8 +56,8 @@
                     <form id="color-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="material-type-id" name="materialId">
-                            <label for="color-group-name">Название:</label>
-                            <input type="text" id="color-group-name" name="colorGroupName" required class="modal-input">
+                            <label for="material-type-name">Название:</label>
+                            <input type="text" id="material-type-name" name="materialName" required class="modal-input">
                         </div>
                         <div class="modal-block">
                             <label for="material-type-drying">Название:</label>

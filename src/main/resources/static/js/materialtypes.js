@@ -3,25 +3,29 @@ document.addEventListener("DOMContentLoaded", function() {
     const modal = document.querySelector(".modal");
     const closeModalBtn = modal.querySelector(".close");
     const cancelBtn = modal.querySelector("#cancel-btn");
-    const addColorBtn = document.querySelector("#add-color-btn");
+    const addMaterialTypeBtn = document.querySelector("#add-material-type-btn");
 
     // Function to open the modal for editing
     function openEditModal() {
         // Get the data from the clicked row
-        const colorGroupId = this.dataset.colorgroupid;
-        const colorGroupName = this.querySelector("[data-label='название']").textContent;
+        const materialTypeId = this.dataset.materialtypeid;
+        const materialTypeName = this.querySelector("[data-label='название']").textContent;
+        const drying = this.querySelector("[data-label='сушка']").dataset.drying;
 
         // Populate the modal fields with the data
         const modalTitle = modal.querySelector("#modal-title");
         const colorForm = modal.querySelector("#color-form");
-        const colorGroupIdInput = modal.querySelector("#color-group-id");
-        const colorGroupNameInput = modal.querySelector("#color-group-name");
+        const materialTypeIdInput = modal.querySelector("#material-type-id");
+        const materialTypeNameInput = modal.querySelector("#material-type-name");
+        const dryingInput = modal.querySelector("#material-type-drying");
 
-        modalTitle.textContent = "Редактировать группу";
-        colorForm.setAttribute("action", "/colorgroups/addcolor"); // Set the form action for editing
 
-        colorGroupIdInput.value = colorGroupId;
-        colorGroupNameInput.value = colorGroupName;
+        modalTitle.textContent = "Редактировать тип";
+        colorForm.setAttribute("action", "/materialtypes/addmaterial"); // Set the form action for editing
+
+        materialTypeIdInput.value = materialTypeId;
+        materialTypeNameInput.value = materialTypeName;
+        dryingInput.value = drying;
 
         // Open the modal
         modal.style.display = "block";
@@ -31,15 +35,17 @@ document.addEventListener("DOMContentLoaded", function() {
     function openAddModal() {
         const modalTitle = modal.querySelector("#modal-title");
         const colorForm = modal.querySelector("#color-form");
-        const colorGroupIdInput = modal.querySelector("#color-group-id");
-        const colorGroupNameInput = modal.querySelector("#color-group-name");
+        const materialTypeIdInput = modal.querySelector("#material-type-id");
+        const materialTypeNameInput = modal.querySelector("#material-type-name");
+        const dryingInput = modal.querySelector("#material-type-drying");
 
 
-        modalTitle.textContent = "Добавить группу";
-        colorForm.setAttribute("action", "/colorgroups/addcolor"); // Set the form action for adding
+        modalTitle.textContent = "Добавить тип";
+        colorForm.setAttribute("action", "/materialtypes/addmaterial"); // Set the form action for adding
 
-        colorGroupIdInput.value = 0;
-        colorGroupNameInput.value = "";
+        materialTypeIdInput.value = 0;
+        materialTypeNameInput.value = "";
+        dryingInput.value = true;
 
         // Open the modal
         modal.style.display = "block";
@@ -51,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Open the modal for adding a new color when the button is clicked
-    addColorBtn.addEventListener("click", openAddModal);
+    addMaterialTypeBtn.addEventListener("click", openAddModal);
 
     // Close the modal when the close button is clicked
     closeModalBtn.addEventListener("click", function() {
