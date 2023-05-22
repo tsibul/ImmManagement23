@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeModalBtn = modal.querySelector(".close");
     const cancelBtn = modal.querySelector("#cancel-btn");
     const addColorBtn = document.querySelector("#add-color-btn");
+    const colorGroupUrl = document.querySelector("#url-parameters");
 
     // Function to open the modal for editing
     function openEditModal() {
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const colorNameInput = modal.querySelector("#color-name");
         const colorPantoneInput = modal.querySelector("#color-pantone");
         const colorHEXInput = modal.querySelector("#color-hex");
+        const colorGroupInput = modal.querySelector("#color-group");
 
         modalTitle.textContent = "Редактировать цвет";
         colorForm.setAttribute("action", "/colors/" + colorGroupId + '/addcolor'); // Set the form action for editing
@@ -32,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
         colorNameInput.value = colorName;
         colorPantoneInput.value = colorPantone;
         colorHEXInput.value = colorHEX;
+        colorGroupInput.value = colorGroupId;
 
         // Open the modal
         modal.style.display = "block";
@@ -47,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const colorPantoneInput = modal.querySelector("#color-pantone");
         const colorHEXInput = modal.querySelector("#color-hex");
         const colorGroupId = this.dataset.colorgroupid;
+        const colorGroupInput = modal.querySelector("#color-group");
 
 
         modalTitle.textContent = "Добавить цвет";
@@ -57,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
         colorNameInput.value = "";
         colorPantoneInput.value = "";
         colorHEXInput.value = "";
+        colorGroupInput.value = colorGroupId;
 
         // Open the modal
         modal.style.display = "block";

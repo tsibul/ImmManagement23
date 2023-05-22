@@ -47,8 +47,6 @@ public class ColorController extends BaseController {
 
     @PostMapping("/colors/{id}/addcolor")
     public String addColor(@PathVariable("id") int id, @ModelAttribute Color color, @RequestParam("colorId") int colorId) {
-        ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId((long) id);
-        color.setColorGroup(colorGroup);
         colorRepository.save(color);
         return "redirect:/colors/" + id;
     }
