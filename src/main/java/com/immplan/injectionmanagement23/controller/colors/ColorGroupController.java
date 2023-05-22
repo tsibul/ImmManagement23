@@ -17,21 +17,21 @@ public class ColorGroupController extends BaseController {
         super(equipmentTypeRepository, colorGroupRepository);
     }
 
-    @GetMapping("/colorgroup")
+    @GetMapping("/colorgroups")
     public String getColor(Model model) {
 //        long idLong = (long) id;
         populateModel(model);
         model.addAttribute("activePage", "colors");
-        return "colorgroup";
+        return "colors/colorgroups";
     }
 
-    @PostMapping("/colorgroup/addcolor")
+    @PostMapping("/colorgroups/addcolor")
     public String addColor(@ModelAttribute ColorGroup colorGroup) {
         colorGroupRepository.save(colorGroup);
-        return "redirect:/colorsgroup";
+        return "redirect:/colorgroups";
     }
 
-    @GetMapping("/colorgroup/{id}/deletecolorgroup")
+    @GetMapping("/colorgroups/{id}/deletecolorgroup")
     public String deleteColor(@PathVariable int id) {
         ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(id);
         colorGroup.setColorGroupActive(false);

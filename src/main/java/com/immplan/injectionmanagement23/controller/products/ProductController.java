@@ -54,7 +54,7 @@ public class ProductController extends BaseController {
         model.addAttribute("productGroups", productGroups);
         model.addAttribute("productGroupsId", productGroupId);
         model.addAttribute("colorGroupsId", colorGroupId);
-        return "products";
+        return "products/products";
     }
 
     @PostMapping("/products/addproduct")

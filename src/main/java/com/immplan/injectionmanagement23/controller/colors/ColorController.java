@@ -42,7 +42,7 @@ public class ColorController extends BaseController {
         populateModel(model);
         model.addAttribute("activePage", "colors");
         model.addAttribute("colors", colors);
-        return "colors";
+        return "colors/colors";
     }
 
     @PostMapping("/colors/{id}/addcolor")
