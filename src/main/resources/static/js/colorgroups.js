@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const colorGroupNameInput = modal.querySelector("#color-group-name");
 
         modalTitle.textContent = "Редактировать группу";
-        colorForm.setAttribute("action", "/colorgroups/addcolor"); // Set the form action for editing
+        colorForm.setAttribute("action", "/colorgroups/addcolorgroup"); // Set the form action for editing
 
         colorGroupIdInput.value = colorGroupId;
         colorGroupNameInput.value = colorGroupName;
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         modalTitle.textContent = "Добавить группу";
-        colorForm.setAttribute("action", "/colorgroups/addcolor"); // Set the form action for adding
+        colorForm.setAttribute("action", "/colorgroups/addcolorgroup"); // Set the form action for adding
 
         colorGroupIdInput.value = 0;
         colorGroupNameInput.value = "";
