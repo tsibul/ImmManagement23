@@ -2,7 +2,6 @@ package com.immplan.injectionmanagement23.controller.colors;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
 import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
-import com.immplan.injectionmanagement23.db.equipment.injectionmoldingmachine.repository.InjectionMoldingMachineRepository;
 import com.immplan.injectionmanagement23.db.product.color.Color;
 import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
@@ -47,7 +46,7 @@ public class ColorController extends BaseController {
     }
 
     @PostMapping("/colors/{id}/addcolor")
-    public String addColor(@PathVariable("id") int id, @ModelAttribute Color color, @RequestParam("colorId") int colorId) {
+    public String addColor(@PathVariable("id") int id, @ModelAttribute Color color) {
         colorRepository.save(color);
         return "redirect:/colors/" + id;
     }
