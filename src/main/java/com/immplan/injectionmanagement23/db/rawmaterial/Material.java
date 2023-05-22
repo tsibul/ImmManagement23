@@ -9,6 +9,7 @@ public abstract class Material {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "material_id")
     private Long materialId;
+    @Column(name = "material_name")
     private String materialName;
     @Column(name = "material_active", columnDefinition = "boolean default true", nullable = false)
     private boolean materialActive = true;
