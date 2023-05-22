@@ -1,5 +1,6 @@
-package com.immplan.injectionmanagement23.controller;
+package com.immplan.injectionmanagement23.controller.colors;
 
+import com.immplan.injectionmanagement23.controller.BaseController;
 import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.equipment.injectionmoldingmachine.repository.InjectionMoldingMachineRepository;
 import com.immplan.injectionmanagement23.db.product.color.Color;

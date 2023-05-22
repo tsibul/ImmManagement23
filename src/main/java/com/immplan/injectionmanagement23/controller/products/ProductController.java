@@ -1,5 +1,6 @@
-package com.immplan.injectionmanagement23.controller;
+package com.immplan.injectionmanagement23.controller.products;
 
+import com.immplan.injectionmanagement23.controller.BaseController;
 import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.product.product.Product;
 import com.immplan.injectionmanagement23.db.product.product.ProductGroup;
