@@ -36,7 +36,7 @@
                         th:data-colorGroupId="${colorGroup.colorGroupId}">
                         <td th:text="${colorGroup.colorGroupName}" data-label="название"></td>
                         <td onclick="event.stopPropagation()">
-                            <a th:href="'/colors/'+ ${color.colorGroup.colorGroupId} + '/' + ${color.colorId} + '/deletecolor'">
+                            <a th:href="'/colorgroups/'+  ${colorGroup.colorGroupId} + '/deletecolorgroup'">
                                 <button class="button button-danger">Удалить
                                 </button>
                             </a>
