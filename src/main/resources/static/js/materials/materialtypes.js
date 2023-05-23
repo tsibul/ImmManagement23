@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const materialTypeId = this.dataset.materialtypeid;
         const materialTypeName = this.querySelector("[data-label='название']").textContent;
         const drying = this.querySelector("[data-label='сушка']").dataset.drying;
+        const materialDryingTime = this.querySelector("[data-label='время сушки (ч)']").textContent;
+        const materialDryingTemperature = this.querySelector("[data-label='температура сушки']").textContent;
 
         // Populate the modal fields with the data
         const modalTitle = modal.querySelector("#modal-title");
@@ -18,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const materialTypeIdInput = modal.querySelector("#material-type-id");
         const materialTypeNameInput = modal.querySelector("#material-type-name");
         const dryingInput = modal.querySelector("#material-type-drying");
+        const materialDryingTimeInput = modal.querySelector("#material-drying-time");
+        const materialDryingTemperatureInput = modal.querySelector("#material-drying-temperature");
 
 
         modalTitle.textContent = "Редактировать тип";
@@ -26,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function() {
         materialTypeIdInput.value = materialTypeId;
         materialTypeNameInput.value = materialTypeName;
         dryingInput.value = drying;
+        materialDryingTimeInput.value = materialDryingTime;
+        materialDryingTemperatureInput.value = materialDryingTemperature;
 
         // Open the modal
         modal.style.display = "block";
@@ -38,6 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const materialTypeIdInput = modal.querySelector("#material-type-id");
         const materialTypeNameInput = modal.querySelector("#material-type-name");
         const dryingInput = modal.querySelector("#material-type-drying");
+        const materialDryingTimeInput = modal.querySelector("#material-drying-time");
+        const materialDryingTemperatureInput = modal.querySelector("#material-drying-temperature");
 
 
         modalTitle.textContent = "Добавить тип";
@@ -46,6 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
         materialTypeIdInput.value = 0;
         materialTypeNameInput.value = "";
         dryingInput.value = true;
+        materialDryingTimeInput.value = "";
+        materialDryingTemperatureInput.value = "";
 
         // Open the modal
         modal.style.display = "block";

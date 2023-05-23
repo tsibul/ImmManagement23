@@ -30,6 +30,8 @@
                     <tr>
                         <th>название</th>
                         <th>сушка</th>
+                        <th>время сушки</th>
+                        <th>температура сушки</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,6 +40,8 @@
                         <td th:text="${materialType.materialName}" data-label="название"></td>
                         <td th:text="${materialType.drying ? 'да' : 'нет'}" data-label="сушка"
                             th:data-drying="${materialType.drying}"></td>
+                        <td th:text="${materialType.materialDryingTime}" data-label="время сушки (ч)"></td>
+                        <td th:text="${materialType.materialDryingTemperature}" data-label="температура сушки"></td>
                         <td onclick="event.stopPropagation()">
                             <a th:href="'/materialtypes/'+  ${materialType.materialId} + '/deletematerial'">
                                 <button class="button button-danger">Удалить
@@ -60,11 +64,19 @@
                             <input type="text" id="material-type-name" name="materialName" required class="modal-input">
                         </div>
                         <div class="modal-block">
-                            <label for="material-type-drying">Название:</label>
+                            <label for="material-type-drying">Сушка:</label>
                             <select class="modal-select" id="material-type-drying" name="drying" required>
                                 <option value="true">да</option>
                                 <option value="false">нет</option>
                             </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="material-drying-time">Время сушки(ч):</label>
+                            <input type="text" id="material-drying-time" name="materialDryingTime" class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="material-drying-temperature">Температура сушки</label>
+                            <input type="text" id="material-drying-temperature" name="materialDryingTemperature" class="modal-input">
                         </div>
                         <div class="button-block">
                             <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>
