@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Специализация производителя</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header_footer_menu.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div th:insert="~{menu/header :: header}"></div>
+        <div class="container">
+            <div class="table-head">
+                <h2 >Специализации производителей</h2>
+                <button id="add-producer-type-btn" class="button button-submit">Добавить тип
+                </button>
+            </div>
+        </div>
+        <div class="inner_content">
+            <div class="container">
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th>тип</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="producerType:${producerTypes}" class="color-row">
+                        <td th:text="${producerType.producerTypeName}" th:data-id="${producerType.producerTypeId}" data-label="тип"></td>
+                        <td onclick="event.stopPropagation()">
+                            <a th:href="'/producer_type/'+  ${producerType.producerTypeId} + '/delete_producer_type'">
+                                <button class="button button-danger">Удалить
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Модальное окно для добавления и редактирования цвета -->
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modal-title" class="modal-title">Добавить тип</div>
+                    <form id="color-form" method="post">
+                        <div class="modal-block">
+                            <input type="hidden" id="producer-type-id" name="producertypeid">
+                            <label for="producer-type-name">Тип:</label>
+                            <input type="text" id="producer-type-name" name="producerTypeName" required class="modal-input">
+                        </div>
+                        <div class="button-block">
+                            <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>
+                            <button type="submit" id="color-submit-btn" class="button button-submit">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{menu/footer :: footer}"></div>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/dicts/producertype.js"></script>
+</body>
+
+</html>
