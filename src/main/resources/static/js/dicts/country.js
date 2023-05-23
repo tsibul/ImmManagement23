@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const modal = document.querySelector(".modal");
     const closeModalBtn = modal.querySelector(".close");
     const cancelBtn = modal.querySelector("#cancel-btn");
-    const addCountryBtn = document.querySelector("#add-color-btn");
+    const addCountryBtn = document.querySelector("#add-country-btn");
 
     // Function to open the modal for editing
     function openEditModal() {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const countryNameInput = modal.querySelector("#country-name");
 
 
-        modalTitle.textContent = "Добавить группу";
+        modalTitle.textContent = "Добавить страну";
         colorForm.setAttribute("action", "/country/addcountry"); // Set the form action for adding
 
         countryIdInput.value = 0;

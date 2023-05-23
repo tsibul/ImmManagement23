@@ -36,7 +36,7 @@ public class CountryController extends BaseController {
         return "dicts/country";
     }
 
-    @PostMapping("/country/addccountry")
+    @PostMapping("/country/addcountry")
     public String addCountry(@ModelAttribute Country country) {
         countryRepository.save(country);
         return "redirect:/country";
@@ -44,9 +44,9 @@ public class CountryController extends BaseController {
 
     @GetMapping("/country/{id}/deletecountry")
     public String deleteCountry(@PathVariable int id) {
-        ColorGroup colorGroup = colorGroupRepository.findColorGroupByColorGroupId(id);
-        colorGroup.setColorGroupActive(false);
-        colorGroupRepository.save(colorGroup);
+        Country country = countryRepository.findCountryById((long) id);
+        country.setCountryActive(false);
+        countryRepository.save(country);
         return "redirect:/country";
     }
 }
