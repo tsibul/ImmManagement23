@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Цвета</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header_footer_menu.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+
+<body>
+<div hidden th:data-colorgroupsid="${colorGroupId}" id="url-parameters"></div>
+<div class="wrapper">
+    <div class="content">
+        <div th:insert="~{menu/header :: header}"></div>
+        <div class="container">
+            <div class="table-head">
+                <h2 >Цвета</h2>
+                <button id="add-color-btn" class="button button-submit"
+                        th:data-colorGroupId="${colorGroupId}">Добавить цвет
+                </button>
+            </div>
+        </div>
+        <div class="inner_content">
+            <div class="container">
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th>код цвета</th>
+                        <th>название</th>
+                        <th>pantone</th>
+                        <th>HEX</th>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="color-filter" name="colorGroup"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option value="/colors/0">группа цветов</option>
+                                <option th:each="color_group : ${colorGroups}"
+                                        th:value="'/colors/' + ${color_group.colorGroupId}"
+                                        th:selected="${colorGroupId} == ${color_group.colorGroupId}"
+                                        th:text="${color_group.colorGroupName}">
+                                </option>
+                            </select>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="color:${colors}" class="color-row"
+                        th:data-colorGroupId="${color.colorGroup.colorGroupId}" th:data-colorId="${color.colorId}">
+                        <td th:text="${color.colorCode}" data-label="код цвета"></td>
+                        <td th:text="${color.colorName}" data-label="название"></td>
+                        <td th:text="${color.colorPantone}" data-label="pantone"></td>
+                        <td th:text="${color.colorHEX}" data-label="HEX"></td>
+                        <td th:text="${color.colorGroup.colorGroupName}" data-label="цветовая группа"></td>
+                        <td onclick="event.stopPropagation()">
+                            <a th:href="'/colors/'+ ${color.colorGroup.colorGroupId} + '/' + ${color.colorId} + '/deletecolor'">
+                                <button class="button button-danger">Удалить
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Модальное окно для добавления и редактирования цвета -->
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modal-title" class="modal-title">Добавить цвет</div>
+                    <form id="color-form" method="post">
+                        <div class="modal-block">
+                            <input type="hidden" id="color-id" name="colorId">
+                            <label for="color-code">Код цвета:</label>
+                            <input type="text" id="color-code" name="colorCode" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-name">Название:</label>
+                            <input type="text" id="color-name" name="colorName" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-pantone">Pantone:</label>
+                            <input type="text" id="color-pantone" name="colorPantone" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-hex">HEX:</label>
+                            <input type="text" id="color-hex" name="colorHEX" class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-group">Цветовая группа:</label>
+                            <select class="modal-select" id="color-group" name="colorGroup" required>
+                                <option class="" th:each="color_group : ${colorGroups}"
+                                        th:value="${color_group.colorGroupId}"
+                                        th:text="${color_group.colorGroupName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="button-block">
+                            <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>
+                            <button type="submit" id="color-submit-btn" class="button button-submit">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{menu/footer :: footer}"></div>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/colors/colors.js"></script>
+</body>
+
+</html>
