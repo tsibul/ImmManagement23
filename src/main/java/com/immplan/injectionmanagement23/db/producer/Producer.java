@@ -14,6 +14,9 @@ public class Producer {
     @ManyToOne(targetEntity = Country.class)
     @JoinColumn(name = "country", referencedColumnName = "id")
     private Country country;
+    @ManyToOne(targetEntity = ProducerType.class)
+    @JoinColumn(name = "producer_type", referencedColumnName = "producer_type_id", nullable = false)
+    private ProducerType producerType;
     @Column(name = "producer_active", columnDefinition = "boolean default true", nullable = false)
     private boolean producerActive = true;
 
@@ -47,5 +50,13 @@ public class Producer {
 
     public void setProducerActive(boolean producerActive) {
         this.producerActive = producerActive;
+    }
+
+    public ProducerType getProducerType() {
+        return producerType;
+    }
+
+    public void setProducerType(ProducerType producerType) {
+        this.producerType = producerType;
     }
 }
