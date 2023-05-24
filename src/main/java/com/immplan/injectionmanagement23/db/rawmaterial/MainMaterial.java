@@ -11,13 +11,13 @@ public class MainMaterial extends Material{
     @JoinColumn(name = "material_type", referencedColumnName = "material_id", nullable = false)
     private MaterialType materialType;
 
-    @Column(name = "if_color")
-    private boolean ifColor;
+    @Column(name = "if_color", nullable = false, columnDefinition = "boolean default false")
+    private boolean ifColor = false;
     @ManyToOne(targetEntity = Color.class)
     @JoinColumn(name = "color", referencedColumnName = "color_id")
     private Color color;
-    @Column(name = "if_reused")
-    private boolean ifReused;
+    @Column(name = "if_reused", nullable = false, columnDefinition = "boolean default false")
+    private boolean ifReused = false;
     @ManyToOne(targetEntity = Producer.class)
     @JoinColumn(name = "producer", referencedColumnName = "id")
     private Producer producer;

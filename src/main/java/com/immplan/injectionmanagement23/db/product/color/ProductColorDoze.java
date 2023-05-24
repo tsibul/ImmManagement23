@@ -1,9 +1,8 @@
 package com.immplan.injectionmanagement23.db.product.color;
 
-import com.immplan.injectionmanagement23.db.equipment.mold.MoldInsert;
-import com.immplan.injectionmanagement23.db.product.color.Color;
 import com.immplan.injectionmanagement23.db.product.product.ProductGroup;
 import com.immplan.injectionmanagement23.db.rawmaterial.MasterBatch;
+import com.immplan.injectionmanagement23.db.rawmaterial.MaterialType;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +18,9 @@ public class ProductColorDoze {
     @ManyToOne(targetEntity = MasterBatch.class)
     @JoinColumn(name = "masterbatch", referencedColumnName = "material_id")
     private MasterBatch masterBatch;
+    @ManyToOne(targetEntity = MaterialType.class)
+    @JoinColumn(name = "masterial_type", referencedColumnName = "material_id")
+    private MaterialType materialType;
     @ManyToOne(targetEntity = Color.class)
     @JoinColumn(name = "color", referencedColumnName = "color_id")
     private Color color;
@@ -73,5 +75,13 @@ public class ProductColorDoze {
 
     public void setProductColorDozeActive(boolean productColorDozeActive) {
         this.productColorDozeActive = productColorDozeActive;
+    }
+
+    public MaterialType getMaterialType() {
+        return materialType;
+    }
+
+    public void setMaterialType(MaterialType materialType) {
+        this.materialType = materialType;
     }
 }
