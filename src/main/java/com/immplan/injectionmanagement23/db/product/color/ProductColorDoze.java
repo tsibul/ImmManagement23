@@ -6,7 +6,7 @@ import com.immplan.injectionmanagement23.db.rawmaterial.MaterialType;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "product_color_code")
+@Table(name = "product_color_doze")
 public class ProductColorDoze {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class ProductColorDoze {
     @JoinColumn(name = "masterbatch", referencedColumnName = "material_id")
     private MasterBatch masterBatch;
     @ManyToOne(targetEntity = MaterialType.class)
-    @JoinColumn(name = "masterial_type", referencedColumnName = "material_id")
+    @JoinColumn(name = "material_type", referencedColumnName = "material_id")
     private MaterialType materialType;
     @ManyToOne(targetEntity = Color.class)
     @JoinColumn(name = "color", referencedColumnName = "color_id")
