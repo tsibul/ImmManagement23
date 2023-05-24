@@ -7,10 +7,17 @@ import java.util.List;
 
 public interface ProducerRepository extends JpaRepository<Producer, Long> {
     List<Producer> findProducerByProducerActiveOrderByProducerName(boolean producerActive);
+
     List<Producer> findProducerByProducerActiveAndCountryIdOrderByProducerName(boolean producerActive, long countryId);
+
     List<Producer> findProducerByProducerActiveAndProducerTypeProducerTypeIdOrderByProducerName(boolean producerActive,
                                                                                                 long producerTypeId);
+
     List<Producer> findProducerByProducerActiveAndCountryIdAndProducerTypeProducerTypeIdOrderByProducerName(
             boolean producerActive, long countryId, long producerTypeId);
+
+    List<Producer> findProducerByProducerActiveAndProducerTypeProducerTypeNameOrderByProducerName(boolean producerActive,
+                                                                                                  String producerName);
+
     Producer findProducerById(Long id);
 }
