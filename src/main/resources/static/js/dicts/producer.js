@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to open the modal for editing
     function openEditModal() {
         // Get the data from the clicked row
-        const producerId = this.dataset.productid;
+        const producerId = this.dataset.producerid;
         const producerName = this.querySelector("[data-label='название']").textContent;
         const country = this.querySelector("[data-label='страна']").dataset.id;
         const producerType = this.querySelector("[data-label='специализация']").dataset.id;
