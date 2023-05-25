@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
         productCodeInput.value = "";
         productNameInput.value = "";
         numberDetailsInput.value = "";
-        colorGroupInput.value = 0;
-        productGroupInput.value = 0;
+        colorGroupInput.value = colorGroupsId;
+        productGroupInput.value = productGroupsId;
 
         // Open the modal
         modal.style.display = "block";
