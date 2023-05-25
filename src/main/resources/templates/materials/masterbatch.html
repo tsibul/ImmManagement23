@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div hidden th:data-colorgroupsid="${producerId}" id="url-parameters"></div>
+<div hidden th:data-producerid="${producerId}" id="url-parameters"></div>
 <div class="wrapper">
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
@@ -21,7 +21,7 @@
             <div class="table-head">
                 <h2>Суперконцентраты</h2>
                 <button id="add-masterbatch-btn" class="button button-submit"
-                        th:data-producerId="${producerId}">Добавить
+                        th:data-producerid="${producerId}">Добавить
                 </button>
             </div>
         </div>

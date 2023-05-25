@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeModalBtn = modal.querySelector(".close");
     const cancelBtn = modal.querySelector("#cancel-btn");
     const addColorBtn = document.querySelector("#add-masterbatch-btn");
-    const colorGroupUrl = document.querySelector("#url-parameters");
+    const producersId = document.querySelector("#url-parameters").dataset.producersid;
 
     // Function to open the modal for editing
     function openEditModal() {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
         masterbatchIdInput.value = 0;
         masterbatchNameInput.value = "";
         masterbatchColorInput.value = "";
-        producerInput.value = 0;
+        producerInput.value = producersId;
 
         // Open the modal
         modal.style.display = "block";
