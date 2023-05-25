@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const producerId = this.dataset.producerid;
         const producerName = this.querySelector("[data-label='название']").textContent;
         const country = this.querySelector("[data-label='страна']").dataset.id;
-        const producerType = this.querySelector("[data-label='специализация']").dataset.id;
+        const producerTypeId = this.querySelector("[data-label='специализация']").dataset.id;
 
         // Populate the modal fields with the data
         const modalTitle = modal.querySelector("#modal-title");
@@ -25,12 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalTitle.textContent = "Редактировать производителя";
         productForm.setAttribute("action", "/producer/add_producer?countryId=" +
-            countriesId + "&producerTypeId=" + producerTypesId); // Set the form action for editing
+            countriesId + "&producerTypesId=" + producerTypesId); // Set the form action for editing
 
         producerIdInput.value = producerId;
         producerNameInput.value = producerName;
         countryInput.value = country;
-        producerTypeInput.value = producerType;
+        producerTypeInput.value = producerTypeId;
 
         // Open the modal
         modal.style.display = "block";
@@ -47,12 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         modalTitle.textContent = "Добавить производителя";
         productForm.setAttribute("action", "/producer/add_producer?countryId=" +
-            countriesId + "&producerTypeId=" + producerTypesId); // Set the form action for editing
+            countriesId + "&producerTypesId=" + producerTypesId); // Set the form action for editing
 
         producerIdInput.value = 0;
         producerNameInput.value = "";
-        countryInput.value = 0;
-        producerTypeInput.value = 0;
+        countryInput.value = countriesId;
+        producerTypeInput.value = producerTypesId;
 
         // Open the modal
         modal.style.display = "block";

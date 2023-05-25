@@ -1,7 +1,8 @@
 package com.immplan.injectionmanagement23.db.producer;
 
-
 import jakarta.persistence.*;
+
+import static com.immplan.injectionmanagement23.db.producer.ProducerType.producerTypeDict;
 
 @Entity
 @Table(name = "producer")
@@ -14,9 +15,10 @@ public class Producer {
     @ManyToOne(targetEntity = Country.class)
     @JoinColumn(name = "country", referencedColumnName = "id")
     private Country country;
-    @ManyToOne(targetEntity = ProducerType.class)
-    @JoinColumn(name = "producer_type", referencedColumnName = "producer_type_id", nullable = false)
-    private ProducerType producerType;
+    @Column(name = "producer_type", nullable = false)
+    private String producerType;
+    @Column(name = "producer_type_id", nullable = false)
+    private int producerTypeId;
     @Column(name = "producer_active", columnDefinition = "boolean default true", nullable = false)
     private boolean producerActive = true;
 
@@ -52,11 +54,23 @@ public class Producer {
         this.producerActive = producerActive;
     }
 
-    public ProducerType getProducerType() {
+    public String getProducerType() {
         return producerType;
     }
 
-    public void setProducerType(ProducerType producerType) {
+    public void setProducerType(int producerTypeId) {
+        this.producerType = producerTypeDict().get(producerTypeId);
+    }
+
+    public void setProducerType(String producerType) {
         this.producerType = producerType;
+    }
+
+    public int getProducerTypeId() {
+        return producerTypeId;
+    }
+
+    public void setProducerTypeId(int producerTypeId) {
+        this.producerTypeId = producerTypeId;
     }
 }

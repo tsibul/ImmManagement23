@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<div hidden th:data-countryid="${countryId}" th:data-producertypeid="${producerTypeId}"
+<div hidden th:data-countryid="${countryId}" th:data-producertypeid="${producerTypesId}"
      id="url-parameters"></div>
 <div class="wrapper">
     <div class="content">
@@ -37,7 +37,7 @@
                                     onchange="if (this.value) window.location.href = this.value">
                                 <option th:value="'/producer/0/' + ${producerTypeId}">страна</option>
                                 <option th:each="country : ${countries}"
-                                        th:value="'/producer/' + ${country.id} + '/' + ${producerTypeId}"
+                                        th:value="'/producer/' + ${country.id} + '/' + ${producerTypesId}"
                                         th:selected="${countryId} == ${country.id}"
                                         th:text="${country.countryName}">
                                 </option>
@@ -48,9 +48,9 @@
                                     onchange="if (this.value) window.location.href = this.value">
                                 <option th:value="'/producer/' + ${countryId} + '/0'">специализация</option>
                                 <option th:each="producer_type : ${producerTypes}"
-                                        th:text="${producer_type.producerTypeName}"
-                                        th:value="'/producer/' + ${countryId} + '/' + ${producer_type.producerTypeId}"
-                                        th:selected="${producerTypeId} == ${producer_type.getProducerTypeId()}">
+                                        th:text="${producer_type.getValue()}"
+                                        th:value="'/producer/' + ${countryId} + '/' + ${producer_type.getKey()}"
+                                        th:selected="${producerTypesId} == ${producer_type.getKey()}">
                                 </option>
                             </select>
                         </th>
@@ -62,8 +62,8 @@
                         <td th:text="${producer.producerName}" data-label="название"></td>
                         <td th:text="${producer.country.countryName}" data-label="страна"
                             th:data-id="${producer.country.id}"></td>
-                        <td th:text="${producer.producerType.producerTypeName}" data-label="специализация"
-                            th:data-id="${producer.producerType.producerTypeId}"></td>
+                        <td th:text="${producer.producerType}" data-label="специализация"
+                            th:data-id="${producer.producerTypeId}"></td>
                         <td onclick="event.stopPropagation()">
                             <div class="button-block">
                                 <a th:href="'/producer/'+ ${producer.id} + '/delete_producer?countryId=' +
@@ -98,10 +98,10 @@
                         </div>
                         <div class="modal-block">
                             <label for="producer-type">Специализация:</label>
-                            <select class="modal-select" id="producer-type" name="producerType" required>
+                            <select class="modal-select" id="producer-type" name="producerTypeId" required>
                                 <option th:each="producer_type : ${producerTypes}"
-                                        th:text="${producer_type.producerTypeName}"
-                                        th:value="${producer_type.producerTypeId}">
+                                        th:text="${producer_type.getValue()}"
+                                        th:value="${producer_type.getKey()}">
                                 </option>
                             </select>
                         </div>

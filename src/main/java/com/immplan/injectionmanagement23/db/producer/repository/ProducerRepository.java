@@ -10,14 +10,12 @@ public interface ProducerRepository extends JpaRepository<Producer, Long> {
 
     List<Producer> findProducerByProducerActiveAndCountryIdOrderByProducerName(boolean producerActive, long countryId);
 
-    List<Producer> findProducerByProducerActiveAndProducerTypeProducerTypeIdOrderByProducerName(boolean producerActive,
-                                                                                                long producerTypeId);
+    List<Producer> findProducerByProducerActiveAndProducerTypeOrderByProducerName(boolean producerActive,
+                                                                                                String producerType);
 
-    List<Producer> findProducerByProducerActiveAndCountryIdAndProducerTypeProducerTypeIdOrderByProducerName(
-            boolean producerActive, long countryId, long producerTypeId);
+    List<Producer> findProducerByProducerActiveAndCountryIdAndProducerTypeOrderByProducerName(
+            boolean producerActive, long countryId, String producerType);
 
-    List<Producer> findProducerByProducerActiveAndProducerTypeProducerTypeNameOrderByProducerName(boolean producerActive,
-                                                                                                  String producerName);
 
     Producer findProducerById(Long id);
 }
