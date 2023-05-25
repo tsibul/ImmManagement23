@@ -58,7 +58,7 @@ public class MainMaterialController extends BaseController {
         List<MaterialType> materialTypes = materialTypeRepository.
                 findMaterialTypeByMaterialActiveOrderByMaterialName(true);
         List<Color> colors = colorRepository.findColorByColorActiveOrderByColorGroupAscColorCode(true);
-        List<Producer> producers = producerRepository.findProducerByProducerActiveOrderByProducerName(true);
+        List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Сырье");
 
         populateModel(model);
         model.addAttribute("activePage", "materials");
@@ -76,15 +76,15 @@ public class MainMaterialController extends BaseController {
     public String addProduct(@ModelAttribute MainMaterial mainMaterial,
                              @RequestParam int materialTypesId, @RequestParam int producersId) {
         mainMaterialRepository.save(mainMaterial);
-        return "redirect:/products/" + materialTypesId + "/" + producersId;
+        return "redirect:/main_material/" + materialTypesId + "/" + producersId;
     }
 
-    @GetMapping("/products/{id}/deleteproduct")
+    @GetMapping("/main_material/{id}/delete_main_material")
     public String deleteProduct(@PathVariable int id,
                                 @RequestParam int materialTypesId, @RequestParam int producersId) {
         MainMaterial mainMaterial = mainMaterialRepository.findMainMaterialByMaterialId((long) id);
         mainMaterial.setMaterialActive(false);
         mainMaterialRepository.save(mainMaterial);
-        return "redirect:/products/" + materialTypesId + "/" + producersId;
+        return "redirect:/main_material/" + materialTypesId + "/" + producersId;
     }
 }
