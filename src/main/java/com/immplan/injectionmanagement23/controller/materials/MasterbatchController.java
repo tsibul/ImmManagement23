@@ -26,8 +26,9 @@ public class MasterbatchController extends BaseController {
     private final ProducerRepository producerRepository;
     private final MasterBatchRepository masterBatchRepository;
 
-    public MasterbatchController(EquipmentTypeRepository equipmentTypeRepository, ColorRepository colorRepository,
-                                 ColorGroupRepository colorGroupRepository, ProducerRepository producerRepository, MasterBatchRepository masterBatchRepository) {
+    public MasterbatchController(EquipmentTypeRepository equipmentTypeRepository,
+                                 ColorGroupRepository colorGroupRepository, ProducerRepository producerRepository,
+                                 MasterBatchRepository masterBatchRepository) {
         super(equipmentTypeRepository, colorGroupRepository);
         this.masterBatchRepository = masterBatchRepository;
         this.producerRepository = producerRepository;
@@ -37,10 +38,12 @@ public class MasterbatchController extends BaseController {
     public String getColor(@PathVariable("id") int id, Model model) {
         Producer producer;
         List<MasterBatch> masterBatches;
-        List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeProducerTypeIdOrderByProducerName(true, 6L);
+        List<Producer> producers = producerRepository.
+                findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Суперконцентраты");
         if (id != 0) {
             producer = producerRepository.findProducerById((long) id);
-            masterBatches = masterBatchRepository.getMasterBatchByMaterialActiveAndProducerOrderByMaterialName(true, producer);
+            masterBatches = masterBatchRepository.
+                    getMasterBatchByMaterialActiveAndProducerOrderByMaterialName(true, producer);
             model.addAttribute("producerId", producer.getId());
         } else {
             masterBatches = masterBatchRepository.getMasterBatchByMaterialActiveOrderByMaterialName(true);
