@@ -1,78 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const tableRows = document.querySelectorAll(".table-row");
-    const modal = document.querySelector("#producer-modal");
-    const closeModalBtn = modal.querySelector("#close-button");
-    const cancelBtn = modal.querySelector("#cancel-btn");
-    const addProducerBtn = document.querySelector("#add-producer-btn");
-    const countriesId = document.querySelector("#url-parameters").dataset.countryid;
-    const producerTypesId = document.querySelector("#url-parameters").dataset.producertypeid;
+// Импортируем функции из main_modal.js
+import initialize from '/js/main_modal.js';
 
-    // Function to open the modal for editing
-    function openEditModal() {
-        // Get the data from the clicked row
-        const producerId = this.dataset.producerid;
-        const producerName = this.querySelector("[data-label='название']").textContent;
-        const country = this.querySelector("[data-label='страна']").dataset.id;
-        const producerTypeId = this.querySelector("[data-label='специализация']").dataset.id;
+const countriesId = document.querySelector("#url-parameters").dataset.countryid;
+const producerTypesId = document.querySelector("#url-parameters").dataset.producertypeid;
 
-        // Populate the modal fields with the data
-        const modalTitle = modal.querySelector("#modal-title");
-        const productForm = modal.querySelector("#product-form");
-        const producerIdInput = modal.querySelector("#producer-id");
-        const producerNameInput = modal.querySelector("#producer-name");
-        const countryInput = modal.querySelector("#country");
-        const producerTypeInput = modal.querySelector("#producer-type");
+function inputs(modal) {
+    return {
+        producerId: modal.querySelector("#producer-id"),
+        producerName: modal.querySelector("#producer-name"),
+        countryInput: modal.querySelector("#country"),
+        producerType: modal.querySelector("#producer-type"),
+    };
+}
 
-        modalTitle.textContent = "Редактировать производителя";
-        productForm.setAttribute("action", "/producer/add_producer?countryId=" +
-            countriesId + "&producerTypesId=" + producerTypesId); // Set the form action for editing
+function fullData(row) {
+    return {
+        producerId: row.dataset.producerid,
+        producerName: row.querySelector("[data-label='название']").textContent,
+        country: row.querySelector("[data-label='страна']").dataset.id,
+        producerTypeId: row.querySelector("[data-label='специализация']").dataset.id,
+    };
+}
 
-        producerIdInput.value = producerId;
-        producerNameInput.value = producerName;
-        countryInput.value = country;
-        producerTypeInput.value = producerTypeId;
+function emptyData() {
+    return {
+        producerId: 0,
+        country: countriesId,
+        producerType: producerTypesId
+    };
+}
 
-        // Open the modal
-        modal.style.display = "block";
-    }
+function action() {
+    return "/producer/add_producer?countryId=" + countriesId + "&producerTypesId=" + producerTypesId;
+}
 
-    // Function to open the modal for adding a new color
-    function openAddModal() {
-        const modalTitle = modal.querySelector("#modal-title");
-        const productForm = modal.querySelector("#product-form");
-        const producerIdInput = modal.querySelector("#producer-id");
-        const producerNameInput = modal.querySelector("#producer-name");
-        const countryInput = modal.querySelector("#country");
-        const producerTypeInput = modal.querySelector("#producer-type");
+// Вызываем функцию initialize, передавая необходимые функции
+initialize(inputs, emptyData, fullData, action);
 
-        modalTitle.textContent = "Добавить производителя";
-        productForm.setAttribute("action", "/producer/add_producer?countryId=" +
-            countriesId + "&producerTypesId=" + producerTypesId); // Set the form action for editing
-
-        producerIdInput.value = 0;
-        producerNameInput.value = "";
-        countryInput.value = countriesId;
-        producerTypeInput.value = producerTypesId;
-
-        // Open the modal
-        modal.style.display = "block";
-    }
-
-    // Add click event listener to each color row
-    tableRows.forEach(function (row) {
-        row.addEventListener("click", openEditModal);
-    });
-
-    // Open the modal for adding a new color when the button is clicked
-    addProducerBtn.addEventListener("click", openAddModal);
-
-    // Close the modal when the close button is clicked
-    closeModalBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-
-    // Close the modal when the cancel button is clicked
-    cancelBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-});

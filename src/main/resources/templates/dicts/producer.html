@@ -22,7 +22,7 @@
         <div class="container">
             <div class="table-head">
                 <h2>Производители</h2>
-                <button id="add-producer-btn" class="button button-submit">Добавить производителя
+                <button id="add-btn" class="button button-submit">Добавить производителя
                 </button>
             </div>
         </div>
@@ -57,7 +57,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="producer:${producers}" class="table-row"
+                    <tr th:each="producer:${producers}" class="modal-row"
                         th:data-producerid="${producer.id}">
                         <td th:text="${producer.producerName}" data-label="название"></td>
                         <td th:text="${producer.country.countryName}" data-label="страна"
@@ -81,7 +81,7 @@
                 <div class="modal-content">
                     <span class="close" id="close-button">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить производителя</div>
-                    <form id="product-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="producer-id" name="Id">
                             <label for="producer-name">Название:</label>
@@ -122,7 +122,8 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/dicts/producer.js"></script>
+<script type="module" src="/js/dicts/producer.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
 </body>
 
 </html>
