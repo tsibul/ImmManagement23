@@ -13,15 +13,15 @@
 </head>
 
 <body>
-<div hidden th:data-producerid="${producerId}" id="url-parameters"></div>
+<div hidden th:data-producersid="${producersId}" id="url-parameters"></div>
 <div class="wrapper">
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
             <div class="table-head">
                 <h2>Суперконцентраты</h2>
-                <button id="add-masterbatch-btn" class="button button-submit"
-                        th:data-producerid="${producerId}">Добавить
+                <button id="add-btn" class="button button-submit"
+                        th:data-producerid="${producersId}">Добавить
                 </button>
             </div>
         </div>
@@ -38,7 +38,7 @@
                                 <option value="/masterbatch/0">производитель</option>
                                 <option th:each="producer : ${producers}"
                                         th:value="'/masterbatch/' + ${producer.id}"
-                                        th:selected="${producerId} == ${producer.id}"
+                                        th:selected="${producersId} == ${producer.id}"
                                         th:text="${producer.producerName}">
                                 </option>
                             </select>
@@ -47,7 +47,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="masterbatch:${masterBatches}" class="color-row"
+                    <tr th:each="masterbatch:${masterBatches}" class="modal-row"
                         th:data-producerId="${masterbatch.producer.id}"
                         th:data-masterbatchid="${masterbatch.materialId}">
                         <td th:text="${masterbatch.materialName}" data-label="название"></td>
@@ -69,7 +69,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить суперконцентрат</div>
-                    <form id="color-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="masterbatch-id" name="materialId">
                             <label for="masterbatch-name">Название:</label>
@@ -101,7 +101,8 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/materials/masterbatch.js"></script>
+<script type="module" src="/js/materials/masterbatch.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
 </body>
 
 </html>

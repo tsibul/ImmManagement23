@@ -44,10 +44,10 @@ public class MasterbatchController extends BaseController {
             producer = producerRepository.findProducerById((long) id);
             masterBatches = masterBatchRepository.
                     getMasterBatchByMaterialActiveAndProducerOrderByMaterialName(true, producer);
-            model.addAttribute("producerId", producer.getId());
+            model.addAttribute("producersId", producer.getId());
         } else {
             masterBatches = masterBatchRepository.getMasterBatchByMaterialActiveOrderByMaterialName(true);
-            model.addAttribute("producerId", 0);
+            model.addAttribute("producersId", 0);
         }
         populateModel(model);
         model.addAttribute("activePage", "materials");
