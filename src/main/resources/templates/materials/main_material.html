@@ -22,7 +22,7 @@
         <div class="container">
             <div class="table-head">
                 <h2>Сырье</h2>
-                <button id="add-material-btn" class="button button-submit">Добавить сырье
+                <button id="add-btn" class="button button-submit">Добавить сырье
                 </button>
             </div>
         </div>
@@ -31,7 +31,6 @@
                 <table class="responsive-table">
                     <thead>
                     <tr>
-                        <th>название</th>
                         <th class="show-on-small-screen">
                             <select class="menu-select" id="material-type-filter" name="materialType"
                                     onchange="if (this.value) window.location.href = this.value">
@@ -43,6 +42,7 @@
                                 </option>
                             </select>
                         </th>
+                        <th>название</th>
                         <th>цветной</th>
                         <th>цвет</th>
                         <th>цветовая группа</th>
@@ -61,21 +61,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="main_material:${mainMaterials}" class="table-row"
+                    <tr th:each="main_material:${mainMaterials}" class="modal-row"
                         th:data-mainmaterialid="${main_material.materialId}">
-                        <td th:text="${main_material.materialName}" data-label="название"></td>
                         <td th:text="${main_material.materialType.materialName}"
                             th:data-id="${main_material.materialType.materialId}" data-label="тип материала"></td>
-                        <td data-label="цветной">
-                            <input type="checkbox" th:value="${main_material.ifColor}" readonly></td>
-                        <td th:text="${main_material.color.colorCode}" data-label="цвет"
-                            th:data-id="${main_material.color.colorId}"></td>
-                        <td th:text="${main_material.color.colorGroup.colorGroupName}"
-                            data-label="цветовая группа"></td>
-                        <td data-label="вторичка">
-                            <input type="checkbox" th:value="${main_material.ifReused}" readonly></td>
-                        <td th:text="${main_material.producer.producerName}" data-label="производитель"
-                            th:data-id="${main_material.producer.id}"></td>
+                        <td th:text="${main_material.materialName}" data-label="название"></td>
+                        <td data-label="цветной" th:data-id="${main_material.ifColor}"
+                            th:text="${main_material.ifColor ? 'да' : 'нет'}">
+                        </td>
+                        <td th:text="${main_material.color != null ? main_material.color.colorCode : ''}"
+                            data-label="цвет"
+                            th:data-id="${main_material.color != null ? main_material.color.colorId : 0}"></td>
+                        <td th:text="${main_material.color != null ? main_material.color.colorGroup.colorGroupName: ''}"
+                            th:data-id="${main_material.color != null ? main_material.color.colorGroup.colorGroupId : 0}"
+                            data-label="группа цветов"></td>
+                        <td data-label="вторичка" th:data-id="${main_material.ifReused}"
+                            th:text="${main_material.ifReused ? 'да': 'нет'}">
+                            >
+                        </td>
+                        <td th:text="${main_material.producer != null ? main_material.producer.producerName: ''}"
+                            data-label="производитель"
+                            th:data-id="${main_material.producer != null ? main_material.producer.id: 0}"></td>
                         <td onclick="event.stopPropagation()">
                             <div class="button-block">
                                 <a th:href="'/main_material/'+ ${main_material.materialId} + '/delete_main_material?materialTypesId=' +
@@ -93,15 +99,11 @@
                 <div class="modal-content">
                     <span class="close" id="close-button">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить материал</div>
-                    <form id="product-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="main-material-id" name="materialId">
-                            <label for="main_material-name">название:</label>
-                            <input type="text" id="main_material-name" name="materialName" required class="modal-input">
-                        </div>
-                        <div class="modal-block">
-                            <label for="material-type-group">Цветовая группа:</label>
-                            <select class="modal-select" id="material-type-group" name="materialType" required>
+                            <label for="material-type">тип материала:</label>
+                            <select class="modal-select" id="material-type" name="materialType" required>
                                 <option class="" th:each="material_type : ${materialTypes}"
                                         th:value="${material_type.materialId}"
                                         th:text="${material_type.materialName}">
@@ -109,23 +111,49 @@
                             </select>
                         </div>
                         <div class="modal-block">
-                            <label for="iscolor">цветной</label>
-                            <input type="checkbox" id="iscolor" name="isColor">
-                            <label for="color">цвет:</label>
-                            <select class="modal-select" id="color" name="color" required>
-                                <option class="" th:each="color : ${colors}"
-                                        th:value="${color.colorId}"
-                                        th:text="${color.colorName} + '(' + ${color.colorGroup.colorGroupName} + ')'">
+                            <label for="main-material-name">название:</label>
+                            <input type="text" id="main-material-name" name="materialName" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="if-color">цветной</label>
+                            <select class="modal-select" id="if-color" name="ifColor" required onchange="showColorGroup(this);">
+                                <option value="true">да</option>
+                                <option value="false">нет</option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-group">группа цветов:</label>
+                            <select class="modal-select" id="color-group" required onchange="showColor(this);">
+                                <option value="0">нет</option>
+                                <option class="" th:each="color_group : ${colorGroups}"
+                                        th:value="${color_group.colorGroupId}"
+                                        th:class="color-group-values" style="display: none"
+                                        th:text="${color_group.colorGroupName}">
                                 </option>
                             </select>
                         </div>
                         <div class="modal-block">
-                            <label for="is-reused">вторичный материал</label>
-                            <input type="checkbox" id="is-reused" name="isReused">
+                            <label for="color">цвет:</label>
+                            <select class="modal-select" id="color" name="color" required>
+                                <option class="" value="0">нет</option>
+                                <option class="list-left" th:each="color : ${colors}"
+                                        th:value="${color.colorId}" th:class="'color-' + ${color.colorGroup.colorGroupId}"
+                                        style="display: none"
+                                        th:text="${color.colorCode} + ' ' + ${color.colorName} + '(' + ${color.colorGroup.colorGroupName} + ')'">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="if-reused">вторичный материал</label>
+                            <select class="modal-select" id="if-reused" name="ifReused" required>
+                                <option value="true">да</option>
+                                <option value="false">нет</option>
+                            </select>
                         </div>
                         <div class="modal-block">
                             <label for="producer">производитель:</label>
-                            <select class="modal-select" id="producer" name="producer" required>
+                            <select class="modal-select" id="producer" name="producer">
+                                <option class="" value="0">нет</option>
                                 <option th:each="producer : ${producers}"
                                         th:text="${producer.producerName} + '(' + ${producer.country.countryName} + ')'"
                                         th:value="${producer.id}">
@@ -149,7 +177,10 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/materials/main_material.js"></script>
+<script type="module" src="/js/materials/main_material.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
+<script src="/js/materials/main_material_extra.js"></script>
+
 </body>
 
 </html>
