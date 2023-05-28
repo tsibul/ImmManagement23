@@ -19,7 +19,7 @@
         <div class="container">
             <div class="table-head">
                 <h2 >Группы цветов</h2>
-                <button id="add-country-btn" class="button button-submit">Добавить страну
+                <button id="add-btn" class="button button-submit">Добавить страну
                 </button>
             </div>
         </div>
@@ -32,7 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="country:${countries}" class="color-row">
+                    <tr th:each="country:${countries}" class="modal-row">
                         <td th:text="${country.countryName}" th:data-id="${country.id}" data-label="название"></td>
                         <td onclick="event.stopPropagation()">
                             <a th:href="'/country/'+  ${country.id} + '/deletecountry'">
@@ -49,7 +49,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить группу</div>
-                    <form id="color-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="country-id" name="id">
                             <label for="country-name">Название:</label>
@@ -68,7 +68,8 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/dicts/country.js"></script>
+<script type="module" src="/js/dicts/country.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
 </body>
 
 </html>
