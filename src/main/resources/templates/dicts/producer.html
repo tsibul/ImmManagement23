@@ -35,7 +35,7 @@
                         <th class="show-on-small-screen">
                             <select class="menu-select" id="country-filter" name="country"
                                     onchange="if (this.value) window.location.href = this.value">
-                                <option th:value="'/producer/0/' + ${producerTypeId}">страна</option>
+                                <option th:value="'/producer/0/' + ${producerTypesId}">страна</option>
                                 <option th:each="country : ${countries}"
                                         th:value="'/producer/' + ${country.id} + '/' + ${producerTypesId}"
                                         th:selected="${countryId} == ${country.id}"
