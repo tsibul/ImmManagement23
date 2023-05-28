@@ -20,7 +20,7 @@
         <div class="container">
             <div class="table-head">
                 <h2 >Цвета</h2>
-                <button id="add-color-btn" class="button button-submit"
+                <button id="add-btn" class="button button-submit"
                         th:data-colorGroupId="${colorGroupId}">Добавить цвет
                 </button>
             </div>
@@ -48,7 +48,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="color:${colors}" class="color-row"
+                    <tr th:each="color:${colors}" class="modal-row"
                         th:data-colorGroupId="${color.colorGroup.colorGroupId}" th:data-colorId="${color.colorId}">
                         <td th:text="${color.colorCode}" data-label="код цвета"></td>
                         <td th:text="${color.colorName}" data-label="название"></td>
@@ -70,7 +70,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить цвет</div>
-                    <form id="color-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="color-id" name="colorId">
                             <label for="color-code">Код цвета:</label>
@@ -110,7 +110,8 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/colors/colors.js"></script>
+<script type="module" src="/js/colors/colors.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
 </body>
 
 </html>
