@@ -19,7 +19,7 @@
         <div class="container">
             <div class="table-head">
                 <h2 >Группы цветов</h2>
-                <button id="add-color-btn" class="button button-submit">Добавить группу
+                <button id="add-btn" class="button button-submit">Добавить группу
                 </button>
             </div>
         </div>
@@ -32,7 +32,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="colorGroup:${colorGroups}" class="color-row"
+                    <tr th:each="colorGroup:${colorGroups}" class="modal-row"
                         th:data-colorGroupId="${colorGroup.colorGroupId}">
                         <td th:text="${colorGroup.colorGroupName}" data-label="название"></td>
                         <td onclick="event.stopPropagation()">
@@ -50,7 +50,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить группу</div>
-                    <form id="color-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="color-group-id" name="colorGroupId">
                             <label for="color-group-name">Название:</label>
@@ -69,7 +69,8 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/colors/colorgroups.js"></script>
+<script type="module" src="/js/colors/colorgroups.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
 </body>
 
 </html>
