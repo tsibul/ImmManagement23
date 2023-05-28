@@ -19,7 +19,7 @@
         <div class="container">
             <div class="table-head">
                 <h2>Типы материала</h2>
-                <button id="add-material-type-btn" class="button button-submit">Добавить тип
+                <button id="add-btn" class="button button-submit">Добавить тип
                 </button>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="materialType:${materialTypes}" class="color-row"
+                    <tr th:each="materialType:${materialTypes}" class="modal-row"
                         th:data-materialTypeId="${materialType.materialId}">
                         <td th:text="${materialType.materialName}" data-label="название"></td>
                         <td th:text="${materialType.drying ? 'да' : 'нет'}" data-label="сушка"
@@ -57,7 +57,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить материал</div>
-                    <form id="color-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="material-type-id" name="materialId">
                             <label for="material-type-name">Название:</label>
@@ -91,7 +91,8 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/materials/materialtypes.js"></script>
+<script type="module" src="/js/materials/materialtypes.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
 </body>
 
 </html>
