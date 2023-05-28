@@ -22,7 +22,7 @@
         <div class="container">
             <div class="table-head">
                 <h2>Продукция</h2>
-                <button id="add-product-btn" class="button button-submit">Добавить продукцию
+                <button id="add-btn" class="button button-submit">Добавить продукцию
                 </button>
             </div>
         </div>
@@ -59,7 +59,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="product:${products}" class="table-row"
+                    <tr th:each="product:${products}" class="modal-row"
                         th:data-productid="${product.productId}">
                         <td th:text="${product.productCode}" data-label="артикул"></td>
                         <td th:text="${product.productName}" data-label="название"></td>
@@ -88,7 +88,7 @@
                 <div class="modal-content">
                     <span class="close" id="close-button">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить продукт</div>
-                    <form id="product-form" method="post">
+                    <form id="modal-form" method="post">
                         <div class="modal-block">
                             <input type="hidden" id="product-id" name="productId">
                             <label for="product-code">Артикул:</label>
@@ -138,7 +138,8 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script src="/js/products/products.js"></script>
+<script type="module" src="/js/products/products.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
 </body>
 
 </html>
