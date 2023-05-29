@@ -2,6 +2,7 @@ package com.immplan.injectionmanagement23.db.product.detail;
 
 
 import com.immplan.injectionmanagement23.db.equipment.mold.MoldInsert;
+import com.immplan.injectionmanagement23.db.product.product.Product;
 import com.immplan.injectionmanagement23.db.rawmaterial.MaterialType;
 import jakarta.persistence.*;
 
@@ -12,8 +13,9 @@ public class Detail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "detail_id")
     private Long detailId;
-    @Column(name = "detail_code", length = 14)
-    private String detailCode;
+    @ManyToOne(targetEntity = Product.class)
+    @JoinColumn(name = "detail_code", referencedColumnName = "product_code")
+    private Product detailCode;
     @Column(name = "index_in_product", nullable = false)
     private int indexInProduct;
     @Column(name = "detail_name", nullable = false)
@@ -115,11 +117,11 @@ public class Detail {
         this.detailActive = detailActive;
     }
 
-    public String getDetailCode() {
+    public Product getDetailCode() {
         return detailCode;
     }
 
-    public void setDetailCode(String detailCode) {
+    public void setDetailCode(Product detailCode) {
         this.detailCode = detailCode;
     }
 

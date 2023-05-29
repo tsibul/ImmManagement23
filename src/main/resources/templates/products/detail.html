@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Детали</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header_footer_menu.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/modal.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+
+<body>
+<div hidden th:data-materialtypesid="${materialTypesId}" th:data-producersid="${productsId}"
+     id="url-parameters"></div>
+<div class="wrapper">
+    <div class="content">
+        <div th:insert="~{menu/header :: header}"></div>
+        <div class="container">
+            <div class="table-head">
+                <h2>Детали</h2>
+                <button id="add-btn" class="button button-submit">Добавить деталь
+                </button>
+            </div>
+        </div>
+        <div class="inner_content">
+            <div class="container">
+                <table class="responsive-table big-table">
+                    <thead>
+                    <tr>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="product-filter" name="materialType"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option th:value="'/detail/0/' + ${materialTypesId}">артикул</option>
+                                <option th:each="product : ${products}"
+                                        th:value="'/detail/' + ${product.productCode} + '/' + ${materialTypesId}"
+                                        th:selected="${productsId} == ${product.productCode}"
+                                        th:text="${product.productCode}">
+                                </option>
+                            </select>
+                        <th>индекс</th>
+                        <th>название</th>
+                        <th>продукт</th>
+                        <th>вес, г</th>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="material-type-filter" name="materialType"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option th:value="'/detail/' + ${productsId} + '/0'">материал</option>
+                                <option th:each="material_type : ${materialTypes}"
+                                        th:value="'/detail/' +  ${productsId} + '/' + ${material_type.materialId}"
+                                        th:selected="${materialTypesId} == ${material_type.materialId}"
+                                        th:text="${material_type.materialName}">
+                                </option>
+                            </select>
+                        </th>
+                        <th>пресс-форма</th>
+                        <th>вес впрыска</th>
+                        <th>вес литника</th>
+                        <th>кол-во в коробе</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="detail:${details}" class="modal-row"
+                        th:data-detailid="${detail.detailId}">
+                        <td th:text="${detail.detailCode.productCode}"
+                            th:data-id="${detail.detailCode.productId}"
+                            data-label="артикул"></td>
+                        <td th:text="${detail.indexInProduct}" data-label="индекс"></td>
+                        <td th:text="${detail.detailName}" data-label="название"></td>
+                        <td th:text="${detail.detailCode != null ? detail.detailCode.productName: ''}"
+                            data-label="продукт"></td>
+                        <td th:text="${detail.detailBaseWeightG}" data-label="вес, г"></td>
+                        <td th:text="${detail.materialType.materialName}"
+                            data-label="материал" th:data-id="${detail.materialType.materialId}"></td>
+                        <td th:text="${detail.moldInsert.equipmentName}" data-label="пресс-форма"
+                            th:data-id="${detail.moldInsert.equipmentId}"></td>
+                        <td th:text="${detail.stokeWeightG}" data-label="вес впрыска"></td>
+                        <td th:text="${detail.gateWeightG}" data-label="вес литника"></td>
+                        <td th:text="${detail.standardItemsPerBox}" data-label="кол-во в коробе"></td>
+                        <td onclick="event.stopPropagation()">
+                            <div class="button-block">
+                                <a th:href="'/detail/'+ ${detail.detailId} + '/delete_detailmaterialTypesId=' +
+                                materialTypesId + '&productsId=' + productsId">
+                                    <button class="button button-danger">Удалить</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Модальное окно для добавления и редактирования продукта -->
+            <div class="modal" id="product-modal">
+                <div class="modal-content">
+                    <span class="close" id="close-button">&times;</span>
+                    <div id="modal-title" class="modal-title">Добавить деталь</div>
+                    <form id="modal-form" method="post">
+                        <div class="modal-block">
+                            <input type="hidden" id="detail-id" name="drtailId">
+                            <label for="detail-code">артикул:</label>
+                            <select class="modal-select" id="detail-code" name="detailCode" required>
+                                <option class="list-left" th:each="product : ${products}"
+                                        th:value="${product.productId}"
+                                        th:text="${product.productCode} + ' ' + ${product.productName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="index-in-product">индекс:</label>
+                            <input type="text" id="index-in-product" name="indexInProduct" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="detail-name">название:</label>
+                            <input type="text" id="detail-name" name="detailName" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="detail-weight">вес, г:</label>
+                            <input type="text" id="detail-weight" name="detailBaseWeightG" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="material-type">материал:</label>
+                            <select class="modal-select" id="material-type" name="materialType" required>
+                                <option class="list-left" th:each="material_type : ${materialTypes}"
+                                        th:value="${material_type.materialId}"
+                                        th:text="${material_type.materialName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="mold-insert">пресс-форма:</label>
+                            <select class="modal-select" id="mold-insert" name="moldInsert" required>
+                                <option class="" th:each="mold_insert : ${moldInserts}"
+                                        th:value="${mold_insert.equipmentId}"
+                                        th:text="${mold_insert.equipmentName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="stroke-weight">вес впрыска:</label>
+                            <input type="text" id="stroke-weight" name="stokeWeightG" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="gate-weight">вес литника:</label>
+                            <input type="text" id="gate-weight" name="gateWeightG" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="quantity-per-box">кол-во в коробе:</label>
+                            <input type="text" id="quantity-per-box" name="standardItemsPerBox" required
+                                   class="modal-input">
+                        </div>
+
+                        <div class="button-block">
+                            <button type="button" id="cancel-btn" class="button button-cancel">Отмена
+                            </button>
+                            <button type="submit" id="product-submit-button" class="button button-submit">
+                                Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:insert="~{menu/footer :: footer}"></div>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/header.js"></script>
+<script type="module" src="/js/products/details.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
+
+</body>
+
+</html>
