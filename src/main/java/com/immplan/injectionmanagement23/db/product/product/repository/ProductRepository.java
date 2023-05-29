@@ -14,4 +14,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product>
     findProductByProductActiveAndColorGroupColorGroupIdAndProductGroupProductGroupIdOrderByProductCode(boolean productActive, Long colorGroupId, Long productGroupId);
     Product findProductByProductId(long productId);
+    Product findProductByProductCode(String productCode);
 }

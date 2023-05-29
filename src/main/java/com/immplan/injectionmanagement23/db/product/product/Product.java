@@ -2,6 +2,8 @@ package com.immplan.injectionmanagement23.db.product.product;
 
 import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import jakarta.persistence.*;
+import org.hibernate.annotations.NaturalId;
+import org.springframework.stereotype.Indexed;
 
 @Entity
 @Table(name = "product")
@@ -10,7 +12,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long productId;
-    @Column(name = "product_code", length = 14, nullable = false)
+    @Column(name = "product_code", length = 14, nullable = false, unique = true)
+    @NaturalId
     private String productCode;
     @Column(name = "product_name", length = 40, nullable = false)
     private String productName;
