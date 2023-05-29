@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProductGroupRepository extends JpaRepository<ProductGroup, Long> {
     List<ProductGroup> findProductGroupsByProductGroupActiveOrderByProductGroupName(boolean active);
+    ProductGroup findProductGroupsByProductGroupId(Long productGroupId);
 }
