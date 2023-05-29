@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Сырье</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header_footer_menu.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/modal.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+
+<body>
+<div hidden th:data-materialtypesid="${materialTypesId}" th:data-producersid="${producersId}"
+     id="url-parameters"></div>
+<div class="wrapper">
+    <div class="content">
+        <div th:insert="~{menu/header :: header}"></div>
+        <div class="container">
+            <div class="table-head">
+                <h2>Сырье</h2>
+                <button id="add-btn" class="button button-submit">Добавить сырье
+                </button>
+            </div>
+        </div>
+        <div class="inner_content">
+            <div class="container">
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="material-type-filter" name="materialType"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option th:value="'/main_material/0/' + ${producersId}">тип материала</option>
+                                <option th:each="material_type : ${materialTypes}"
+                                        th:value="'/main_material/' + ${material_type.materialId} + '/' + ${producersId}"
+                                        th:selected="${materialTypesId} == ${material_type.materialId}"
+                                        th:text="${material_type.materialName}">
+                                </option>
+                            </select>
+                        </th>
+                        <th>название</th>
+                        <th>цветной</th>
+                        <th>цвет</th>
+                        <th>цветовая группа</th>
+                        <th>вторичка</th>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="producer-filter" name="producer"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option th:value="'/main_material/' + ${materialTypesId} + '/0'">производитель</option>
+                                <option th:each="producer : ${producers}"
+                                        th:text="${producer.producerName} + '(' + ${producer.country.countryName} + ')'"
+                                        th:value="'/main_material/' + ${materialTypesId} + '/' + ${producer.id}"
+                                        th:selected="${producersId} == ${producer.id}">
+                                </option>
+                            </select>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="main_material:${mainMaterials}" class="modal-row"
+                        th:data-mainmaterialid="${main_material.materialId}">
+                        <td th:text="${main_material.materialType.materialName}"
+                            th:data-id="${main_material.materialType.materialId}" data-label="тип материала"></td>
+                        <td th:text="${main_material.materialName}" data-label="название"></td>
+                        <td data-label="цветной" th:data-id="${main_material.ifColor}"
+                            th:text="${main_material.ifColor ? 'да' : 'нет'}">
+                        </td>
+                        <td th:text="${main_material.color != null ? main_material.color.colorCode : ''}"
+                            data-label="цвет"
+                            th:data-id="${main_material.color != null ? main_material.color.colorId : 0}"></td>
+                        <td th:text="${main_material.color != null ? main_material.color.colorGroup.colorGroupName: ''}"
+                            th:data-id="${main_material.color != null ? main_material.color.colorGroup.colorGroupId : 0}"
+                            data-label="группа цветов"></td>
+                        <td data-label="вторичка" th:data-id="${main_material.ifReused}"
+                            th:text="${main_material.ifReused ? 'да': 'нет'}">
+                            >
+                        </td>
+                        <td th:text="${main_material.producer != null ? main_material.producer.producerName: ''}"
+                            data-label="производитель"
+                            th:data-id="${main_material.producer != null ? main_material.producer.id: 0}"></td>
+                        <td onclick="event.stopPropagation()">
+                            <div class="button-block">
+                                <a th:href="'/main_material/'+ ${main_material.materialId} + '/delete_main_material?materialTypesId=' +
+                                ${materialTypesId} + '&pproducersId=' + ${producersId}">
+                                    <button class="button button-danger">Удалить</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Модальное окно для добавления и редактирования продукта -->
+            <div class="modal" id="product-modal">
+                <div class="modal-content">
+                    <span class="close" id="close-button">&times;</span>
+                    <div id="modal-title" class="modal-title">Добавить материал</div>
+                    <form id="modal-form" method="post">
+                        <div class="modal-block">
+                            <input type="hidden" id="main-material-id" name="materialId">
+                            <label for="material-type">тип материала:</label>
+                            <select class="modal-select" id="material-type" name="materialType" required>
+                                <option class="" th:each="material_type : ${materialTypes}"
+                                        th:value="${material_type.materialId}"
+                                        th:text="${material_type.materialName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="main-material-name">название:</label>
+                            <input type="text" id="main-material-name" name="materialName" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="if-color">цветной</label>
+                            <select class="modal-select" id="if-color" name="ifColor" required onchange="showColorGroup(this);">
+                                <option value="true">да</option>
+                                <option value="false">нет</option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-group">группа цветов:</label>
+                            <select class="modal-select" id="color-group" required onchange="showColor(this);">
+                                <option value="0">нет</option>
+                                <option class="" th:each="color_group : ${colorGroups}"
+                                        th:value="${color_group.colorGroupId}"
+                                        th:class="color-group-values" style="display: none"
+                                        th:text="${color_group.colorGroupName}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="color">цвет:</label>
+                            <select class="modal-select" id="color" name="color" required>
+                                <option class="" value="0">нет</option>
+                                <option class="list-left" th:each="color : ${colors}"
+                                        th:value="${color.colorId}" th:class="'color-' + ${color.colorGroup.colorGroupId}"
+                                        style="display: none"
+                                        th:text="${color.colorCode} + ' ' + ${color.colorName} + '(' + ${color.colorGroup.colorGroupName} + ')'">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="if-reused">вторичный материал</label>
+                            <select class="modal-select" id="if-reused" name="ifReused" required>
+                                <option value="true">да</option>
+                                <option value="false">нет</option>
+                            </select>
+                        </div>
+                        <div class="modal-block">
+                            <label for="producer">производитель:</label>
+                            <select class="modal-select" id="producer" name="producer">
+                                <option class="" value="0">нет</option>
+                                <option th:each="producer : ${producers}"
+                                        th:text="${producer.producerName} + '(' + ${producer.country.countryName} + ')'"
+                                        th:value="${producer.id}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="button-block">
+                            <button type="button" id="cancel-btn" class="button button-cancel">Отмена
+                            </button>
+                            <button type="submit" id="product-submit-button" class="button button-submit">
+                                Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:insert="~{menu/footer :: footer}"></div>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/header.js"></script>
+<script type="module" src="/js/materials/main_material.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
+<script src="/js/materials/main_material_extra.js"></script>
+
+</body>
+
+</html>
