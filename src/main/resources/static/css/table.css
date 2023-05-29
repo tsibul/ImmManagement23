@@ -16,10 +16,14 @@
     border-radius: 10px !important;
 }
 
+.responsive-table tr:hover {
+    background-color: #dddddd;
+}
+
 
 .responsive-table th,
 .responsive-table td {
-    padding: 6px;
+    padding: 1px;
 }
 
 .responsive-table td {
@@ -33,6 +37,11 @@
     text-align: center;
     border-style: none;
 }
+
+.big-table {
+    font-size: 90%;
+}
+
 
 /* Медиа-запросы для адаптивности */
 @media (max-width: 600px) {
