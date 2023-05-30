@@ -1,52 +1,32 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Получаем необходимые элементы
-    const colorRows = document.querySelectorAll(".color-row");
-    const modal = document.querySelector(".modal");
-    const closeModalBtn = modal.querySelector(".close");
-    const cancelBtn = modal.querySelector("#cancel-btn");
-    const addColorBtn = document.querySelector("#add-color-btn");
+// Импортируем функции из main_modal.js
+import initialize from '/js/main_modal.js';
 
-    // Функция для открытия модального окна для редактирования или добавления
-    function openEditModal(titleText, colorGroupId, colorGroupName) {
-        // Получаем необходимые элементы модального окна
-        const modalTitle = modal.querySelector("#modal-title");
-        const colorForm = modal.querySelector("#color-form");
-        const colorGroupIdInput = modal.querySelector("#color-group-id");
-        const colorGroupNameInput = modal.querySelector("#color-group-name");
 
-        modalTitle.textContent = titleText;
-        colorGroupIdInput.value = colorGroupId;
-        colorGroupNameInput.value = colorGroupName;
+function inputs(modal) {
+    return {
+        colorGroupId: modal.querySelector("#color-group-id"),
+        colorGroupName: modal.querySelector("#color-group-name")
+    };
+}
 
-        colorForm.setAttribute("action", "/colorgroups/addcolorgroup");
-        modal.style.display = "block";
-    }
+function fullData(row) {
+    return {
+        colorGroupId: row.dataset.colorgroupid,
+        colorGroupName: row.querySelector("[data-label='название']").textContent
+    };
+}
 
-    // Добавляем обработчики событий click для каждой строки цвета
-    colorRows.forEach((row) => {
-        row.addEventListener("click", () => {
-            const titleText = "Редактировать группу"
-            const colorGroupId = row.dataset.colorgroupid;
-            const colorGroupName = row.querySelector("[data-label='название']").textContent;
-            openEditModal(titleText, colorGroupId, colorGroupName);
-        });
-    });
+function emptyData() {
+    return {
+        colorGroupId: 0
+    };
+}
 
-    // Добавляем обработчик события click для кнопки добавления цвета
-    addColorBtn.addEventListener("click", () => {
-        const titleText = "Добавить группу"
-        const colorGroupId = 0;
-        const colorGroupName = "";
-        openEditModal(titleText, colorGroupId, colorGroupName);
-    });
+function action (){
+    return "/colorgroups/addcolorgroup";
+}
 
-    // Закрываем модальное окно при клике на кнопку закрытия
-    closeModalBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+// Вызываем функцию initialize, передавая необходимые функции
+initialize(inputs, emptyData, fullData, action);
 
-    // Закрываем модальное окно при клике на кнопку отмены
-    cancelBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-});
+
