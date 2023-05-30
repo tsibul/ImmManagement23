@@ -1,12 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const colorRows = document.querySelectorAll(".color-row");
-    const modal = document.querySelector(".modal");
-    const closeModalBtn = modal.querySelector(".close");
-    const cancelBtn = modal.querySelector("#cancel-btn");
-    const addColorBtn = document.querySelector("#add-color-btn");
-    const colorGroupsId = document.querySelector("#url-parameters").dataset.colorgroupsid;
+// Импортируем функции из main_modal.js
+import initialize from '/js/main_modal.js';
 
-    const inputs = {
+const colorGroupsId = document.querySelector("#url-parameters").dataset.colorgroupsid;
+
+function inputs(modal) {
+    return {
         colorId: modal.querySelector("#color-id"),
         colorCode: modal.querySelector("#color-code"),
         colorName: modal.querySelector("#color-name"),
@@ -14,51 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         colorHEX: modal.querySelector("#color-hex"),
         colorGroupId: modal.querySelector("#color-group")
     };
-
-    // Function to open the modal for editing
-    function openEditModal(titleText, modalData) {
-
-        // Populate the modal fields with the data
-        const modalTitle = modal.querySelector("#modal-title");
-        const colorForm = modal.querySelector("#color-form");
-        modalTitle.textContent = titleText;
-        colorForm.setAttribute("action", "/colors/" + colorGroupsId + '/addcolor'); // Set the form action for editing
-
-        for (const key in inputs) {
-            inputs[key].value = modalData[key] || "";
-        }
-
-        // Open the modal
-        modal.style.display = "block";
-    }
-
-    // Add click event listener to each color row
-    colorRows.forEach(function (row) {
-        row.addEventListener("click", () => {
-            // Get the data from the clicked row
-            const modalData = fullData(row);
-            const titleText = "Редактировать цвет";
-            openEditModal(titleText, modalData);
-        });
-    });
-
-    // Open the modal for adding a new color when the button is clicked
-    addColorBtn.addEventListener("click", () => {
-        const modalData = emptyData(colorGroupsId)
-        const titleText = "Добавить цвет";
-        openEditModal(titleText, modalData);
-    });
-
-    // Close the modal when the close button is clicked
-    closeModalBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-
-    // Close the modal when the cancel button is clicked
-    cancelBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-});
+}
 
 function fullData(row) {
     return {
@@ -68,12 +22,20 @@ function fullData(row) {
         colorName: row.querySelector("[data-label='название']").textContent,
         colorPantone: row.querySelector("[data-label='pantone']").textContent,
         colorHEX: row.querySelector("[data-label='HEX']").textContent
-    }
+    };
 }
 
-function emptyData(colorGroupsId){
+function emptyData() {
     return {
         colorId: 0,
         colorGroupId: colorGroupsId
-    }
+    };
 }
+
+function action (){
+    return "/colors/" + colorGroupsId + '/addcolor';
+}
+
+// Вызываем функцию initialize, передавая необходимые функции
+initialize(inputs, emptyData, fullData, action);
+
