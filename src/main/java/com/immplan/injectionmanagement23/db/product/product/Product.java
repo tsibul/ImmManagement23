@@ -1,9 +1,7 @@
 package com.immplan.injectionmanagement23.db.product.product;
 
-import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
-import org.springframework.stereotype.Indexed;
 
 @Entity
 @Table(name = "product")
@@ -19,9 +17,6 @@ public class Product {
     private String productName;
     @Column(name = "number_details", nullable = false)
     private int numberDetails;
-    @ManyToOne(targetEntity = ColorGroup.class)
-    @JoinColumn(name = "color_group", referencedColumnName = "color_group_id", nullable = false)
-    private ColorGroup colorGroup;
     @ManyToOne(targetEntity = ProductGroup.class)
     @JoinColumn(name = "product_group", referencedColumnName = "product_group_id", nullable = false)
     private ProductGroup productGroup;
@@ -74,13 +69,5 @@ public class Product {
 
     public void setProductGroup(ProductGroup productGroup) {
         this.productGroup = productGroup;
-    }
-
-    public ColorGroup getColorGroup() {
-        return colorGroup;
-    }
-
-    public void setColorGroup(ColorGroup colorGroup) {
-        this.colorGroup = colorGroup;
     }
 }

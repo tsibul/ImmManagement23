@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<div hidden th:data-colorgroupsid="${colorGroupsId}" th:data-productgroupsid="${productGroupsId}"
+<div hidden th:data-productgroupsid="${productGroupsId}"
      id="url-parameters"></div>
 <div class="wrapper">
     <div class="content">
@@ -34,24 +34,14 @@
                         <th>артикул</th>
                         <th>название</th>
                         <th>кол-во деталей</th>
-                        <th class="show-on-small-screen">
-                            <select class="menu-select" id="color-filter" name="colorGroup"
-                                    onchange="if (this.value) window.location.href = this.value">
-                                <option th:value="'/products/0/' + ${productGroupsId}">группа цветов</option>
-                                <option th:each="color_group : ${colorGroups}"
-                                        th:value="'/products/' + ${color_group.colorGroupId} + '/' + ${productGroupsId}"
-                                        th:selected="${colorGroupsId} == ${color_group.colorGroupId}"
-                                        th:text="${color_group.colorGroupName}">
-                                </option>
-                            </select>
-                        </th>
+                        <th>группа цветов</th>
                         <th class="show-on-small-screen">
                             <select class="menu-select" id="product-filter" name="productGroup"
                                     onchange="if (this.value) window.location.href = this.value">
-                                <option th:value="'/products/' + ${colorGroupsId} + '/0'">группа товара</option>
+                                <option value="/products/0">группа товара</option>
                                 <option th:each="product_group : ${productGroups}"
                                         th:text="${product_group.productGroupName}"
-                                        th:value="'/products/' + ${colorGroupsId} + '/' + ${product_group.productGroupId}"
+                                        th:value="'/products/' + ${product_group.productGroupId}"
                                         th:selected="${productGroupsId} == ${product_group.productGroupId}">
                                 </option>
                             </select>
@@ -64,17 +54,15 @@
                         <td th:text="${product.productCode}" data-label="артикул"></td>
                         <td th:text="${product.productName}" data-label="название"></td>
                         <td th:text="${product.numberDetails}" data-label="кол-во деталей"></td>
-                        <td th:text="${product.colorGroup.colorGroupName}" data-label="группа цветов"
-                            th:data-id="${product.colorGroup.colorGroupId}"></td>
+                        <td th:text="${product.productGroup.colorGroup.colorGroupName}" data-label="группа цветов"></td>
                         <td th:text="${product.productGroup.productGroupName}" data-label="группа товара"
                             th:data-id="${product.productGroup.productGroupId}"></td>
                         <td onclick="event.stopPropagation()">
                             <div class="button-block">
-                                <a th:href="'/colors/details/'+ ${product.productId}" class="a_menu">
+                                <a th:href="'/details/'+ ${product.productId}" class="a_menu">
                                     <button class="button button-submit">Детали</button>
                                 </a>&nbsp;
-                                <a th:href="'/products/'+ ${product.productId} + '/deleteproduct?colorGroupsId=' +
-                                ${colorGroupsId} + '&productGroupsId=' + ${productGroupsId}">
+                                <a th:href="'/products/'+ ${product.productId} + '/deleteproduct?productGroupsId=' + ${productGroupsId}">
                                     <button class="button button-danger">Удалить</button>
                                 </a>
                             </div>
@@ -102,15 +90,6 @@
                             <label for="number-details">Кол-во деталей:</label>
                             <input type="text" id="number-details" name="numberDetails" required
                                    class="modal-input">
-                        </div>
-                        <div class="modal-block">
-                            <label for="color-group">Цветовая группа:</label>
-                            <select class="modal-select" id="color-group" name="colorGroup" required>
-                                <option class="" th:each="color_group : ${colorGroups}"
-                                        th:value="${color_group.colorGroupId}"
-                                        th:text="${color_group.colorGroupName}">
-                                </option>
-                            </select>
                         </div>
                         <div class="modal-block">
                             <label for="product-group">Группа товара:</label>

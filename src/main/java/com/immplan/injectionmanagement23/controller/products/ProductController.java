@@ -29,21 +29,15 @@ public class ProductController extends BaseController {
         this.productGroupRepository = productGroupRepository;
     }
 
-    @GetMapping("/products/{colorGroupId}/{productGroupId}")
-    public String getProduct(Model model, @PathVariable int colorGroupId, @PathVariable int productGroupId) {
+    @GetMapping("/products/{productGroupId}")
+    public String getProduct(Model model, @PathVariable int productGroupId) {
         List<Product> products;
-        if (colorGroupId == 0 && productGroupId == 0) {
+        if (productGroupId == 0) {
             products = productRepository.findProductByProductActiveOrderByProductCode(true);
-        } else if (colorGroupId != 0 && productGroupId == 0) {
-            products = productRepository.
-                    findProductByProductActiveAndColorGroupColorGroupIdOrderByProductCode(true, (long) colorGroupId);
-        } else if (colorGroupId == 0) {
-            products = productRepository.
-                    findProductByProductActiveAndAndProductGroupProductGroupIdOrderByProductCode(true, (long) productGroupId);
         } else {
             products = productRepository.
-                    findProductByProductActiveAndColorGroupColorGroupIdAndProductGroupProductGroupIdOrderByProductCode
-                            (true, (long) colorGroupId, (long) productGroupId);
+                    findProductByProductActiveAndProductGroupProductGroupIdOrderByProductCode
+                            (true, (long) productGroupId);
         }
         List<ProductGroup> productGroups = productGroupRepository.
                 findProductGroupsByProductGroupActiveOrderByProductGroupName(true);
@@ -53,23 +47,20 @@ public class ProductController extends BaseController {
         model.addAttribute("products", products);
         model.addAttribute("productGroups", productGroups);
         model.addAttribute("productGroupsId", productGroupId);
-        model.addAttribute("colorGroupsId", colorGroupId);
         return "products/products";
     }
 
     @PostMapping("/products/addproduct")
-    public String addProduct(@ModelAttribute Product product,
-                             @RequestParam int colorGroupsId, @RequestParam int productGroupsId) {
+    public String addProduct(@ModelAttribute Product product, @RequestParam int productGroupsId) {
         productRepository.save(product);
-        return "redirect:/products/" + colorGroupsId + "/" + productGroupsId;
+        return "redirect:/products/" + productGroupsId;
     }
 
     @GetMapping("/products/{id}/deleteproduct")
-    public String deleteProduct(@PathVariable int id,
-                                @RequestParam int colorGroupsId, @RequestParam int productGroupsId) {
+    public String deleteProduct(@PathVariable int id, @RequestParam int productGroupsId) {
         Product product = productRepository.findProductByProductId(id);
         product.setProductActive(false);
         productRepository.save(product);
-        return "redirect:/products/" + colorGroupsId + "/" + productGroupsId;
+        return "redirect:/products/" + productGroupsId;
     }
 }
