@@ -13,6 +13,8 @@
 </head>
 
 <body>
+<div hidden th:data-colorgroupsid="${colorGroupsId}"
+     id="url-parameters"></div>
 <div class="wrapper">
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
@@ -29,14 +31,29 @@
                     <thead>
                     <tr>
                         <th>название</th>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="color-filter" name="colorGroup"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option value="/product_group/0">группа цветов</option>
+                                <option th:each="color_group : ${colorGroups}"
+                                        th:value="'/product_group/' + ${color_group.colorGroupId}"
+                                        th:selected="${colorGroupsId} == ${color_group.colorGroupId}"
+                                        th:text="${color_group.colorGroupName}">
+                                </option>
+                            </select>
+                        </th>
+
+
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="productGroup:${productGroups}" class="modal-row"
                         th:data-productgroupid="${productGroup.productGroupId}">
                         <td th:text="${productGroup.productGroupName}" data-label="название"></td>
+                        <td th:text="${productGroup.colorGroup.colorGroupName}" data-label="группа цветов"
+                            th:data-id="${productGroup.colorGroup.colorGroupId}"></td>
                         <td onclick="event.stopPropagation()">
-                            <a th:href="'/product_group/'+  ${productGroup.productGroupId} + '/delete_product_group'">
+                            <a th:href="'/product_group/' +  ${productGroup.productGroupId} + '/delete_product_group'">
                                 <button class="button button-danger">Удалить
                                 </button>
                             </a>
@@ -54,7 +71,16 @@
                         <div class="modal-block">
                             <input type="hidden" id="product-group-id" name="productGroupId">
                             <label for="product-group-name">Название:</label>
-                            <input type="text" id="product-group-name" name="colorGroupName" required class="modal-input">
+                            <input type="text" id="product-group-name" name="productGroupName" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="color-group">Группа цветов:</label>
+                            <select class="modal-select" id="color-group" name="colorGroup" required>
+                                <option th:each="color_group : ${colorGroups}"
+                                        th:text="${color_group.colorGroupName}"
+                                        th:value="${color_group.colorGroupId}">
+                                </option>
+                            </select>
                         </div>
                         <div class="button-block">
                             <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>

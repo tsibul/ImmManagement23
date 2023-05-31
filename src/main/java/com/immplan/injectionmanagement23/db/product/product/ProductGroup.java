@@ -1,5 +1,6 @@
 package com.immplan.injectionmanagement23.db.product.product;
 
+import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +12,9 @@ public class ProductGroup {
     private Long productGroupId;
     @Column(name = "product_group_name", length = 40, nullable = false)
     private String productGroupName;
+    @ManyToOne(targetEntity = ColorGroup.class)
+    @JoinColumn(name = "color_group", referencedColumnName = "color_group_id", nullable = false)
+    private ColorGroup colorGroup;
     @Column(name = "product_group active", columnDefinition = "boolean default true", nullable = false)
     private boolean productGroupActive = true;
 
@@ -36,5 +40,13 @@ public class ProductGroup {
 
     public void setProductGroupActive(boolean productGroupActive) {
         this.productGroupActive = productGroupActive;
+    }
+
+    public ColorGroup getColorGroup() {
+        return colorGroup;
+    }
+
+    public void setColorGroup(ColorGroup colorGroup) {
+        this.colorGroup = colorGroup;
     }
 }
