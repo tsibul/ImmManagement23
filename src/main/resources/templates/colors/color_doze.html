@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Рецептуры</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header_footer_menu.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+</head>
+
+<body>
+<div hidden th:data-productgroupsid="${productGroupsId}" id="url-parameters"></div>
+<div class="wrapper">
+    <div class="content">
+        <div th:insert="~{menu/header :: header}"></div>
+        <div class="container">
+            <div class="table-head">
+                <h2>Рецептура</h2>
+                <button id="add-btn" class="button button-submit"
+                        th:data-colorGroupId="${colorGroupId}">Добавить рецептуру
+                </button>
+            </div>
+        </div>
+        <div class="inner_content">
+            <div class="container">
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th class="show-on-small-screen">
+                            <select class="menu-select" id="product-filter" name="productGroup"
+                                    onchange="if (this.value) window.location.href = this.value">
+                                <option value="/color_doze/0">группа продуктов</option>
+                                <option th:each="product_group : ${productGroups}"
+                                        th:value="'/color_doze/' + ${product_group.productGroupId}"
+                                        th:selected="${productGroupsId} == ${product_group.productGroupId}"
+                                        th:text="${product_group.productGroupName}">
+                                </option>
+                            </select>
+                        </th>
+                        <th>суперконцентрат</th>
+                        <th>тип материала</th>
+                        <th>цвет</th>
+                        <th>доза</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="doze :${productColorDozes}" class="modal-row"
+                        th:data-dozeId="${doze.productColorDozeId}">
+                        <td th:text="${doze.productGroup.productGroupName}" data-label="группа продуктов"
+                            th:data-id="${doze.productGroup.productGroupId}"></td>
+                        <td th:text="${doze.masterBatch.materialName}" data-label="суперконцентрат"
+                            th:data-id="${doze.masterBatch.materialId}"></td>
+                        <td th:text="${doze.materialType.materialName}" data-label="тип материала"
+                        th:data-id="${doze.materialType.materialId}"></td>
+                        <td th:text="${doze.color.colorName}" data-label="цвет"
+                        th:data-id="${doze.color.colorId}"></td>
+                        <td th:text="${doze.doze}" data-label="доза"></td>
+                        <td onclick="event.stopPropagation()">
+                            <a th:href="'/color_doze/'+ ${doze.productColorDozeId} + '/delete_doze'">
+                                <button class="button button-danger">Удалить
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Модальное окно для добавления и редактирования цвета -->
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modal-title" class="modal-title">Добавить цвет</div>
+                    <form id="modal-form" method="post">
+                        <div class="modal-block">
+                            <input type="hidden" id="color-doze-id" name="productColorDozeId">
+                            <label for="product-group">Группа продуктов:</label>
+                            <input type="text" id="product-group" name="productGroup" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="master-batch">Суперконцентрат:</label>
+                            <input type="text" id="master-batch" name="masterBatch" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="material-type">Тип материала:</label>
+                            <input type="text" id="material-type" name="materialType" required class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="color">цвет:</label>
+                            <input type="text" id="color" name="color" class="modal-input">
+                        </div>
+                        <div class="modal-block">
+                            <label for="doze">Доза:</label>
+                            <input type="number" id="doze" name="doze" class="modal-input">
+                        </div>
+                        <div class="button-block">
+                            <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>
+                            <button type="submit" id="color-submit-btn" class="button button-submit">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{menu/footer :: footer}"></div>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/header.js"></script>
+<script type="module" src="/js/colors/color_doze.js"></script>
+<script type="module" src="/js/main_modal.js"></script>
+</body>
+
+</html>
