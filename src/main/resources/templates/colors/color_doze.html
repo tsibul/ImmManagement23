@@ -27,7 +27,7 @@
         </div>
         <div class="inner_content">
             <div class="container">
-                <table class="responsive-table">
+                <table class="responsive-table big-table">
                     <thead>
                     <tr>
                         <th class="show-on-small-screen">
@@ -78,23 +78,38 @@
                         <div class="modal-block">
                             <input type="hidden" id="color-doze-id" name="productColorDozeId">
                             <label for="product-group">Группа продуктов:</label>
-                            <input type="text" id="product-group" name="productGroup" required class="modal-input">
+                            <select class="modal-select" name="productGroup" id="product-group">
+                                <option th:each="productGroup: ${productGroups}"
+                                        th:text="${productGroup.productGroupName}"
+                                        th:value="${productGroup.productGroupId}"></option>
+                            </select>
                         </div>
                         <div class="modal-block">
                             <label for="master-batch">Суперконцентрат:</label>
-                            <input type="text" id="master-batch" name="masterBatch" required class="modal-input">
+                            <select id="master-batch" name="masterBatch" required class="modal-select">
+                                <option th:each="masterBatch: ${masterBatches}"
+                                        th:text="${masterBatch.materialName}"
+                                        th:value="${masterBatch.materialId}"></option>
+                            </select>
                         </div>
                         <div class="modal-block">
                             <label for="material-type">Тип материала:</label>
-                            <input type="text" id="material-type" name="materialType" required class="modal-input">
+                            <select id="material-type" name="materialType" required class="modal-select">
+                                <option th:each="materialType: ${materialTypes}"
+                                        th:value="${materialType.materialId}"
+                                        th:text="${materialType.materialName}"></option>
+                            </select>
                         </div>
                         <div class="modal-block">
                             <label for="color">цвет:</label>
-                            <input type="text" id="color" name="color" class="modal-input">
+                            <select id="color" name="color" class="modal-input list-left">
+                                <option th:each="color : ${colors}" th:value="${color.colorId}"
+                                        th:text="${color.colorCode} + ' ' + ${color.colorName}"></option>
+                            </select>
                         </div>
                         <div class="modal-block">
                             <label for="doze">Доза:</label>
-                            <input type="number" id="doze" name="doze" class="modal-input">
+                            <input type="number" step="0.01" id="doze" name="doze" class="modal-input">
                         </div>
                         <div class="button-block">
                             <button type="button" id="cancel-btn" class="button button-cancel">Отмена</button>

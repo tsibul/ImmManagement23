@@ -46,7 +46,7 @@ public class ProductColorDozeController extends BaseController {
         List<ProductColorDoze> productColorDozes;
         if (productGroupsId != 0) {
             productColorDozes = productColorDozeRepository.
-                    findProductColorDozeByProductColorDozeActiveAndColorColorIdOrderByColorColorCode
+                    findProductColorDozeByProductColorDozeActiveAndProductGroupProductGroupIdOrderByColorColorCode
                             (true, (long) productGroupsId);
         } else {
             productColorDozes = productColorDozeRepository.
@@ -68,13 +68,13 @@ public class ProductColorDozeController extends BaseController {
         return "colors/color_doze";
     }
 
-    @PostMapping("/colors_doze/add_doze")
+    @PostMapping("/color_doze/add_doze")
     public String addColor(@RequestParam int productGroupsId, @ModelAttribute ProductColorDoze productColorDoze) {
         productColorDozeRepository.save(productColorDoze);
         return "redirect:/color_doze/" + productGroupsId;
     }
 
-    @GetMapping("/colors/{id}/delete_doze")
+    @GetMapping("/color_doze/{id}/delete_doze")
     public String deleteColor(@PathVariable int id, @RequestParam int productGroupsId) {
         ProductColorDoze productColorDoze = productColorDozeRepository.findProductColorDozeByProductColorDozeId((long) id);
         productColorDoze.setProductColorDozeActive(false);

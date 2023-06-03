@@ -9,6 +9,6 @@ public interface ProductColorDozeRepository extends JpaRepository<ProductColorDo
     ProductColorDoze findProductColorDozeByProductColorDozeId(Long productColorDozeId);
     List<ProductColorDoze> findProductColorDozeByProductColorDozeActiveOrderByColorColorCode
             (boolean productColorDozeActive);
-    List<ProductColorDoze> findProductColorDozeByProductColorDozeActiveAndColorColorIdOrderByColorColorCode
-            (boolean productColorDozeActive, Long colorId);
+    List<ProductColorDoze> findProductColorDozeByProductColorDozeActiveAndProductGroupProductGroupIdOrderByColorColorCode
+            (boolean productColorDozeActive, Long productGroupId);
 }
