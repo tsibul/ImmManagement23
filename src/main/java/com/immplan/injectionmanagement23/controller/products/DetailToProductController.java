@@ -37,10 +37,10 @@ public class DetailToProductController extends BaseController {
     public String getProduct(Model model, @PathVariable int productsId) {
         List<DetailToProduct> detailToProducts;
         if (productsId == 0) {
-            detailToProducts = detailToProductRepository.findDetailToProductsByDetailToProductActiveOrderByProduct(true);
+            detailToProducts = detailToProductRepository.findDetailToProductsByDetailToProductActiveOrderByProductAscDetailIndexInProduct(true);
         } else {
             detailToProducts = detailToProductRepository.
-                    findDetailToProductsByDetailToProductActiveAndProductProductIdOrderByProductProductName(true, (long) productsId);
+                    findDetailToProductsByDetailToProductActiveAndProductProductIdOrderByProductProductNameAscDetailIndexInProduct(true, (long) productsId);
         }
         List<Product> products = productRepository.findProductByProductActiveOrderByProductCode(true);
         List<Detail> details = detailRepository.findDetailByDetailActiveOrderByDetailCode(true);

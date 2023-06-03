@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DetailToProductRepository extends JpaRepository<DetailToProduct, Long> {
     DetailToProduct findDetailToProductByDetailToProductId(Long detailToProductId);
-    List<DetailToProduct> findDetailToProductsByDetailToProductActiveOrderByProduct(boolean detailToProductActive);
-    List<DetailToProduct> findDetailToProductsByDetailToProductActiveAndProductProductIdOrderByProductProductName
+    List<DetailToProduct> findDetailToProductsByDetailToProductActiveOrderByProductAscDetailIndexInProduct(boolean detailToProductActive);
+    List<DetailToProduct> findDetailToProductsByDetailToProductActiveAndProductProductIdOrderByProductProductNameAscDetailIndexInProduct
             (boolean detailToProductActive, Long productId);
 }
