@@ -78,10 +78,11 @@
                         <div class="modal-block">
                             <input type="hidden" id="color-doze-id" name="productColorDozeId">
                             <label for="product-group">Группа продуктов:</label>
-                            <select class="modal-select" name="productGroup" id="product-group">
+                            <select class="modal-select" name="productGroup" id="product-group" onchange="showColorByProductGroup(this);">
                                 <option th:each="productGroup: ${productGroups}"
                                         th:text="${productGroup.productGroupName}"
-                                        th:value="${productGroup.productGroupId}"></option>
+                                        th:value="${productGroup.productGroupId}"
+                                        th:data-color="${productGroup.colorGroup.colorGroupId}"></option>
                             </select>
                         </div>
                         <div class="modal-block">
@@ -104,7 +105,9 @@
                             <label for="color">цвет:</label>
                             <select id="color" name="color" class="modal-input list-left">
                                 <option th:each="color : ${colors}" th:value="${color.colorId}"
-                                        th:text="${color.colorCode} + ' ' + ${color.colorName}"></option>
+                                        th:text="${color.colorCode} + ' ' + ${color.colorName}"
+                                        th:class="'color-' + ${color.colorGroup.colorGroupId}"
+                                        style="display: none"></option>
                             </select>
                         </div>
                         <div class="modal-block">
@@ -126,6 +129,7 @@
 <script src="/js/header.js"></script>
 <script type="module" src="/js/colors/color_doze.js"></script>
 <script type="module" src="/js/main_modal.js"></script>
+<script src="/js/colors/color_doze_extra.js"></script>
 </body>
 
 </html>
