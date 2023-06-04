@@ -60,7 +60,7 @@
                             th:data-id="${product.productGroup.productGroupId}"></td>
                         <td onclick="event.stopPropagation()">
                             <div class="button-block">
-                                <a th:href="'/details/'+ ${product.productId}" class="a_menu">
+                                <a th:href="'/detail/'+ ${product.productCode} + '/0'" class="a_menu">
                                     <button class="button button-submit">Детали</button>
                                 </a>&nbsp;
                                 <a th:href="'/products/'+ ${product.productId} + '/deleteproduct?productGroupsId=' + ${productGroupsId}">
