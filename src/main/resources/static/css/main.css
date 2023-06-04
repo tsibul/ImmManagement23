@@ -67,6 +67,12 @@ p {
     transition: background-color 0.3s;
 }
 
+.button-sm {
+    font-size: 14px;
+    margin: 1px;
+    padding: 4px 8px;
+}
+
 .button-submit{
     background-color: #fff;
     color: #3B83BD;
