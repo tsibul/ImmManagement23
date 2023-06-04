@@ -27,7 +27,7 @@
         </div>
         <div class="inner_content">
             <div class="container">
-                <table class="responsive-table">
+                <table class="responsive-table big-table">
                     <thead>
                     <tr>
                         <th>код цвета</th>
@@ -57,7 +57,7 @@
                         <td th:text="${color.colorGroup.colorGroupName}" data-label="цветовая группа"></td>
                         <td onclick="event.stopPropagation()">
                             <a th:href="'/colors/'+ ${color.colorGroup.colorGroupId} + '/' + ${color.colorId} + '/deletecolor'">
-                                <button class="button button-danger">Удалить
+                                <button class="button button-danger button-sm">Удалить
                                 </button>
                             </a>
                         </td>
