@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Сырье</title>
+    <title>Блок пресс-формы</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header_footer_menu.css">
     <link rel="stylesheet" href="/css/table.css">
@@ -14,50 +14,40 @@
 </head>
 
 <body>
-<div hidden th:data-materialtypesid="${materialTypesId}" th:data-producersid="${producersId}"
+<div hidden
      id="url-parameters"></div>
 <div class="wrapper">
     <div class="content">
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
             <div class="table-head">
-                <h2>Сырье</h2>
-                <button id="add-btn" class="button button-submit">Добавить сырье
+                <h2>Блок пресс-формы</h2>
+                <button id="add-btn" class="button button-submit">Добавить
                 </button>
             </div>
         </div>
         <div class="inner_content">
             <div class="container">
-                <table class="responsive-table">
+                <table class="responsive-table big-table">
                     <thead>
                     <tr>
-                        <th class="show-on-small-screen">
-                            <select class="menu-select" id="material-type-filter" name="materialType"
-                                    onchange="if (this.value) window.location.href = this.value">
-                                <option th:value="'/main_material/0/' + ${producersId}">тип материала</option>
-                                <option th:each="material_type : ${materialTypes}"
-                                        th:value="'/main_material/' + ${material_type.materialId} + '/' + ${producersId}"
-                                        th:selected="${materialTypesId} == ${material_type.materialId}"
-                                        th:text="${material_type.materialName}">
-                                </option>
-                            </select>
-                        </th>
                         <th>название</th>
-                        <th>цветной</th>
-                        <th>цвет</th>
-                        <th>цветовая группа</th>
-                        <th>вторичка</th>
-                        <th class="show-on-small-screen">
-                            <select class="menu-select" id="producer-filter" name="producer"
-                                    onchange="if (this.value) window.location.href = this.value">
-                                <option th:value="'/main_material/' + ${materialTypesId} + '/0'">производитель</option>
-                                <option th:each="producer : ${producers}"
-                                        th:text="${producer.producerName} + '(' + ${producer.country.countryName} + ')'"
-                                        th:value="'/main_material/' + ${materialTypesId} + '/' + ${producer.id}"
-                                        th:selected="${producersId} == ${producer.id}">
-                                </option>
-                            </select>
-                        </th>
+                        <th>инвентарный номер</th>
+                        <th>код</th>
+                        <th>производитель</th>
+                        <th>заводской номер</th>
+                        <th>год</th>
+                        <th>получено</th>
+                        <th>ширина, мм</th>
+                        <th>длина, мм</th>
+                        <th>сменный модификатор</th>
+                        <th>горячий канал</th>
+                        <th>диам. фланца подвижная плита</th>
+                        <th>диам. фланца неподвижная плита</th>
+                        <th>время монтажа, мин</th>
+                        <th>время демонтажа, мин</th>
+                        <th>установлена</th>
+                        <th>термопластавтомат</th>
                     </tr>
                     </thead>
                     <tbody>
