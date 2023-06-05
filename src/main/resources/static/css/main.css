@@ -40,6 +40,10 @@ p {
     margin: 0 auto;
 }
 
+.container-big {
+    max-width: 1700px;
+}
+
 .job_to_do{
     padding-top: 6px;
     padding-bottom: 6px;
@@ -51,6 +55,13 @@ p {
     margin-left: 33%;
     padding: 6px;
     width: 33%;
+}
+
+.show {
+    display:block;
+}
+.unshow {
+    display:none;
 }
 
 /* Стили кнопок */

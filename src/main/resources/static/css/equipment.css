@@ -69,8 +69,6 @@
     border-radius: 6px;
 }
 
-.show {display:block;}
-
 .imm_tech {
     display: none;
     flex-direction: column;
@@ -108,6 +106,7 @@
     width: 16mm;
     align-self: center;
 }
+
 
 @media screen and (max-width: 850px) {
     .imm_main {
