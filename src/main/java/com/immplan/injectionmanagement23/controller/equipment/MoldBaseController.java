@@ -31,7 +31,8 @@ public class MoldBaseController extends BaseController {
         this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
     }
 
-    @GetMapping("/mold_base")
+//TODO solve the problem with "3" in getmapping
+    @GetMapping("/equipment/3")
     public String getMoldBase(Model model) {
         List<InjectionMoldingMachine> injectionMoldingMachines = injectionMoldingMachineRepository.
                 findInjectionMoldingMachineByEquipmentActiveOrderByInternalNo(true);
@@ -43,13 +44,13 @@ public class MoldBaseController extends BaseController {
         return "equipment/mold_base";
     }
 
-    @PostMapping("/mold_base/add_mold_base")
+    @PostMapping("/equipment/3/add_mold_base")
     public String addMoldBase(@ModelAttribute MoldBase moldBase) {
         moldBaseRepository.save(moldBase);
         return "redirect:/mold_base";
     }
 
-    @GetMapping("/mold_base/{id}/delete_mold_base")
+    @GetMapping("/equipment/3/{id}/delete_mold_base")
     public String deleteColorGroup(@PathVariable int id) {
         MoldBase moldBase = moldBaseRepository.findMoldBaseByEquipmentId((long) id);
         moldBase.setEquipmentActive(false);
