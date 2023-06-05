@@ -42,6 +42,11 @@
     font-size: 90%;
 }
 
+.big-table th{
+    word-wrap: anywhere;
+    margin-left: 2px;
+}
+
 
 /* Медиа-запросы для адаптивности */
 @media (max-width: 600px) {
