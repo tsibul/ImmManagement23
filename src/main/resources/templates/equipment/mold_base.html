@@ -27,56 +27,66 @@
             </div>
         </div>
         <div class="inner_content">
-            <div class="container">
+            <div class="container container-big">
                 <table class="responsive-table big-table">
                     <thead>
                     <tr>
                         <th>название</th>
-                        <th>инвентарный номер</th>
-                        <th>код</th>
-                        <th>производитель</th>
-                        <th>заводской номер</th>
-                        <th>год</th>
-                        <th>получено</th>
-                        <th>ширина, мм</th>
-                        <th>длина, мм</th>
-                        <th>сменный модификатор</th>
-                        <th>горячий канал</th>
-                        <th>диам. фланца подвижная плита</th>
-                        <th>диам. фланца неподвижная плита</th>
-                        <th>время монтажа, мин</th>
-                        <th>время демонтажа, мин</th>
-                        <th>установлена</th>
-                        <th>термопластавтомат</th>
+                        <th>инв. номер</th>
+                        <th class="bux unshow">код</th>
+                        <th class="bux unshow">производитель</th>
+                        <th class="bux unshow">зав. номер</th>
+                        <th class="bux unshow">год вып.</th>
+                        <th class="bux unshow">на баланс</th>
+                        <th class="tech">ширина, мм</th>
+                        <th class="tech">длина, мм</th>
+                        <th class="tech">сменный модификатор</th>
+                        <th class="tech">горячий канал</th>
+                        <th class="tech">фланец подв. плита</th>
+                        <th class="tech">фланец неподв. плита</th>
+                        <th class="tech">время монтажа, мин</th>
+                        <th class="tech">время демонтажа, мин</th>
+                        <th>на ТПА</th>
+                        <th>ТПА</th>
+                        <th>
+                            <div class="button-block">
+                                <button type="button" class="button button-sm button-cancel" onclick="showBux();">Бух</button>
+                                <button type="button" class="button button-sm button-cancel" onclick="showTech();">Тех</button>
+                            </div>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="main_material:${mainMaterials}" class="modal-row"
-                        th:data-mainmaterialid="${main_material.materialId}">
-                        <td th:text="${main_material.materialType.materialName}"
-                            th:data-id="${main_material.materialType.materialId}" data-label="тип материала"></td>
-                        <td th:text="${main_material.materialName}" data-label="название"></td>
-                        <td data-label="цветной" th:data-id="${main_material.ifColor}"
-                            th:text="${main_material.ifColor ? 'да' : 'нет'}">
-                        </td>
-                        <td th:text="${main_material.color != null ? main_material.color.colorCode : ''}"
-                            data-label="цвет"
-                            th:data-id="${main_material.color != null ? main_material.color.colorId : 0}"></td>
-                        <td th:text="${main_material.color != null ? main_material.color.colorGroup.colorGroupName: ''}"
-                            th:data-id="${main_material.color != null ? main_material.color.colorGroup.colorGroupId : 0}"
-                            data-label="группа цветов"></td>
-                        <td data-label="вторичка" th:data-id="${main_material.ifReused}"
-                            th:text="${main_material.ifReused ? 'да': 'нет'}">
-                            >
-                        </td>
-                        <td th:text="${main_material.producer != null ? main_material.producer.producerName: ''}"
-                            data-label="производитель"
-                            th:data-id="${main_material.producer != null ? main_material.producer.id: 0}"></td>
+                    <tr th:each="moldBase : ${moldBases}" class="modal-row"
+                        th:data-moldbaseid="${moldBase.equipmentId}">
+                        <td th:text="${moldBase.equipmentName}" data-label="название"></td>
+                        <td th:text="${moldBase.inventoryCode}" data-label="инв. номер"></td>
+                        <td class="bux unshow" th:text="${moldBase.equipmentCode}" data-label="код"></td>
+                        <td class="bux unshow" th:text="${moldBase.equipmentProducer.producerName}" data-label="производитель"></td>
+                        <td class="bux unshow" th:text="${moldBase.partNumber}" data-label="зав. номер"></td>
+                        <td class="bux unshow" th:text="${moldBase.yearProduction}" data-label="год вып."></td>
+                        <td class="bux unshow" th:text="${moldBase.receiveDate}" data-label="на баланс"></td>
+                        <td class="tech" th:text="${moldBase.moldBaseWidthMm}" data-label="ширина, мм"></td>
+                        <td class="tech" th:text="${moldBase.moldBaseLengthMm}" data-label="длина, мм"></td>
+                        <td class="tech" th:text="${moldBase.ifChangeableModifier} ? 'да': 'нет'"
+                            th:data-bool="${moldBase.ifChangeableModifier}"
+                            data-label="сменный модификатор"></td>
+                        <td class="tech" th:text="${moldBase.hotRunner} ? 'да': 'нет'"
+                            th:data-bool="${moldBase.hotRunner}"
+                            data-label="горячий канал"></td>
+                        <td class="tech" th:text="${moldBase.movingPlateRingDiameterMm}" data-label="фланец подв. плита"></td>
+                        <td class="tech" th:text="${moldBase.fixedPlateRingDiameterMm}" data-label="фланец неподв. плита"></td>
+                        <td class="tech" th:text="${moldBase.moldMountTimeMin}" data-label="время монтажа, мин"></td>
+                        <td class="tech" th:text="${moldBase.moldReleaseTimeMin}" data-label="время  демонтажа, мин"></td>
+                        <td th:text="${moldBase.moldMounted} ? 'да': 'нет'"
+                            th:data-bool="${moldBase.moldMounted}"
+                            data-label="на ТПА"></td>
+                        <td th:text="${moldBase.moldMounted} ? ${moldBase.moldMountedTo.equipmentName} : ''"
+                            data-label="ТПА"></td>
                         <td onclick="event.stopPropagation()">
                             <div class="button-block">
-                                <a th:href="'/main_material/'+ ${main_material.materialId} + '/delete_main_material?materialTypesId=' +
-                                ${materialTypesId} + '&pproducersId=' + ${producersId}">
-                                    <button class="button button-danger">Удалить</button>
+                                <a th:href="'/equipment/Пресс-форма/'+ ${moldBase.equipmentId} + '/delete_mold_base'">
+                                    <button class="button button-danger button-sm">Удалить</button>
                                 </a>
                             </div>
                         </td>
@@ -167,9 +177,9 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/header.js"></script>
-<script type="module" src="/js/materials/main_material.js"></script>
+<script type="module" src="/js/equipment/mold_base.js"></script>
 <script type="module" src="/js/main_modal.js"></script>
-<script src="/js/materials/main_material_extra.js"></script>
+<script src="/js/equipment/equipment_extra.js"></script>
 
 </body>
 
