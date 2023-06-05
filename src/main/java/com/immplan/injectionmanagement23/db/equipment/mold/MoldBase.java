@@ -9,10 +9,10 @@ import org.hibernate.annotations.ColumnDefault;
 @Entity
 @Table(name = "mold_base")
 public class MoldBase extends Equipment {
-    @Column(name = "mold_base_width_mm", nullable = false)
-    private int moldBaseWidthMm;
-    @Column(name = "mold_base_length_mm", nullable = false)
-    private int moldBaseLengthMm;
+    @Column(name = "mold_base_width_mm")
+    private Integer moldBaseWidthMm;
+    @Column(name = "mold_base_length_mm")
+    private Integer moldBaseLengthMm;
     @Column(name = "if_changeable_modifier")
     @ColumnDefault("false")
     private boolean ifChangeableModifier;
@@ -20,13 +20,13 @@ public class MoldBase extends Equipment {
     @ColumnDefault("false")
     private boolean hotRunner;
     @Column(name = "moving_plate_ring_diameter_mm")
-    private int movingPlateRingDiameterMm;
+    private Integer movingPlateRingDiameterMm;
     @Column(name = "fixed_plate_ring_diameter_mm")
-    private int fixedPlateRingDiameterMm;
+    private Integer fixedPlateRingDiameterMm;
     @Column(name = "mold_mount_time_min")
-    private int moldMountTimeMin;
+    private Integer moldMountTimeMin;
     @Column(name = "mold_release_time_min")
-    private int moldReleaseTimeMin;
+    private Integer moldReleaseTimeMin;
     @Column(name = "mold_mounted")
     @ColumnDefault("true")
     private boolean moldMounted;
@@ -50,7 +50,7 @@ public class MoldBase extends Equipment {
         this.moldMountedTo = moldMountedTo;
     }
 
-    public int getMoldBaseWidthMm() {
+    public Integer getMoldBaseWidthMm() {
         return moldBaseWidthMm;
     }
 
@@ -58,7 +58,7 @@ public class MoldBase extends Equipment {
         this.moldBaseWidthMm = moldBaseWidthMm;
     }
 
-    public int getMoldBaseLengthMm() {
+    public Integer getMoldBaseLengthMm() {
         return moldBaseLengthMm;
     }
 
@@ -82,7 +82,7 @@ public class MoldBase extends Equipment {
         this.hotRunner = hotRunner;
     }
 
-    public int getMovingPlateRingDiameterMm() {
+    public Integer getMovingPlateRingDiameterMm() {
         return movingPlateRingDiameterMm;
     }
 
@@ -90,7 +90,7 @@ public class MoldBase extends Equipment {
         this.movingPlateRingDiameterMm = movingPlateRingDiameterMm;
     }
 
-    public int getFixedPlateRingDiameterMm() {
+    public Integer getFixedPlateRingDiameterMm() {
         return fixedPlateRingDiameterMm;
     }
 
@@ -98,7 +98,7 @@ public class MoldBase extends Equipment {
         this.fixedPlateRingDiameterMm = fixedPlateRingDiameterMm;
     }
 
-    public int getMoldMountTimeMin() {
+    public Integer getMoldMountTimeMin() {
         return moldMountTimeMin;
     }
 
@@ -106,7 +106,7 @@ public class MoldBase extends Equipment {
         this.moldMountTimeMin = moldMountTimeMin;
     }
 
-    public int getMoldReleaseTimeMin() {
+    public Integer getMoldReleaseTimeMin() {
         return moldReleaseTimeMin;
     }
 
