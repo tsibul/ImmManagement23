@@ -22,8 +22,14 @@
         <div class="container">
             <div class="table-head">
                 <h2>Блок пресс-формы</h2>
-                <button id="add-btn" class="button button-submit">Добавить
-                </button>
+                <div class="button-block">
+                    <button type="button" class="button button-cancel" onclick="showBux();">Бухгалтерская информация
+                    </button>
+                    <button type="button" class="button button-cancel" onclick="showTech();">Техническая информация
+                    </button>
+                    <button id="add-btn" class="button button-submit">Добавить блок пресс-формы
+                    </button>
+                </div>
             </div>
         </div>
         <div class="inner_content">
@@ -38,21 +44,17 @@
                         <th class="bux unshow">зав. номер</th>
                         <th class="bux unshow">год вып.</th>
                         <th class="bux unshow">на баланс</th>
-                        <th class="tech">ширина, мм</th>
-                        <th class="tech">длина, мм</th>
-                        <th class="tech">сменный модификатор</th>
-                        <th class="tech">горячий канал</th>
-                        <th class="tech">фланец подв. плита</th>
-                        <th class="tech">фланец неподв. плита</th>
-                        <th class="tech">время монтажа, мин</th>
-                        <th class="tech">время демонтажа, мин</th>
+                        <th class="tech unshow">ширина, мм</th>
+                        <th class="tech unshow">длина, мм</th>
+                        <th class="tech unshow">сменный модификатор</th>
+                        <th class="tech unshow">горячий канал</th>
+                        <th class="tech unshow">фланец подв. плита</th>
+                        <th class="tech unshow">фланец неподв. плита</th>
+                        <th class="tech unshow">время монтажа, мин</th>
+                        <th class="tech unshow">время демонтажа, мин</th>
                         <th>на ТПА</th>
                         <th>ТПА</th>
                         <th>
-                            <div class="button-block">
-                                <button type="button" class="button button-sm button-cancel" onclick="showBux();">Бух</button>
-                                <button type="button" class="button button-sm button-cancel" onclick="showTech();">Тех</button>
-                            </div>
                         </th>
                     </tr>
                     </thead>
@@ -62,22 +64,26 @@
                         <td th:text="${moldBase.equipmentName}" data-label="название"></td>
                         <td th:text="${moldBase.inventoryCode}" data-label="инв. номер"></td>
                         <td class="bux unshow" th:text="${moldBase.equipmentCode}" data-label="код"></td>
-                        <td class="bux unshow" th:text="${moldBase.equipmentProducer.producerName}" data-label="производитель"></td>
+                        <td class="bux unshow" th:text="${moldBase.equipmentProducer.producerName}"
+                            data-label="производитель"></td>
                         <td class="bux unshow" th:text="${moldBase.partNumber}" data-label="зав. номер"></td>
                         <td class="bux unshow" th:text="${moldBase.yearProduction}" data-label="год вып."></td>
                         <td class="bux unshow" th:text="${moldBase.receiveDate}" data-label="на баланс"></td>
-                        <td class="tech" th:text="${moldBase.moldBaseWidthMm}" data-label="ширина, мм"></td>
-                        <td class="tech" th:text="${moldBase.moldBaseLengthMm}" data-label="длина, мм"></td>
-                        <td class="tech" th:text="${moldBase.ifChangeableModifier} ? 'да': 'нет'"
+                        <td class="tech unshow" th:text="${moldBase.moldBaseWidthMm}" data-label="ширина, мм"></td>
+                        <td class="tech unshow" th:text="${moldBase.moldBaseLengthMm}" data-label="длина, мм"></td>
+                        <td class="tech unshow" th:text="${moldBase.ifChangeableModifier} ? 'да': 'нет'"
                             th:data-bool="${moldBase.ifChangeableModifier}"
                             data-label="сменный модификатор"></td>
-                        <td class="tech" th:text="${moldBase.hotRunner} ? 'да': 'нет'"
+                        <td class="tech unshow" th:text="${moldBase.hotRunner} ? 'да': 'нет'"
                             th:data-bool="${moldBase.hotRunner}"
                             data-label="горячий канал"></td>
-                        <td class="tech" th:text="${moldBase.movingPlateRingDiameterMm}" data-label="фланец подв. плита"></td>
-                        <td class="tech" th:text="${moldBase.fixedPlateRingDiameterMm}" data-label="фланец неподв. плита"></td>
-                        <td class="tech" th:text="${moldBase.moldMountTimeMin}" data-label="время монтажа, мин"></td>
-                        <td class="tech" th:text="${moldBase.moldReleaseTimeMin}" data-label="время  демонтажа, мин"></td>
+                        <td class="tech unshow" th:text="${moldBase.movingPlateRingDiameterMm}"
+                            data-label="фланец подв. плита"></td>
+                        <td class="tech unshow" th:text="${moldBase.fixedPlateRingDiameterMm}"
+                            data-label="фланец неподв. плита"></td>
+                        <td class="tech unshow" th:text="${moldBase.moldMountTimeMin}" data-label="время монтажа, мин"></td>
+                        <td class="tech unshow" th:text="${moldBase.moldReleaseTimeMin}"
+                            data-label="время  демонтажа, мин"></td>
                         <td th:text="${moldBase.moldMounted} ? 'да': 'нет'"
                             th:data-bool="${moldBase.moldMounted}"
                             data-label="на ТПА"></td>
@@ -116,7 +122,8 @@
                         </div>
                         <div class="modal-block">
                             <label for="if-color">цветной</label>
-                            <select class="modal-select" id="if-color" name="ifColor" required onchange="showColorGroup(this);">
+                            <select class="modal-select" id="if-color" name="ifColor" required
+                                    onchange="showColorGroup(this);">
                                 <option value="true">да</option>
                                 <option value="false">нет</option>
                             </select>
@@ -137,7 +144,8 @@
                             <select class="modal-select" id="color" name="color" required>
                                 <option class="" value="0">нет</option>
                                 <option class="list-left" th:each="color : ${colors}"
-                                        th:value="${color.colorId}" th:class="'color-' + ${color.colorGroup.colorGroupId}"
+                                        th:value="${color.colorId}"
+                                        th:class="'color-' + ${color.colorGroup.colorGroupId}"
                                         style="display: none"
                                         th:text="${color.colorCode} + ' ' + ${color.colorName} + '(' + ${color.colorGroup.colorGroupName} + ')'">
                                 </option>
