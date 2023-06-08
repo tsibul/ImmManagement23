@@ -96,6 +96,12 @@ p {
     border-color: #293133;
 }
 
+.button-cancel-pushed{
+    background-color: #293133;
+    color: #fff;
+    border-color: #293133;
+}
+
 .button-danger{
     background-color: #fff;
     color: crimson;
@@ -110,6 +116,11 @@ p {
 .button-cancel:hover {
     background-color: #293133;
     color: #fff;
+}
+
+.button-cancel-pushed:hover{
+    background-color: #fff;
+    color: #293133;
 }
 
 .button-danger:hover{
