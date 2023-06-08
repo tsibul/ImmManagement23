@@ -47,8 +47,17 @@ function fullData(row) {
 function emptyData() {
     return {
         equipmentId: 0,
+        inventoryCode: "02.",
+        yearProduction: "2022-01-01",
+        receiveDate: "2022-01-01",
+        moldBaseWidthMm: "0",
+        moldBaseLengthMm: "0",
         ifChangeableModifier: "true",
         hotRunner: "false",
+        movingPlateRingDiameterMm: "0",
+        fixedPlateRingDiameterMm: "0",
+        moldMountTimeMin: "0",
+        moldReleaseTimeMin: "0"
     };
 }
 

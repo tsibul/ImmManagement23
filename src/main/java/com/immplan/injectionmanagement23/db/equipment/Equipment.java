@@ -138,4 +138,8 @@ public abstract class Equipment {
     public void setEquipmentActive(boolean equipmentActive) {
         this.equipmentActive = equipmentActive;
     }
+
+    public void setInventoryCode(String inventoryCode) {
+        this.inventoryCode = inventoryCode;
+    }
 }

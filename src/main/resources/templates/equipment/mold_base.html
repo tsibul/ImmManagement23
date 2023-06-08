@@ -63,11 +63,11 @@
                         <td th:text="${moldBase.equipmentName}" data-label="название"></td>
                         <td th:text="${moldBase.inventoryCode}" data-label="инв. номер"></td>
                         <td class="bux unshow" th:text="${moldBase.equipmentCode}" data-label="код"></td>
-                        <td class="bux unshow" th:text="${moldBase.equipmentProducer.producerName}"
-                            data-label="производитель" th:data-id="${moldBase.equipmentProducer.id}"></td>
+                        <td class="bux unshow" th:text="${moldBase.equipmentProducer} != null ?${moldBase.equipmentProducer.producerName} : ''"
+                            data-label="производитель" th:data-id="${moldBase.equipmentProducer} != null ? ${moldBase.equipmentProducer.id} : ''"></td>
                         <td class="bux unshow" th:text="${moldBase.partNumber}" data-label="зав. номер"></td>
-                        <td class="bux unshow" th:text="${moldBase.yearProduction}" data-label="год вып."></td>
-                        <td class="bux unshow" th:text="${moldBase.receiveDate}" data-label="на баланс"></td>
+                        <td class="bux unshow" th:text="${#dates.format(moldBase.yearProduction,'yyyy')}" data-label="год вып."></td>
+                        <td class="bux unshow" th:text="${#dates.format(moldBase.receiveDate, 'yyyy-MM-dd')}" data-label="на баланс"></td>
                         <td class="tech unshow" th:text="${moldBase.moldBaseWidthMm}" data-label="ширина, мм"></td>
                         <td class="tech unshow" th:text="${moldBase.moldBaseLengthMm}" data-label="длина, мм"></td>
                         <td class="tech unshow" th:text="${moldBase.ifChangeableModifier} ? 'да': 'нет'"
@@ -110,7 +110,7 @@
                         </div>
                         <div class="modal-block">
                             <label for="inventory-code">инвентарный номер:</label>
-                            <input type="text" id="inventory-code" name="inventoryCode" required class="modal-input">
+                            <input type="text" id="inventory-code" name="invCode" required class="modal-input">
                         </div>
                         <div class="modal-block ">
                             <label for="code" class="bux unshow">код:</label>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="modal-block bux unshow">
                             <label for="producer" class="bux unshow">производитель:</label>
-                            <select class="modal-select bux unshow" id="producer" name="producer">
+                            <select class="modal-select bux unshow" id="producer" name="equipmentProducer">
                                 <option class="" value="0">нет</option>
                                 <option th:each="producer : ${producers}"
                                         th:text="${producer.producerName} + '(' + ${producer.country.countryName} + ')'"
@@ -132,12 +132,12 @@
                         </div>
                         <div class="modal-block">
                             <label for="year-production" class="bux unshow">год выпуска:</label>
-                            <input type="date" id="year-production" name="yearProduction"
+                            <input type="date" id="year-production" name="yearProd"
                                    class="modal-input bux unshow">
                         </div>
                         <div class="modal-block">
                             <label for="receive-date" class="bux unshow">ввод в эксплуатацию:</label>
-                            <input type="date" id="receive-date" name="receiveDate" class="modal-input bux unshow">
+                            <input type="date" id="receive-date" name="receive" class="modal-input bux unshow">
                         </div>
                         <div class="modal-block">
                             <label for="mold-base-width" class="tech unshow">ширина, мм:</label>
