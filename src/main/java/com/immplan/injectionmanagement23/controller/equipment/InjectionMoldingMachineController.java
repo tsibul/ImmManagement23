@@ -1,6 +1,7 @@
-package com.immplan.injectionmanagement23.controller;
+package com.immplan.injectionmanagement23.controller.equipment;
 
 
+import com.immplan.injectionmanagement23.controller.BaseController;
 import com.immplan.injectionmanagement23.db.equipment.injectionmoldingmachine.InjectionMoldingMachine;
 import com.immplan.injectionmanagement23.db.equipment.injectionmoldingmachine.repository.InjectionMoldingMachineRepository;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
@@ -11,30 +12,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class MainPageController  extends BaseController{
+public class InjectionMoldingMachineController extends BaseController {
 
     private final InjectionMoldingMachineRepository injectionMoldingMachineRepository;
 
-    public MainPageController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
-                              ColorGroupRepository colorGroupRepository) {
+    public InjectionMoldingMachineController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
+                                             ColorGroupRepository colorGroupRepository) {
         super(colorGroupRepository);
 
         this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
     }
 
-    @GetMapping("/")
-    public String mainPage(Model model) {
-        populateModel(model);
-        model.addAttribute("activePage", "home");
-        return "index";
-    }
 
-    @GetMapping("/techcard")
-    public String techCard(Model model) {
+    @GetMapping("/equipment/01.01")
+    public String equipmentPage(Model model) {
+        List<InjectionMoldingMachine> immList = injectionMoldingMachineRepository.findAll();
+        model.addAttribute("immList", immList);
         populateModel(model);
-        model.addAttribute("activePage", "techcard");
-        return "techcard";
+        model.addAttribute("activePage", "equipment");
+        return "equipment/imm";
     }
-
 
 }
