@@ -1,11 +1,7 @@
 package com.immplan.injectionmanagement23;
 
-import com.immplan.injectionmanagement23.controller.MainPageController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
