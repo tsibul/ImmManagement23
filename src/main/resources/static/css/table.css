@@ -85,4 +85,8 @@
         display: table-cell;
         width: 40%
     }
+
+    .responsive-table .unshow {
+        display: none;
+    }
 }
