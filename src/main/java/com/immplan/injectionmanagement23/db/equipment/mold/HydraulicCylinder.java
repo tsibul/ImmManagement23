@@ -9,6 +9,12 @@ import org.hibernate.annotations.ColumnDefault;
 @Entity
 @Table(name = "hydraulic_cylinder")
 public class HydraulicCylinder extends Equipment {
+    public HydraulicCylinder(){
+        super();
+        setEquipmentType("02.04");
+        setEquipmentKind("02");
+    }
+
     @Column(name = "stroke_length", nullable = false)
     private int strokeLengthMm;
     @Column(name = "cylinder_length_mm")

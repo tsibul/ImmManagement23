@@ -10,6 +10,7 @@ public class EquipmentType {
         equipmentTypeDict.put("02.01", "Пресс-форма");
         equipmentTypeDict.put("02.02", "Модификатор к пресс-форме");
         equipmentTypeDict.put("02.03", "Вставка в пресс-форму");
+        equipmentTypeDict.put("02.04", "Гидроцилиндр");
         equipmentTypeDict.put("03.01", "Охлаждение");
         equipmentTypeDict.put("03.02", "Воздух");
         equipmentTypeDict.put("03.03", "Термостаты");
