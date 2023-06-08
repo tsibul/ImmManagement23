@@ -64,7 +64,7 @@
                         <td th:text="${moldBase.inventoryCode}" data-label="инв. номер"></td>
                         <td class="bux unshow" th:text="${moldBase.equipmentCode}" data-label="код"></td>
                         <td class="bux unshow" th:text="${moldBase.equipmentProducer.producerName}"
-                            data-label="производитель"></td>
+                            data-label="производитель" th:data-id="${moldBase.equipmentProducer.id}"></td>
                         <td class="bux unshow" th:text="${moldBase.partNumber}" data-label="зав. номер"></td>
                         <td class="bux unshow" th:text="${moldBase.yearProduction}" data-label="год вып."></td>
                         <td class="bux unshow" th:text="${moldBase.receiveDate}" data-label="на баланс"></td>
