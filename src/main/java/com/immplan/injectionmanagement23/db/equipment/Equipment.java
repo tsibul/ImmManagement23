@@ -19,13 +19,13 @@ public abstract class Equipment {
     protected String equipmentName;
     @Column(length = 14, name = "inventory_code")
     private String inventoryCode;
-    @Column(name = "equipment_kind_id", nullable = false)
+    @Column(name = "equipment_kind_id", length = 2, nullable = false)
     private String equipmentKindId;
-    @Column(name = "equipment_kind", nullable = false)
+    @Column(name = "equipment_kind", length = 140, nullable = false)
     private String equipmentKind;
-    @Column(name = "equipment_type_id", nullable = false)
+    @Column(name = "equipment_type_id", length = 5, nullable = false)
     private String equipmentTypeId;
-    @Column(name = "equipment_type", nullable = false)
+    @Column(name = "equipment_type", length = 140, nullable = false)
     private String equipmentType;
     @Column(length = 2, name = "equipment_code")
     private String equipmentCode;
