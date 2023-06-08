@@ -19,6 +19,16 @@ public class MoldBaseToInjectionMoldingMachine {
     @ManyToOne(targetEntity = InjectionMoldingMachine.class)
     @JoinColumn(name = "injection_molding_machine", referencedColumnName = "equipment_id", nullable = false)
     private InjectionMoldingMachine injectionMoldingMachine;
+    @Column(name = "mold_base_imm_active", columnDefinition = "boolean default true", nullable = false)
+    private boolean moldBaseToInjectionMoldingMachineActive = true;
+
+    public boolean isMoldBaseToInjectionMoldingMachineActive() {
+        return moldBaseToInjectionMoldingMachineActive;
+    }
+
+    public void setMoldBaseToInjectionMoldingMachineActive(boolean moldBaseToInjectionMoldingMachineActive) {
+        this.moldBaseToInjectionMoldingMachineActive = moldBaseToInjectionMoldingMachineActive;
+    }
 
     public Long getId() {
         return id;
@@ -43,4 +53,8 @@ public class MoldBaseToInjectionMoldingMachine {
     public void setInjectionMoldingMachine(InjectionMoldingMachine injectionMoldingMachine) {
         this.injectionMoldingMachine = injectionMoldingMachine;
     }
+    public Long getInjectionMoldingMachineEquipmentId(){
+        return this.injectionMoldingMachine.getEquipmentId();
+    }
+
 }
