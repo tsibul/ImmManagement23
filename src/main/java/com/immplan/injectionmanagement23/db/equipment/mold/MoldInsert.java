@@ -8,6 +8,11 @@ import org.hibernate.annotations.ColumnDefault;
 @Entity
 @Table(name = "mold_insert")
 public class MoldInsert extends Equipment {
+    public MoldInsert(){
+        super();
+        setEquipmentType("02.03");
+        setEquipmentKind("02");
+    }
     @Column(name = "number_cavities", nullable = false)
     private int numberCavities;
     @Column(name = "number_working_cavities", nullable = false)

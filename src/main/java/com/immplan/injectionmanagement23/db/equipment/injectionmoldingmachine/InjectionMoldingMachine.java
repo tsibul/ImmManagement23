@@ -9,6 +9,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "injection_molding_machine")
 public class InjectionMoldingMachine extends Equipment {
+    public InjectionMoldingMachine(){
+        super();
+        setEquipmentType("01.01");
+        setEquipmentKind("01");
+    }
     @Column(name = "internal_no", length = 2)
     private String internalNo;
     @Column(name = "clamping_force_kN", nullable = false)

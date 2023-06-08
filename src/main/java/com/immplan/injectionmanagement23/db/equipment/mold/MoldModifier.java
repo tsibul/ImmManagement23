@@ -8,6 +8,11 @@ import org.hibernate.annotations.ColumnDefault;
 @Entity
 @Table(name = "mold_modifier")
 public class MoldModifier extends Equipment {
+    public MoldModifier(){
+        super();
+        setEquipmentType("02.02");
+        setEquipmentKind("02");
+    }
     @Column(name = "mold_weight_kg")
     private int moldWeightKg;
     @Column(name = "mold_height_mm")

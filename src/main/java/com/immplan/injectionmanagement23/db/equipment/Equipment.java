@@ -19,7 +19,6 @@ public abstract class Equipment {
     protected String equipmentName;
     @Column(length = 14, name = "inventory_code")
     private String inventoryCode;
-
     @Column(name = "equipment_kind_id", nullable = false)
     private String equipmentKindId;
     @Column(name = "equipment_kind", nullable = false)
