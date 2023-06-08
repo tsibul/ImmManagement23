@@ -7,4 +7,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "dryer")
 public class Dryer extends Equipment {
+    public Dryer(){
+        super();
+        setEquipmentType("03.06");
+        setEquipmentKind("03");
+    }
+
 }

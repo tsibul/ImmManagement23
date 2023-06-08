@@ -8,4 +8,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "grinder")
 public class Grinder extends Equipment {
+    public Grinder(){
+        super();
+        setEquipmentType("03.05");
+        setEquipmentKind("03");
+    }
+
 }

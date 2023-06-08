@@ -8,4 +8,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "thermo_controller")
 public class ThermoController extends Equipment {
+    public ThermoController(){
+        super();
+        setEquipmentType("03.04");
+        setEquipmentKind("03");
+    }
+
 }
