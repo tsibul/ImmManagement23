@@ -1,42 +1,14 @@
 package com.immplan.injectionmanagement23.db.equipment;
 
 
-import jakarta.persistence.*;
+import java.util.LinkedHashMap;
 
-@Entity
-@Table(name = "equipment_kind")
 public class EquipmentKind {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "kind_id")
-    private Long id;
-    @Column(name = "kind_node", length = 40, nullable = false)
-    private String kindName;
-    @Column(name = "kind_code", length = 2, nullable = false)
-    private String kindCode;
-
-
-    public String getKindCode() {
-        return kindCode;
-    }
-
-    public void setKindCode(String kindCode) {
-        this.kindCode = kindCode;
-    }
-
-    public String getKindName() {
-        return kindName;
-    }
-
-    public void setKindName(String kindName) {
-        this.kindName = kindName;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
+    public static LinkedHashMap<String, String> equipmentKindDict() {
+        LinkedHashMap<String, String> equipmentKindDict = new LinkedHashMap<>();
+        equipmentKindDict.put("01", "Станок/Линия");
+        equipmentKindDict.put("02", "Пресс-форма");
+        equipmentKindDict.put("03", "Периферия");
+        return equipmentKindDict;
     }
 }

@@ -4,8 +4,10 @@ import com.immplan.injectionmanagement23.db.producer.Producer;
 import jakarta.persistence.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.time.Year;
 import java.util.Date;
+
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentKind.equipmentKindDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentType.equipmentTypeDict;
 
 @MappedSuperclass
 public abstract class Equipment {
@@ -17,12 +19,15 @@ public abstract class Equipment {
     protected String equipmentName;
     @Column(length = 14, name = "inventory_code")
     private String inventoryCode;
-    @ManyToOne(targetEntity = EquipmentKind.class)
-    @JoinColumn(name = "equipment_kind", referencedColumnName = "kind_id", nullable = false)
-    protected EquipmentKind equipmentKind;
-    @ManyToOne(targetEntity = EquipmentType.class)
-    @JoinColumn(name = "equipment_type", referencedColumnName = "type_id", nullable = false)
-    private EquipmentType equipmentType;
+
+    @Column(name = "equipment_kind_id", nullable = false)
+    private String equipmentKindId;
+    @Column(name = "equipment_kind", nullable = false)
+    private String equipmentKind;
+    @Column(name = "equipment_type_id", nullable = false)
+    private String equipmentTypeId;
+    @Column(name = "equipment_type", nullable = false)
+    private String equipmentType;
     @Column(length = 2, name = "equipment_code")
     private String equipmentCode;
     @ManyToOne(targetEntity = Producer.class)
@@ -41,20 +46,24 @@ public abstract class Equipment {
         return equipmentId;
     }
 
-    public EquipmentKind getEquipmentKind() {
+    public String getEquipmentKind() {
         return equipmentKind;
     }
 
-    public void setEquipmentKind(EquipmentKind equipmentKind) {
-        this.equipmentKind = equipmentKind;
+    public void setEquipmentKind(String kindId){
+        if(equipmentKindDict().get(kindId) != null)
+        this.equipmentKindId = kindId;
+        this.equipmentKind = equipmentKindDict().get(kindId);
     }
 
-    public EquipmentType getEquipmentType() {
+    public String getEquipmentType() {
         return equipmentType;
     }
 
-    public void setEquipmentType(EquipmentType equipmentType) {
-        this.equipmentType = equipmentType;
+    public void setEquipmentType(String typeId){
+        if(equipmentTypeDict().get(typeId) != null)
+            this.equipmentTypeId = typeId;
+        this.equipmentType = equipmentTypeDict().get(typeId);
     }
 
     public String getEquipmentCode() {
@@ -113,10 +122,13 @@ public abstract class Equipment {
         return inventoryCode;
     }
 
+/*
     public void setInventoryCode(String inventoryCode) {
         this.inventoryCode = this.equipmentKind.getKindCode() + "." + this.equipmentType.getTypeCode() + "." + this.equipmentCode;
     }
 
+
+ */
     public static interface EquipmentKindRepository extends JpaRepository<EquipmentKind, Long> {
     }
 

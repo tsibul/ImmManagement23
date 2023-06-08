@@ -1,7 +1,6 @@
 package com.immplan.injectionmanagement23.controller.products;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import com.immplan.injectionmanagement23.db.product.product.ProductGroup;
 import com.immplan.injectionmanagement23.db.product.product.repository.ProductGroupRepository;
@@ -17,10 +16,9 @@ public class ProductGroupController extends BaseController {
 
     private final ProductGroupRepository productGroupRepository;
 
-    public ProductGroupController(EquipmentTypeRepository equipmentTypeRepository,
-                                  ColorGroupRepository colorGroupRepository,
+    public ProductGroupController(ColorGroupRepository colorGroupRepository,
                                   ProductGroupRepository productGroupRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+        super(colorGroupRepository);
         this.productGroupRepository = productGroupRepository;
     }
 

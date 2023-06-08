@@ -1,10 +1,8 @@
 package com.immplan.injectionmanagement23.controller.dicts;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.producer.Country;
 import com.immplan.injectionmanagement23.db.producer.repository.CountryRepository;
-import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +19,8 @@ public class CountryController extends BaseController {
 
     private final CountryRepository countryRepository;
 
-    public CountryController(EquipmentTypeRepository equipmentTypeRepository,
-                             ColorGroupRepository colorGroupRepository, CountryRepository countryRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+    public CountryController(ColorGroupRepository colorGroupRepository, CountryRepository countryRepository) {
+        super(colorGroupRepository);
         this.countryRepository = countryRepository;
     }
 

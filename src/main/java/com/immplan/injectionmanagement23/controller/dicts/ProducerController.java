@@ -1,7 +1,6 @@
 package com.immplan.injectionmanagement23.controller.dicts;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.producer.Country;
 import com.immplan.injectionmanagement23.db.producer.Producer;
 import com.immplan.injectionmanagement23.db.producer.repository.CountryRepository;
@@ -23,10 +22,9 @@ public class ProducerController extends BaseController {
     private final CountryRepository countryRepository;
     private final ProducerRepository producerRepository;
 
-    public ProducerController(EquipmentTypeRepository equipmentTypeRepository,
-                              ColorGroupRepository colorGroupRepository,
+    public ProducerController(ColorGroupRepository colorGroupRepository,
                               CountryRepository countryRepository, ProducerRepository producerRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+        super(colorGroupRepository);
 
         this.countryRepository = countryRepository;
         this.producerRepository = producerRepository;

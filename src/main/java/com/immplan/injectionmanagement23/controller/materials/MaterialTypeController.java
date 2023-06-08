@@ -1,8 +1,6 @@
 package com.immplan.injectionmanagement23.controller.materials;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
-import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import com.immplan.injectionmanagement23.db.rawmaterial.MaterialType;
 import com.immplan.injectionmanagement23.db.rawmaterial.repository.MaterialTypeRepository;
@@ -21,9 +19,8 @@ public class MaterialTypeController extends BaseController {
 
     private final MaterialTypeRepository materialTypeRepository;
 
-    public MaterialTypeController(EquipmentTypeRepository equipmentTypeRepository,
-                                  ColorGroupRepository colorGroupRepository, MaterialTypeRepository materialTypeRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+    public MaterialTypeController(ColorGroupRepository colorGroupRepository, MaterialTypeRepository materialTypeRepository) {
+        super(colorGroupRepository);
         this.materialTypeRepository = materialTypeRepository;
     }
 

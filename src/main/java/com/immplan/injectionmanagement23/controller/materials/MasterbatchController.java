@@ -1,13 +1,9 @@
 package com.immplan.injectionmanagement23.controller.materials;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.producer.Producer;
 import com.immplan.injectionmanagement23.db.producer.repository.ProducerRepository;
-import com.immplan.injectionmanagement23.db.product.color.Color;
-import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
-import com.immplan.injectionmanagement23.db.product.color.repository.ColorRepository;
 import com.immplan.injectionmanagement23.db.rawmaterial.MasterBatch;
 import com.immplan.injectionmanagement23.db.rawmaterial.repository.MasterBatchRepository;
 import org.springframework.stereotype.Controller;
@@ -26,10 +22,9 @@ public class MasterbatchController extends BaseController {
     private final ProducerRepository producerRepository;
     private final MasterBatchRepository masterBatchRepository;
 
-    public MasterbatchController(EquipmentTypeRepository equipmentTypeRepository,
-                                 ColorGroupRepository colorGroupRepository, ProducerRepository producerRepository,
+    public MasterbatchController(ColorGroupRepository colorGroupRepository, ProducerRepository producerRepository,
                                  MasterBatchRepository masterBatchRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+        super(colorGroupRepository);
         this.masterBatchRepository = masterBatchRepository;
         this.producerRepository = producerRepository;
     }

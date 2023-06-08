@@ -1,7 +1,6 @@
 package com.immplan.injectionmanagement23.controller.colors;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import org.springframework.stereotype.Controller;
@@ -12,9 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class ColorGroupController extends BaseController {
 
-    public ColorGroupController(EquipmentTypeRepository equipmentTypeRepository,
-                                ColorGroupRepository colorGroupRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+    public ColorGroupController(ColorGroupRepository colorGroupRepository) {
+        super(colorGroupRepository);
     }
 
     @GetMapping("/colorgroups")

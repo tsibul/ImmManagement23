@@ -1,7 +1,6 @@
 package com.immplan.injectionmanagement23.controller.colors;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.product.color.Color;
 import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
@@ -18,9 +17,9 @@ public class ColorController extends BaseController {
 
     private final ColorRepository colorRepository;
 
-    public ColorController(EquipmentTypeRepository equipmentTypeRepository, ColorRepository colorRepository,
+    public ColorController(ColorRepository colorRepository,
                            ColorGroupRepository colorGroupRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+        super(colorGroupRepository);
 
         this.colorRepository = colorRepository;
     }

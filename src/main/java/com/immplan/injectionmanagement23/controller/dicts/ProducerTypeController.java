@@ -1,7 +1,6 @@
 package com.immplan.injectionmanagement23.controller.dicts;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import org.springframework.stereotype.Controller;
 
@@ -11,9 +10,8 @@ public class ProducerTypeController extends BaseController {
 
 //    private final ProducerTypeRepository producerTypeRepository;
 
-    public ProducerTypeController(EquipmentTypeRepository equipmentTypeRepository,
-                                  ColorGroupRepository colorGroupRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+    public ProducerTypeController(ColorGroupRepository colorGroupRepository) {
+        super(colorGroupRepository);
 //        this.producerTypeRepository = producerTypeRepository;
     }
 /*

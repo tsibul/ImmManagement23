@@ -35,8 +35,8 @@
                        th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">Оборудование</a>
                     <ul class="dropdown_menu" id="equipment-menu">
                         <li class="drop_button" th:each="eqType : ${equipmentTypes}">
-                            <a th:href="'/equipment/' + ${eqType.id}" class="a_menu menu_active"
-                               th:text="${eqType.typeName}"></a>
+                            <a th:href="'/equipment/' + ${eqType.getKey()}" class="a_menu menu_active"
+                               th:text="${eqType.getValue()}"></a>
                         </li>
                     </ul>
                 </li>

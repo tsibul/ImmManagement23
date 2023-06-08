@@ -1,13 +1,9 @@
 package com.immplan.injectionmanagement23.controller;
 
 
-import com.immplan.injectionmanagement23.db.equipment.EquipmentType;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.equipment.injectionmoldingmachine.InjectionMoldingMachine;
 import com.immplan.injectionmanagement23.db.equipment.injectionmoldingmachine.repository.InjectionMoldingMachineRepository;
-import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
-import com.immplan.injectionmanagement23.db.product.color.repository.ColorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +16,8 @@ public class MainPageController  extends BaseController{
     private final InjectionMoldingMachineRepository injectionMoldingMachineRepository;
 
     public MainPageController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
-                              EquipmentTypeRepository equipmentTypeRepository,
                               ColorGroupRepository colorGroupRepository) {
-        super(equipmentTypeRepository, colorGroupRepository);
+        super(colorGroupRepository);
 
         this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
     }
