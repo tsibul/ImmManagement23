@@ -23,17 +23,14 @@ import java.util.List;
 @Controller
 public class MoldBaseController extends BaseController {
     private final MoldBaseRepository moldBaseRepository;
-    private final InjectionMoldingMachineRepository injectionMoldingMachineRepository;
     private final ProducerRepository producerRepository;
     private final MoldBaseToInjectionMoldingMachineRepository moldBaseToInjectionMoldingMachineRepository;
 
     public MoldBaseController(ColorGroupRepository colorGroupRepository,
-                              InjectionMoldingMachineRepository injectionMoldingMachineRepository,
                               MoldBaseRepository moldBaseRepository, ProducerRepository producerRepository,
                               MoldBaseToInjectionMoldingMachineRepository moldBaseToInjectionMoldingMachineRepository) {
         super(colorGroupRepository);
         this.moldBaseRepository = moldBaseRepository;
-        this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
         this.producerRepository = producerRepository;
         this.moldBaseToInjectionMoldingMachineRepository = moldBaseToInjectionMoldingMachineRepository;
     }
@@ -41,22 +38,10 @@ public class MoldBaseController extends BaseController {
 //TODO solve the problem with "02.01" in getmapping
     @GetMapping("/equipment/02.01")
     public String getMoldBase(Model model) {
-        List<Long> immIds;
-        List<Object[]> moldBases = new ArrayList<>();
-        List<InjectionMoldingMachine> injectionMoldingMachines = injectionMoldingMachineRepository.
-                findInjectionMoldingMachineByEquipmentActiveOrderByInternalNo(true);
-        List<MoldBase> moldBaseList = moldBaseRepository.findMoldBaseByEquipmentActiveOrderByInventoryCode(true);
+        List<MoldBase> moldBases = moldBaseRepository.findMoldBaseByEquipmentActiveOrderByInventoryCode(true);
         List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Пресс-формы");
-        for (MoldBase moldBase: moldBaseList)
-        {
-            immIds = moldBaseToInjectionMoldingMachineRepository.
-                    findEquipmentIdsByMoldBaseId(moldBase.getEquipmentId());
-            moldBases.add(new Object[]{moldBase, immIds});
-        }
-
         populateModel(model);
         model.addAttribute("activePage", "equipment");
-        model.addAttribute("iMM", injectionMoldingMachines);
         model.addAttribute("moldBases", moldBases);
         model.addAttribute("producers", producers);
         return "equipment/mold_base";

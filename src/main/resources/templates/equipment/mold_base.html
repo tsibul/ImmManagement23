@@ -52,7 +52,6 @@
                         <th class="tech unshow">фланец неподв. плита</th>
                         <th class="tech unshow">время монтажа, мин</th>
                         <th class="tech unshow">время демонтажа, мин</th>
-                        <th>на ТПА</th>
                         <th>ТПА</th>
                         <th>
                         </th>
@@ -60,39 +59,36 @@
                     </thead>
                     <tbody>
                     <tr th:each="moldBase : ${moldBases}" class="modal-row"
-                        th:data-moldbaseid="${moldBase[0].equipmentId}">
-                        <td th:text="${moldBase[0].equipmentName}" data-label="название"></td>
-                        <td th:text="${moldBase[0].inventoryCode}" data-label="инв. номер"></td>
-                        <td class="bux unshow" th:text="${moldBase[0].equipmentCode}" data-label="код"></td>
-                        <td class="bux unshow" th:text="${moldBase[0].equipmentProducer.producerName}"
+                        th:data-moldbaseid="${moldBase.equipmentId}">
+                        <td th:text="${moldBase.equipmentName}" data-label="название"></td>
+                        <td th:text="${moldBase.inventoryCode}" data-label="инв. номер"></td>
+                        <td class="bux unshow" th:text="${moldBase.equipmentCode}" data-label="код"></td>
+                        <td class="bux unshow" th:text="${moldBase.equipmentProducer.producerName}"
                             data-label="производитель"></td>
-                        <td class="bux unshow" th:text="${moldBase[0].partNumber}" data-label="зав. номер"></td>
-                        <td class="bux unshow" th:text="${moldBase[0].yearProduction}" data-label="год вып."></td>
-                        <td class="bux unshow" th:text="${moldBase[0].receiveDate}" data-label="на баланс"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].moldBaseWidthMm}" data-label="ширина, мм"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].moldBaseLengthMm}" data-label="длина, мм"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].ifChangeableModifier} ? 'да': 'нет'"
-                            th:data-bool="${moldBase[0].ifChangeableModifier}"
+                        <td class="bux unshow" th:text="${moldBase.partNumber}" data-label="зав. номер"></td>
+                        <td class="bux unshow" th:text="${moldBase.yearProduction}" data-label="год вып."></td>
+                        <td class="bux unshow" th:text="${moldBase.receiveDate}" data-label="на баланс"></td>
+                        <td class="tech unshow" th:text="${moldBase.moldBaseWidthMm}" data-label="ширина, мм"></td>
+                        <td class="tech unshow" th:text="${moldBase.moldBaseLengthMm}" data-label="длина, мм"></td>
+                        <td class="tech unshow" th:text="${moldBase.ifChangeableModifier} ? 'да': 'нет'"
+                            th:data-bool="${moldBase.ifChangeableModifier}"
                             data-label="сменный модификатор"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].hotRunner} ? 'да': 'нет'"
-                            th:data-bool="${moldBase[0].hotRunner}"
+                        <td class="tech unshow" th:text="${moldBase.hotRunner} ? 'да': 'нет'"
+                            th:data-bool="${moldBase.hotRunner}"
                             data-label="горячий канал"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].movingPlateRingDiameterMm}"
+                        <td class="tech unshow" th:text="${moldBase.movingPlateRingDiameterMm}"
                             data-label="фланец подв. плита"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].fixedPlateRingDiameterMm}"
+                        <td class="tech unshow" th:text="${moldBase.fixedPlateRingDiameterMm}"
                             data-label="фланец неподв. плита"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].moldMountTimeMin}"
+                        <td class="tech unshow" th:text="${moldBase.moldMountTimeMin}"
                             data-label="время монтажа, мин"></td>
-                        <td class="tech unshow" th:text="${moldBase[0].moldReleaseTimeMin}"
+                        <td class="tech unshow" th:text="${moldBase.moldReleaseTimeMin}"
                             data-label="время  демонтажа, мин"></td>
-                        <td th:text="${moldBase[0].moldMounted} ? 'да': 'нет'"
-                            th:data-bool="${moldBase[0].moldMounted}"
-                            data-label="на ТПА"></td>
-                        <td th:text="${moldBase[0].moldMounted} ? ${moldBase[0].moldMountedTo.equipmentName} : ''"
+                        <td th:text="${moldBase.moldMounted} ? ${moldBase.moldMountedTo.equipmentName} : 'нет'"
                             data-label="ТПА"></td>
                         <td onclick="event.stopPropagation()">
                             <div class="button-block">
-                                <a th:href="'/equipment/Пресс-форма/'+ ${moldBase[0].equipmentId} + '/delete_mold_base'">
+                                <a th:href="'/equipment/02.01/'+ ${moldBase.equipmentId} + '/delete_mold_base'">
                                     <button class="button button-danger button-sm">Удалить</button>
                                 </a>
                             </div>
@@ -188,24 +184,6 @@
                             <input type="number" id="release-time" name="moldReleaseTimeMin"
                                    class="modal-input tech unshow">
                         </div>
-                        <div class="modal-block">
-                            <label for="mold-mounted" class="">установлено:</label>
-                            <select id="mold-mounted" name="moldMounted" class="modal-select">
-                                <option value="true">да</option>
-                                <option value="false">нет</option>
-                            </select>
-                        </div>
-                        <div class="modal-block">
-                            <label for="mold-mounted-to" class="">на ТПА:</label>
-                            <select id="mold-mounted-to" name="moldMountedTo" class="modal-select">
-                                <option value=0>нет</option>
-                                <option th:each="imm : ${iMM}" th:value="${imm.equipmentId}"
-                                        th:text="${imm.equipmentName}">
-
-                                </option>
-                            </select>
-                        </div>
-
                         <div class="button-block">
                             <button type="button" id="cancel-btn" class="button button-cancel">Отмена
                             </button>
