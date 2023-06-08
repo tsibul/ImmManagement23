@@ -1,7 +1,6 @@
 package com.immplan.injectionmanagement23.controller.equipment;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.equipmentmatching.repository.MoldBaseToInjectionMoldingMachineRepository;
 import com.immplan.injectionmanagement23.db.equipment.mold.MoldBase;
 import com.immplan.injectionmanagement23.db.equipment.mold.repository.MoldBaseRepository;
 import com.immplan.injectionmanagement23.db.producer.Producer;
@@ -22,15 +21,12 @@ import java.util.List;
 public class MoldBaseController extends BaseController {
     private final MoldBaseRepository moldBaseRepository;
     private final ProducerRepository producerRepository;
-    private final MoldBaseToInjectionMoldingMachineRepository moldBaseToInjectionMoldingMachineRepository;
 
     public MoldBaseController(ColorGroupRepository colorGroupRepository,
-                              MoldBaseRepository moldBaseRepository, ProducerRepository producerRepository,
-                              MoldBaseToInjectionMoldingMachineRepository moldBaseToInjectionMoldingMachineRepository) {
+                              MoldBaseRepository moldBaseRepository, ProducerRepository producerRepository) {
         super(colorGroupRepository);
         this.moldBaseRepository = moldBaseRepository;
         this.producerRepository = producerRepository;
-        this.moldBaseToInjectionMoldingMachineRepository = moldBaseToInjectionMoldingMachineRepository;
     }
     @GetMapping("/equipment/02.01")
     public String getMoldBase(Model model) {
