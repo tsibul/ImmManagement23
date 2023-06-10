@@ -41,6 +41,20 @@ public abstract class Equipment {
     @Column(name = "equipment_active", columnDefinition = "boolean default true", nullable = false)
     private boolean equipmentActive = true;
 
+    protected String getEquipmentRussian(String fieldName) {
+        return switch (fieldName) {
+            case "equipmentName" -> "название";
+            case "inventoryCode" -> "инвентарный номер";
+            case "equipmentCode" -> "код";
+            case "equipmentProducer" -> "производитель";
+            case "partNumber" -> "заводской номер";
+            case "yearProduction" -> "год производства";
+            case "receiveDate" -> "дата приобретенияа";
+            default -> fieldName;
+        };
+    }
+
+
     public Long getEquipmentId() {
         return equipmentId;
     }
@@ -49,9 +63,9 @@ public abstract class Equipment {
         return equipmentKind;
     }
 
-    public void setEquipmentKind(String kindId){
-        if(equipmentKindDict().get(kindId) != null)
-        this.equipmentKindId = kindId;
+    public void setEquipmentKind(String kindId) {
+        if (equipmentKindDict().get(kindId) != null)
+            this.equipmentKindId = kindId;
         this.equipmentKind = equipmentKindDict().get(kindId);
     }
 
@@ -59,8 +73,8 @@ public abstract class Equipment {
         return equipmentType;
     }
 
-    public void setEquipmentType(String typeId){
-        if(equipmentTypeDict().get(typeId) != null)
+    public void setEquipmentType(String typeId) {
+        if (equipmentTypeDict().get(typeId) != null)
             this.equipmentTypeId = typeId;
         this.equipmentType = equipmentTypeDict().get(typeId);
     }
@@ -121,13 +135,13 @@ public abstract class Equipment {
         return inventoryCode;
     }
 
-/*
-    public void setInventoryCode(String inventoryCode) {
-        this.inventoryCode = this.equipmentKind.getKindCode() + "." + this.equipmentType.getTypeCode() + "." + this.equipmentCode;
-    }
+    /*
+        public void setInventoryCode(String inventoryCode) {
+            this.inventoryCode = this.equipmentKind.getKindCode() + "." + this.equipmentType.getTypeCode() + "." + this.equipmentCode;
+        }
 
 
- */
+     */
     public static interface EquipmentKindRepository extends JpaRepository<EquipmentKind, Long> {
     }
 
