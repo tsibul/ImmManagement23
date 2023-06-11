@@ -47,6 +47,10 @@
     margin-left: 2px;
 }
 
+.table-hidden{
+    display: none;
+}
+
 
 /* Медиа-запросы для адаптивности */
 @media (max-width: 600px) {
