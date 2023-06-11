@@ -2,8 +2,6 @@ package com.immplan.injectionmanagement23.db.equipment;
 
 import com.immplan.injectionmanagement23.db.producer.Producer;
 import jakarta.persistence.*;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.Date;
 
 import static com.immplan.injectionmanagement23.db.equipment.EquipmentKind.equipmentKindDict;
@@ -40,19 +38,6 @@ public abstract class Equipment {
     private Date receiveDate;
     @Column(name = "equipment_active", columnDefinition = "boolean default true", nullable = false)
     private boolean equipmentActive = true;
-
-    protected String getEquipmentRussian(String fieldName) {
-        return switch (fieldName) {
-            case "equipmentName" -> "название";
-            case "inventoryCode" -> "инвентарный номер";
-            case "equipmentCode" -> "код";
-            case "equipmentProducer" -> "производитель";
-            case "partNumber" -> "заводской номер";
-            case "yearProduction" -> "год производства";
-            case "receiveDate" -> "дата приобретенияа";
-            default -> fieldName;
-        };
-    }
 
 
     public Long getEquipmentId() {
@@ -142,7 +127,13 @@ public abstract class Equipment {
 
 
      */
-    public static interface EquipmentKindRepository extends JpaRepository<EquipmentKind, Long> {
+
+    public String getEquipmentKindId() {
+        return equipmentKindId;
+    }
+
+    public String getEquipmentTypeId() {
+        return equipmentTypeId;
     }
 
     public boolean isEquipmentActive() {
