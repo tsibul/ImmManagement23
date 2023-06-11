@@ -45,27 +45,6 @@ public class MoldModifier extends Equipment {
     @JoinColumn(name = "modifier_mounted_to", referencedColumnName = "equipment_id")
     private MoldBase modifierMountedTo;
 
-    @Override
-    public String getEquipmentRussian(String fieldName) {
-        String rusName = null;
-        switch (fieldName) {
-            case "moldWeightKg" -> rusName = "вес, кг";
-            case "moldHeightMm" -> rusName = "высота пресс-формы,мм";
-            case "ifAir" -> rusName = "воздух";
-            case "ifHydraulic" -> rusName = "гидравлика";
-            case "numberAirValves" -> rusName = "кол-во клапанов";
-            case "numberHydraulicCylinders" -> rusName = "кол-во цилиндров";
-            case "ifChangeableInsert" -> rusName = "сменная вставка";
-            case "modifierMountTime" -> rusName = "время монтажа, мин";
-            case "modifierReleaseTime" -> rusName = "время демонтажа";
-            case "singleModifier" -> rusName = "единственный модификатор";
-            case "modifierMounted" -> rusName = "установлено";
-            case "modifierMountedTo" -> rusName = "пресс-форма";
-            default -> rusName = super.getEquipmentRussian(fieldName);
-        }
-        return rusName;
-    }
-
     public boolean isModifierMounted() {
         return modifierMounted;
     }

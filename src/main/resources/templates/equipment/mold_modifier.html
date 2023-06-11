@@ -44,6 +44,10 @@
                         <th class="bux unshow">зав. номер</th>
                         <th class="bux unshow">год вып.</th>
                         <th class="bux unshow">на баланс</th>
+                        <th th:each="field: ${fields}"
+                            th:text="${field.nameRus}"
+                            th:class="${field.fieldClass}"></th>
+                        <!--
                         <th class="tech unshow">воздух</th>
                         <th class="tech unshow">кол-во клапанов</th>
                         <th class="tech unshow">гидравлика</th>
@@ -56,20 +60,53 @@
                         <th class="tech unshow">время демонтажа, мин</th>
                         <th>Пресс-форма</th>
                         <th>
-                        </th>
+                        </th>-->
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="mold:${moldModifiers}" class="modal-row"
-                        th:data-moldid="${mold.equipmentId}">
+                        th:data-equipmentid="${mold.equipmentId}">
                         <td th:text="${mold.equipmentName}" data-label="название"></td>
                         <td th:text="${mold.inventoryCode}" data-label="инв. номер"></td>
                         <td class="bux unshow" th:text="${mold.equipmentCode}" data-label="код"></td>
-                        <td class="bux unshow" th:text="${mold.equipmentProducer} != null ?${mold.equipmentProducer.producerName} : ''"
-                            data-label="производитель" th:data-id="${mold.equipmentProducer} != null ? ${mold.equipmentProducer.id} : ''"></td>
+                        <td class="bux unshow"
+                            th:text="${mold.equipmentProducer} != null ?${mold.equipmentProducer.producerName} : ''"
+                            data-label="производитель"
+                            th:data-id="${mold.equipmentProducer} != null ? ${mold.equipmentProducer.id} : ''"></td>
                         <td class="bux unshow" th:text="${mold.partNumber}" data-label="зав. номер"></td>
-                        <td class="bux unshow" th:text="${#dates.format(mold.yearProduction,'yyyy')}" data-label="год вып."></td>
-                        <td class="bux unshow" th:text="${#dates.format(mold.receiveDate, 'yyyy-MM-dd')}" data-label="на баланс"></td>
+                        <td class="bux unshow" th:text="${#dates.format(mold.yearProduction,'yyyy')}"
+                            data-label="год вып."></td>
+                        <td class="bux unshow" th:text="${#dates.format(mold.receiveDate, 'yyyy-MM-dd')}"
+                            data-label="на баланс"></td>
+                        <td th:each="field : ${fields}" th:with="fieldName=${field.engName}"
+                            th:data-label="${field.nameRus}" th:data-name="${field.engName}"
+                            th:data-type="${field.fieldType}"
+                            th:class="${field.fieldClass} + ' equipment-data'"
+                            th:data-bool="${field.fieldType == 'boolean'} ? ${mold[fieldName]}: ''"
+                            th:data-text="${field.fieldType == 'String' or field.fieldType == 'int'
+                            or field.fieldType == 'Long' or field.fieldType == 'Integer'
+                            or field.fieldType == 'double' or field.fieldType == 'float'}
+                            ?${mold[fieldName]}:''"
+                        >
+
+                            <span th:if="${field.fieldType == 'String' or field.fieldType == 'int'
+                            or field.fieldType == 'Long' or field.fieldType == 'Integer'
+                            or field.fieldType == 'double' or field.fieldType == 'float'}"
+                                      th:text="${mold[fieldName]}"
+                                      th:data-text="${mold[fieldName]}"></span>
+
+                            <span th:if="${field.fieldType == 'boolean'}"
+                                      th:text="${mold[fieldName] == 'true'? 'да' : 'нет'}"></span>
+
+                            <span th:unless="${field.fieldType == 'String' or field.fieldType == 'int'
+                            or field.fieldType == 'Long' or field.fieldType == 'Integer'
+                            or field.fieldType == 'double' or field.fieldType == 'float' or field.fieldType == 'Date'
+                            or field.fieldType == 'boolean' or field.fieldType == 'Producer'}"
+                                      th:text="${mold[fieldName]} != null ? ${mold[fieldName]['equipmentName']} : 'нет'"
+                                      th:data-id="${mold[fieldName]} != null ? ${mold[fieldName]['equipmentId']} : ''"></span>
+
+                        </td>
+                        <!--
                         <td class="tech unshow" th:text="${mold.ifAir} ? 'да': 'нет'"
                             th:data-bool="${mold.ifAir}"
                             data-label="воздух"></td>
@@ -77,7 +114,8 @@
                         <td class="tech unshow" th:text="${mold.ifHydraulic} ? 'да': 'нет'"
                             th:data-bool="${mold.ifHydraulic}"
                             data-label="гидравлика"></td>
-                        <td class="tech unshow" th:text="${mold.numberHydraulicCylinders}" data-label="кол-во цилиндров"></td>
+                        <td class="tech unshow" th:text="${mold.numberHydraulicCylinders}"
+                            data-label="кол-во цилиндров"></td>
                         <td class="tech unshow" th:text="${mold.moldWeightKg}" data-label="вес, кг"></td>
                         <td class="tech unshow" th:text="${mold.moldHeightMm}" data-label="высота, мм"></td>
                         <td class="tech unshow" th:text="${mold.ifChangeableInsert} ? 'да': 'нет'"
@@ -92,6 +130,7 @@
                             data-label="время  демонтажа, мин"></td>
                         <td th:text="${mold.modifierMounted} ? ${mold.modifierMountedTo.equipmentName} : 'нет'"
                             data-label="Пресс-форма"></td>
+                            -->
                         <td onclick="event.stopPropagation()">
                             <div class="button-block">
                                 <a th:href="'/equipment/02.02/'+ ${mold.equipmentId} + '/delete_mold_modifier'">
@@ -109,8 +148,8 @@
                     <span class="close" id="close-button">&times;</span>
                     <div id="modal-title" class="modal-title">Добавить</div>
                     <form id="modal-form" method="post">
+                        <input type="hidden" id="equipment-id" name="equipmentId">
                         <div class="modal-block">
-                            <input type="hidden" id="mold-base-id" name="equipmentId">
                             <label for="mold-base-name">название:</label>
                             <input type="text" id="mold-base-name" name="equipmentName" required class="modal-input">
                         </div>
@@ -145,6 +184,35 @@
                             <label for="receive-date" class="bux unshow">ввод в эксплуатацию:</label>
                             <input type="date" id="receive-date" name="receive" class="modal-input bux unshow">
                         </div>
+                        <div class="modal-block" th:each="field: ${fields}">
+                            <label th:for="${#strings.toLowerCase(field.engName)}"
+                                   th:text="${field.nameRus}" th:class="${field.fieldClass}"></label>
+                            <th:block th:if="${field.fieldType == 'String'}">
+                                <input type="text" th:id="${#strings.toLowerCase(field.engName)}"
+                                       th:name="${field.engName}"
+                                       th:class="'modal-input equipment-data ' + ${field.fieldClass}">
+                            </th:block>
+                            <th:block th:if="${field.fieldType == 'int' or field.fieldType == 'Integer'}">
+                                <input type="number" th:id="${#strings.toLowerCase(field.engName)}"
+                                       th:name="${field.engName}"
+                                       th:class="'modal-input equipment-data ' + ${field.fieldClass}">
+                            </th:block>
+                            <th:block th:if="${field.fieldType == 'double' or field.fieldType == 'float'}">
+                                <input type="number" th:id="${#strings.toLowerCase(field.engName)}"
+                                       th:name="${field.engName}"
+                                       th:class="'modal-input equipment-data ' + ${field.fieldClass}">
+                            </th:block>
+                            <th:block th:if="${field.fieldType == 'boolean'}">
+                                <select th:id="${#strings.toLowerCase(field.engName)}" th:name="${field.engName}"
+                                        th:class="'modal-select equipment-data ' + ${field.fieldClass}">
+                                    <option value="true">да</option>
+                                    <option value="false">нет</option>
+                                </select>
+                            </th:block>
+                        </div>
+
+
+                        <!--
                         <div class="modal-block">
                             <label for="mold-weight" class="tech unshow">вес, кг:</label>
                             <input type="number" id="mold-weight" name="moldWeightKg"
@@ -206,7 +274,7 @@
                                 <option value="true">да</option>
                                 <option value="false">нет</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="button-block">
                             <button type="button" id="cancel-btn" class="button button-cancel">Отмена
                             </button>

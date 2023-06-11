@@ -1,10 +1,8 @@
 package com.immplan.injectionmanagement23.controller.equipment;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
-import com.immplan.injectionmanagement23.db.equipment.equipmentmatching.repository.MoldBaseToInjectionMoldingMachineRepository;
-import com.immplan.injectionmanagement23.db.equipment.mold.MoldBase;
+import com.immplan.injectionmanagement23.db.equipment.EquipmentField;
 import com.immplan.injectionmanagement23.db.equipment.mold.MoldModifier;
-import com.immplan.injectionmanagement23.db.equipment.mold.repository.MoldBaseRepository;
 import com.immplan.injectionmanagement23.db.equipment.mold.repository.MoldModifierRepository;
 import com.immplan.injectionmanagement23.db.producer.Producer;
 import com.immplan.injectionmanagement23.db.producer.repository.ProducerRepository;
@@ -15,8 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentField.equipmentFields;
 
 
 @Controller
@@ -33,12 +34,14 @@ public class MoldModifierController extends BaseController {
 
     @GetMapping("/equipment/02.02")
     public String getMoldBase(Model model) {
+        ArrayList<EquipmentField> equipmentFields = equipmentFields(MoldModifier.class);
         List<MoldModifier> moldModifiers = moldModifierRepository.findMoldModifierByEquipmentActiveOrderByInventoryCode(true);
         List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Пресс-формы");
         populateModel(model);
         model.addAttribute("activePage", "equipment");
         model.addAttribute("moldModifiers", moldModifiers);
         model.addAttribute("producers", producers);
+        model.addAttribute("fields", equipmentFields);
         return "equipment/mold_modifier";
     }
 
