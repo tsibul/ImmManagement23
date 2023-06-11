@@ -19,10 +19,10 @@ function fullData(row) {
     return {
         productGroupsId: row.dataset.id,
         productGroup: row.querySelector("[data-label='группа продуктов']").dataset.id,
-        masterBatch: modal.querySelector("[data-label='суперконцентрат']").dataset.id,
-        materialType: modal.querySelector("[data-label='тип материала']").dataset.id,
-        color: modal.querySelector("[data-label='цвет']").dataset.id,
-        doze: modal.querySelector("[data-label='доза']").textContent
+        masterBatch: row.querySelector("[data-label='суперконцентрат']").dataset.id,
+        materialType: row.querySelector("[data-label='тип материала']").dataset.id,
+        color: row.querySelector("[data-label='цвет']").dataset.id,
+        doze: row.querySelector("[data-label='доза']").textContent
     };
 }
 
