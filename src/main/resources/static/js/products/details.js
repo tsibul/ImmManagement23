@@ -34,7 +34,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         detailId: 0,
         detailCode: productsId,
