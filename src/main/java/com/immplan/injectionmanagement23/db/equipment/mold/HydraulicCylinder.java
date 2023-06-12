@@ -2,7 +2,6 @@ package com.immplan.injectionmanagement23.db.equipment.mold;
 
 
 import com.immplan.injectionmanagement23.db.equipment.Equipment;
-import com.immplan.injectionmanagement23.db.equipment.mold.MoldInsert;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
