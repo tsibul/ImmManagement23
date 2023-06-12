@@ -30,7 +30,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         materialId: 0,
         materialTypeId: materialTypesId,

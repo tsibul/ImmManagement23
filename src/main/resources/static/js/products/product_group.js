@@ -20,7 +20,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         productGroupId: 0,
         colorGroupId: colorGroupsId

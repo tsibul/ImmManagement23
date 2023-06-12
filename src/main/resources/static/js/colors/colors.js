@@ -25,7 +25,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         colorId: 0,
         colorGroupId: colorGroupsId

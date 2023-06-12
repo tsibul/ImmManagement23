@@ -44,7 +44,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         equipmentId: 0,
         inventoryCode: "02.",

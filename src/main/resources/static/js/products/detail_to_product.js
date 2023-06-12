@@ -19,7 +19,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         detailToProductId: 0,
         product: productsId

@@ -21,7 +21,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         masterbatchId: 0,
         producerId: producersId

@@ -35,7 +35,7 @@ function initialize(inputsFn, emptyDataFn, fullDataFn, actionFn) {
 
 // Open the modal for adding a new color when the button is clicked
     addBtn.addEventListener("click", () => {
-        const modalData = emptyDataFn()
+        const modalData = emptyDataFn(modal)
         const titleText = "Добавить";
         openEditModal(titleText, modalData);
     });

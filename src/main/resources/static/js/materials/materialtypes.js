@@ -21,7 +21,7 @@ function fullData(row) {
     };
 }
 
-function emptyData() {
+function emptyData(modal) {
     return {
         materialTypeId: 0,
         drying: true,
