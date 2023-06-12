@@ -15,26 +15,26 @@ public class MoldModifier extends Equipment {
     }
 
     @Column(name = "mold_weight_kg")
-    private int moldWeightKg;
+    private Integer moldWeightKg;
     @Column(name = "mold_height_mm")
-    private int moldHeightMm;
+    private Integer moldHeightMm;
     @Column(name = "if_air")
     @ColumnDefault("false")
     private boolean ifAir;
     @Column(name = "number_air_valves")
-    private int numberAirValves;
+    private Integer numberAirValves;
     @Column(name = "if_hydraulic")
     @ColumnDefault("false")
     private boolean ifHydraulic;
     @Column(name = "number_hydraulic_cylinders")
-    private int numberHydraulicCylinders;
+    private Integer numberHydraulicCylinders;
     @Column(name = "if_changeable_insert")
     @ColumnDefault("false")
     private boolean ifChangeableInsert;
     @Column(name = "modifier_mount_time")
-    private int modifierMountTime;
+    private Integer modifierMountTime;
     @Column(name = "modifier_release_time")
-    private int modifierReleaseTime;
+    private Integer modifierReleaseTime;
     @Column(name = "single_modifier")
     @ColumnDefault("true")
     private boolean singleModifier;
@@ -67,19 +67,19 @@ public class MoldModifier extends Equipment {
         }
     }
 
-    public int getMoldWeightKg() {
+    public Integer getMoldWeightKg() {
         return moldWeightKg;
     }
 
-    public void setMoldWeightKg(int moldWeightKg) {
+    public void setMoldWeightKg(Integer moldWeightKg) {
         this.moldWeightKg = moldWeightKg;
     }
 
-    public int getMoldHeightMm() {
+    public Integer getMoldHeightMm() {
         return moldHeightMm;
     }
 
-    public void setMoldHeightMm(int moldHeightMm) {
+    public void setMoldHeightMm(Integer moldHeightMm) {
         this.moldHeightMm = moldHeightMm;
     }
 
@@ -99,19 +99,19 @@ public class MoldModifier extends Equipment {
         this.ifHydraulic = ifHydraulic;
     }
 
-    public int getNumberAirValves() {
+    public Integer getNumberAirValves() {
         return numberAirValves;
     }
 
-    public void setNumberAirValves(int numberAirValves) {
+    public void setNumberAirValves(Integer numberAirValves) {
         this.numberAirValves = numberAirValves;
     }
 
-    public int getNumberHydraulicCylinders() {
+    public Integer getNumberHydraulicCylinders() {
         return numberHydraulicCylinders;
     }
 
-    public void setNumberHydraulicCylinders(int numberHydraulicCylinders) {
+    public void setNumberHydraulicCylinders(Integer numberHydraulicCylinders) {
         this.numberHydraulicCylinders = numberHydraulicCylinders;
     }
 
@@ -123,19 +123,19 @@ public class MoldModifier extends Equipment {
         this.ifChangeableInsert = ifChangeableInsert;
     }
 
-    public int getModifierMountTime() {
+    public Integer getModifierMountTime() {
         return modifierMountTime;
     }
 
-    public void setModifierMountTime(int modifierMountTime) {
+    public void setModifierMountTime(Integer modifierMountTime) {
         this.modifierMountTime = modifierMountTime;
     }
 
-    public int getModifierReleaseTime() {
+    public Integer getModifierReleaseTime() {
         return modifierReleaseTime;
     }
 
-    public void setModifierReleaseTime(int modifierReleaseTime) {
+    public void setModifierReleaseTime(Integer modifierReleaseTime) {
         this.modifierReleaseTime = modifierReleaseTime;
     }
 
