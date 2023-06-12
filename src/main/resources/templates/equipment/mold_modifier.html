@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Модификатор пресс-формы</title>
+    <title th:text="${title}"></title>
     <link rel="stylesheet" href="/css/header_footer_menu.css">
     <link rel="stylesheet" href="/css/table.css">
     <link rel="stylesheet" href="/css/modal.css">
@@ -21,7 +21,7 @@
         <div th:insert="~{menu/header :: header}"></div>
         <div class="container">
             <div class="table-head">
-                <h2>Модификатор пресс-формы</h2>
+                <h2 th:text="${title}"></h2>
                 <div class="button-block">
                     <button type="button" class="button button-cancel" onclick="showBux(this);">Бухгалтерская информация
                     </button>
