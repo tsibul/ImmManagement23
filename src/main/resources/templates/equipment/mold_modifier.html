@@ -184,27 +184,28 @@
                             <label for="receive-date" class="bux unshow">ввод в эксплуатацию:</label>
                             <input type="date" id="receive-date" name="receive" class="modal-input bux unshow">
                         </div>
-                        <div class="modal-block" th:each="field: ${fields}" th:data-type="${field.fieldType}">
+                        <div class="modal-block" th:each="field: ${fields}" >
                             <label th:for="${#strings.toLowerCase(field.engName)}"
                                    th:text="${field.nameRus}" th:class="${field.fieldClass}"></label>
                             <th:block th:if="${field.fieldType == 'String'}">
                                 <input type="text" th:id="${#strings.toLowerCase(field.engName)}"
-                                       th:name="${field.engName}"
+                                       th:name="${field.engName}" th:data-type="${field.fieldType}"
                                        th:class="'modal-input equipment-data ' + ${field.fieldClass}">
                             </th:block>
                             <th:block th:if="${field.fieldType == 'int' or field.fieldType == 'Integer'}">
                                 <input type="number" th:id="${#strings.toLowerCase(field.engName)}"
-                                       th:name="${field.engName}"
+                                       th:name="${field.engName}" th:data-type="${field.fieldType}"
                                        th:class="'modal-input equipment-data ' + ${field.fieldClass}">
                             </th:block>
                             <th:block th:if="${field.fieldType == 'double' or field.fieldType == 'float'}">
                                 <input type="number" th:id="${#strings.toLowerCase(field.engName)}"
-                                       th:name="${field.engName}"
+                                       th:name="${field.engName}" th:data-type="${field.fieldType}"
                                        th:class="'modal-input equipment-data ' + ${field.fieldClass}">
                             </th:block>
                             <th:block th:if="${field.fieldType == 'boolean'}">
                                 <select th:id="${#strings.toLowerCase(field.engName)}" th:name="${field.engName}"
-                                        th:class="'modal-select equipment-data ' + ${field.fieldClass}">
+                                        th:class="'modal-select equipment-data ' + ${field.fieldClass}"
+                                        th:data-type="${field.fieldType}">
                                     <option value="true">да</option>
                                     <option value="false">нет</option>
                                 </select>
