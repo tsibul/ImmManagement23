@@ -184,7 +184,7 @@
                             <label for="receive-date" class="bux unshow">ввод в эксплуатацию:</label>
                             <input type="date" id="receive-date" name="receive" class="modal-input bux unshow">
                         </div>
-                        <div class="modal-block" th:each="field: ${fields}">
+                        <div class="modal-block" th:each="field: ${fields}" th:data-type="${field.fieldType}">
                             <label th:for="${#strings.toLowerCase(field.engName)}"
                                    th:text="${field.nameRus}" th:class="${field.fieldClass}"></label>
                             <th:block th:if="${field.fieldType == 'String'}">
