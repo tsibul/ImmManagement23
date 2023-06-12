@@ -18,7 +18,7 @@ public class Producer {
     @Column(name = "producer_type", nullable = false)
     private String producerType;
     @Column(name = "producer_type_id", nullable = false)
-    private int producerTypeId;
+    private Integer producerTypeId;
     @Column(name = "producer_active", columnDefinition = "boolean default true", nullable = false)
     private boolean producerActive = true;
 
@@ -58,7 +58,7 @@ public class Producer {
         return producerType;
     }
 
-    public void setProducerType(int producerTypeId) {
+    public void setProducerType(Integer producerTypeId) {
         this.producerType = producerTypeDict().get(producerTypeId);
     }
 
@@ -70,7 +70,7 @@ public class Producer {
         return producerTypeId;
     }
 
-    public void setProducerTypeId(int producerTypeId) {
+    public void setProducerTypeId(Integer producerTypeId) {
         this.producerTypeId = producerTypeId;
     }
 }

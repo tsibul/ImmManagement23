@@ -17,11 +17,11 @@ public class Detail {
     @JoinColumn(name = "detail_code", referencedColumnName = "product_code")
     private Product detailCode;
     @Column(name = "index_in_product", nullable = false)
-    private int indexInProduct;
+    private Integer indexInProduct;
     @Column(name = "detail_name", nullable = false)
     private String detailName;
     @Column(name = "detail_base_weight_g", precision = 1, nullable = false)
-    private double detailBaseWeightG;
+    private Double detailBaseWeightG;
     @ManyToOne(targetEntity = MaterialType.class)
     @JoinColumn(name = "main_material", referencedColumnName = "material_id")
     private MaterialType materialType;
@@ -29,15 +29,15 @@ public class Detail {
     @JoinColumn(name = "mold_insert", referencedColumnName = "equipment_id", nullable = false)
     private MoldInsert moldInsert;
     @Column(name = "stroke_weight_g", precision = 1)
-    private double stokeWeightG;
+    private Double stokeWeightG;
     @Column(name = "gate_weight_g", precision = 1)
-    private double gateWeightG;
+    private Double gateWeightG;
     @Column(name = "standard_items_per_box", nullable = false)
-    private int standardItemsPerBox;
+    private Integer standardItemsPerBox;
     @Column(name = "detail_active", columnDefinition = "boolean default true", nullable = false)
     private boolean detailActive = true;
 
-    public int getIndexInProduct() {
+    public Integer getIndexInProduct() {
         return indexInProduct;
     }
 
@@ -61,7 +61,7 @@ public class Detail {
         return detailBaseWeightG;
     }
 
-    public void setDetailBaseWeightG(int detailBaseWeightG) {
+    public void setDetailBaseWeightG(Double detailBaseWeightG) {
         this.detailBaseWeightG = detailBaseWeightG;
     }
 
@@ -73,31 +73,28 @@ public class Detail {
         this.moldInsert = moldInsert;
     }
 
-    public void setDetailBaseWeightG(double detailBaseWeightG) {
-        this.detailBaseWeightG = detailBaseWeightG;
-    }
 
-    public double getStokeWeightG() {
+    public Double getStokeWeightG() {
         return stokeWeightG;
     }
 
-    public void setStokeWeightG(double stokeWeightG) {
+    public void setStokeWeightG(Double stokeWeightG) {
         this.stokeWeightG = stokeWeightG;
     }
 
-    public double getGateWeightG() {
+    public Double getGateWeightG() {
         return gateWeightG;
     }
 
-    public void setGateWeightG(double gateWeightG) {
+    public void setGateWeightG(Double gateWeightG) {
         this.gateWeightG = gateWeightG;
     }
 
-    public int getStandardItemsPerBox() {
+    public Integer getStandardItemsPerBox() {
         return standardItemsPerBox;
     }
 
-    public void setStandardItemsPerBox(int standardItemsPerBox) {
+    public void setStandardItemsPerBox(Integer standardItemsPerBox) {
         this.standardItemsPerBox = standardItemsPerBox;
     }
 
@@ -125,7 +122,7 @@ public class Detail {
         this.detailCode = detailCode;
     }
 
-    public void setIndexInProduct(int indexInProduct) {
+    public void setIndexInProduct(Integer indexInProduct) {
         this.indexInProduct = indexInProduct;
     }
 }

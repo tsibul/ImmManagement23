@@ -25,7 +25,7 @@ public class ProductColorDoze {
     @JoinColumn(name = "color", referencedColumnName = "color_id")
     private Color color;
     @Column(name = "doze", precision = 2)
-    private double doze;
+    private Double doze;
     @Column(name = "product_color_doze_active", columnDefinition = "boolean default true", nullable = false)
     private boolean productColorDozeActive = true;
 
@@ -61,11 +61,11 @@ public class ProductColorDoze {
         this.color = color;
     }
 
-    public double getDoze() {
+    public Double getDoze() {
         return doze;
     }
 
-    public void setDoze(double doze) {
+    public void setDoze(Double doze) {
         this.doze = doze;
     }
 

@@ -14,15 +14,15 @@ public class MoldInsert extends Equipment {
         setEquipmentKind("02");
     }
     @Column(name = "number_cavities", nullable = false)
-    private int numberCavities;
+    private Integer numberCavities;
     @Column(name = "number_working_cavities", nullable = false)
-    private int numberWorkingCavities;
+    private Integer numberWorkingCavities;
     @Column(name = "plan_cycle_time")
-    private int planCycleTime;
+    private Integer planCycleTime;
     @Column(name = "insert_mount_time")
-    private int insertMountTime;
+    private Integer insertMountTime;
     @Column(name = "insert_release_time")
-    private int insertReleaseTime;
+    private Integer insertReleaseTime;
     @Column(name = "single_insert")
     @ColumnDefault("true")
     private boolean singleInsert;
@@ -69,35 +69,35 @@ public class MoldInsert extends Equipment {
         return numberCavities;
     }
 
-    public void setNumberCavities(int numberCavities) {
+    public void setNumberCavities(Integer numberCavities) {
         this.numberCavities = numberCavities;
     }
 
-    public int getNumberWorkingCavities() {
+    public Integer getNumberWorkingCavities() {
         return numberWorkingCavities;
     }
 
-    public void setNumberWorkingCavities(int numberWorkingCavities) {
+    public void setNumberWorkingCavities(Integer numberWorkingCavities) {
         this.numberWorkingCavities = numberWorkingCavities;
     }
 
-    public int getPlanCycleTime() {
+    public Integer getPlanCycleTime() {
         return planCycleTime;
     }
 
-    public void setPlanCycleTime(int planCycleTime) {
+    public void setPlanCycleTime(Integer planCycleTime) {
         this.planCycleTime = planCycleTime;
     }
 
-    public int getInsertMountTime() {
+    public Integer getInsertMountTime() {
         return insertMountTime;
     }
 
-    public void setInsertMountTime(int insertMountTime) {
+    public void setInsertMountTime(Integer insertMountTime) {
         this.insertMountTime = insertMountTime;
     }
 
-    public int getInsertReleaseTime() {
+    public Integer getInsertReleaseTime() {
         return insertReleaseTime;
     }
 

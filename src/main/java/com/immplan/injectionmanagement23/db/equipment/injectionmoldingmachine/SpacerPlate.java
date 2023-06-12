@@ -15,27 +15,91 @@ public class SpacerPlate extends Equipment {
     }
 
     @Column(name = "plate_height_mm", nullable = false)
-    private int plateHeightMm;
+    private Integer plateHeightMm;
     @Column(name = "plate_width_mm", nullable = false)
-    private int plateWidthMm;
+    private Integer plateWidthMm;
     @Column(name = "plate_length_mm", nullable = false)
-    private int plateLengthMm;
+    private Integer plateLengthMm;
     @Column(name = "plate_weight_kg")
-    private int plateWeightKg;
+    private Integer plateWeightKg;
     @Column(name = "plate_mount_time_min")
-    private int plateMountTimeMin;
+    private Integer plateMountTimeMin;
     @Column(name = "plate_release_time_min")
-    private int plateReleaseTimeMin;
+    private Integer plateReleaseTimeMin;
     @Column(name = "mounting_ring_diameter_mm")
-    private int mountingRingDiameterMm;
+    private Integer mountingRingDiameterMm;
     @Column(name = "mold_ring_diameter_mm")
-    private int moldRingDiameterMm;
+    private Integer moldRingDiameterMm;
     @Column(name = "plate_mounted")
     @ColumnDefault("true")
     private boolean plateMounted;
     @ManyToOne(targetEntity = InjectionMoldingMachine.class)
     @JoinColumn(name = "plate_mounted_to", referencedColumnName = "equipment_id")
     private InjectionMoldingMachine plateMountedTo;
+
+    public Integer getPlateHeightMm() {
+        return plateHeightMm;
+    }
+
+    public void setPlateHeightMm(Integer plateHeightMm) {
+        this.plateHeightMm = plateHeightMm;
+    }
+
+    public Integer getPlateWidthMm() {
+        return plateWidthMm;
+    }
+
+    public void setPlateWidthMm(Integer plateWidthMm) {
+        this.plateWidthMm = plateWidthMm;
+    }
+
+    public Integer getPlateLengthMm() {
+        return plateLengthMm;
+    }
+
+    public void setPlateLengthMm(Integer plateLengthMm) {
+        this.plateLengthMm = plateLengthMm;
+    }
+
+    public Integer getPlateWeightKg() {
+        return plateWeightKg;
+    }
+
+    public void setPlateWeightKg(Integer plateWeightKg) {
+        this.plateWeightKg = plateWeightKg;
+    }
+
+    public Integer getPlateMountTimeMin() {
+        return plateMountTimeMin;
+    }
+
+    public void setPlateMountTimeMin(Integer plateMountTimeMin) {
+        this.plateMountTimeMin = plateMountTimeMin;
+    }
+
+    public Integer getPlateReleaseTimeMin() {
+        return plateReleaseTimeMin;
+    }
+
+    public void setPlateReleaseTimeMin(Integer plateReleaseTimeMin) {
+        this.plateReleaseTimeMin = plateReleaseTimeMin;
+    }
+
+    public Integer getMountingRingDiameterMm() {
+        return mountingRingDiameterMm;
+    }
+
+    public void setMountingRingDiameterMm(Integer mountingRingDiameterMm) {
+        this.mountingRingDiameterMm = mountingRingDiameterMm;
+    }
+
+    public Integer getMoldRingDiameterMm() {
+        return moldRingDiameterMm;
+    }
+
+    public void setMoldRingDiameterMm(Integer moldRingDiameterMm) {
+        this.moldRingDiameterMm = moldRingDiameterMm;
+    }
 
     public boolean isPlateMounted() {
         return plateMounted;
@@ -51,69 +115,5 @@ public class SpacerPlate extends Equipment {
 
     public void setPlateMountedTo(InjectionMoldingMachine plateMountedTo) {
         this.plateMountedTo = plateMountedTo;
-    }
-
-    public int getPlateHeightMm() {
-        return plateHeightMm;
-    }
-
-    public void setPlateHeightMm(int plateHeightMm) {
-        this.plateHeightMm = plateHeightMm;
-    }
-
-    public int getPlateWidthMm() {
-        return plateWidthMm;
-    }
-
-    public void setPlateWidthMm(int plateWidthMm) {
-        this.plateWidthMm = plateWidthMm;
-    }
-
-    public int getPlateLengthMm() {
-        return plateLengthMm;
-    }
-
-    public void setPlateLengthMm(int plateLengthMm) {
-        this.plateLengthMm = plateLengthMm;
-    }
-
-    public int getPlateWeightKg() {
-        return plateWeightKg;
-    }
-
-    public void setPlateWeightKg(int plateWeightKg) {
-        this.plateWeightKg = plateWeightKg;
-    }
-
-    public int getPlateMountTimeMin() {
-        return plateMountTimeMin;
-    }
-
-    public void setPlateMountTimeMin(int plateMountTimeMin) {
-        this.plateMountTimeMin = plateMountTimeMin;
-    }
-
-    public int getPlateReleaseTimeMin() {
-        return plateReleaseTimeMin;
-    }
-
-    public void setPlateReleaseTimeMin(int plateReleaseTimeMin) {
-        this.plateReleaseTimeMin = plateReleaseTimeMin;
-    }
-
-    public int getMountingRingDiameterMm() {
-        return mountingRingDiameterMm;
-    }
-
-    public void setMountingRingDiameterMm(int mountingRingDiameterMm) {
-        this.mountingRingDiameterMm = mountingRingDiameterMm;
-    }
-
-    public int getMoldRingDiameterMm() {
-        return moldRingDiameterMm;
-    }
-
-    public void setMoldRingDiameterMm(int moldRingDiameterMm) {
-        this.moldRingDiameterMm = moldRingDiameterMm;
     }
 }

@@ -16,17 +16,41 @@ public class HydraulicCylinder extends Equipment {
     }
 
     @Column(name = "stroke_length", nullable = false)
-    private int strokeLengthMm;
+    private Integer strokeLengthMm;
     @Column(name = "cylinder_length_mm")
-    private int cylinderLengthMm;
+    private Integer cylinderLengthMm;
     @Column(name = "cylinder_width_mm")
-    private int cylinderWidthMm;
+    private Integer cylinderWidthMm;
     @Column(name = "cylinder_mounted")
     @ColumnDefault("true")
     private boolean cylinderMounted;
     @ManyToOne(targetEntity = MoldInsert.class)
     @JoinColumn(name = "cylinder_mounted_to", referencedColumnName = "equipment_id")
     private MoldInsert cylinderMountedTo;
+
+    public Integer getStrokeLengthMm() {
+        return strokeLengthMm;
+    }
+
+    public void setStrokeLengthMm(Integer strokeLengthMm) {
+        this.strokeLengthMm = strokeLengthMm;
+    }
+
+    public Integer getCylinderLengthMm() {
+        return cylinderLengthMm;
+    }
+
+    public void setCylinderLengthMm(Integer cylinderLengthMm) {
+        this.cylinderLengthMm = cylinderLengthMm;
+    }
+
+    public Integer getCylinderWidthMm() {
+        return cylinderWidthMm;
+    }
+
+    public void setCylinderWidthMm(Integer cylinderWidthMm) {
+        this.cylinderWidthMm = cylinderWidthMm;
+    }
 
     public boolean isCylinderMounted() {
         return cylinderMounted;
@@ -42,29 +66,5 @@ public class HydraulicCylinder extends Equipment {
 
     public void setCylinderMountedTo(MoldInsert cylinderMountedTo) {
         this.cylinderMountedTo = cylinderMountedTo;
-    }
-
-    public int getStrokeLengthMm() {
-        return strokeLengthMm;
-    }
-
-    public void setStrokeLengthMm(int strokeLengthMm) {
-        this.strokeLengthMm = strokeLengthMm;
-    }
-
-    public int getCylinderLengthMm() {
-        return cylinderLengthMm;
-    }
-
-    public void setCylinderLengthMm(int cylinderLengthMm) {
-        this.cylinderLengthMm = cylinderLengthMm;
-    }
-
-    public int getCylinderWidthMm() {
-        return cylinderWidthMm;
-    }
-
-    public void setCylinderWidthMm(int cylinderWidthMm) {
-        this.cylinderWidthMm = cylinderWidthMm;
     }
 }

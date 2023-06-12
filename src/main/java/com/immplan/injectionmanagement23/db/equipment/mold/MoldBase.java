@@ -59,7 +59,7 @@ public class MoldBase extends Equipment {
         return moldBaseWidthMm;
     }
 
-    public void setMoldBaseWidthMm(int moldBaseWidthMm) {
+    public void setMoldBaseWidthMm(Integer moldBaseWidthMm) {
         this.moldBaseWidthMm = moldBaseWidthMm;
     }
 
@@ -67,7 +67,7 @@ public class MoldBase extends Equipment {
         return moldBaseLengthMm;
     }
 
-    public void setMoldBaseLengthMm(int moldBaseLengthMm) {
+    public void setMoldBaseLengthMm(Integer moldBaseLengthMm) {
         this.moldBaseLengthMm = moldBaseLengthMm;
     }
 
@@ -91,7 +91,7 @@ public class MoldBase extends Equipment {
         return movingPlateRingDiameterMm;
     }
 
-    public void setMovingPlateRingDiameterMm(int movingPlateRingDiameterMm) {
+    public void setMovingPlateRingDiameterMm(Integer movingPlateRingDiameterMm) {
         this.movingPlateRingDiameterMm = movingPlateRingDiameterMm;
     }
 
@@ -99,7 +99,7 @@ public class MoldBase extends Equipment {
         return fixedPlateRingDiameterMm;
     }
 
-    public void setFixedPlateRingDiameterMm(int fixedPlateRingDiameterMm) {
+    public void setFixedPlateRingDiameterMm(Integer fixedPlateRingDiameterMm) {
         this.fixedPlateRingDiameterMm = fixedPlateRingDiameterMm;
     }
 
@@ -107,7 +107,7 @@ public class MoldBase extends Equipment {
         return moldMountTimeMin;
     }
 
-    public void setMoldMountTimeMin(int moldMountTimeMin) {
+    public void setMoldMountTimeMin(Integer moldMountTimeMin) {
         this.moldMountTimeMin = moldMountTimeMin;
     }
 
@@ -115,7 +115,7 @@ public class MoldBase extends Equipment {
         return moldReleaseTimeMin;
     }
 
-    public void setMoldReleaseTimeMin(int moldReleaseTimeMin) {
+    public void setMoldReleaseTimeMin(Integer moldReleaseTimeMin) {
         this.moldReleaseTimeMin = moldReleaseTimeMin;
     }
 }

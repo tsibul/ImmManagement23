@@ -11,9 +11,9 @@ public class MaterialType extends Material {
     @Column(name = "drying")
     private boolean drying;
     @Column(name = "drying_time", columnDefinition = "int default 0", nullable = false)
-    private int materialDryingTime = 0;
+    private Integer materialDryingTime = 0;
     @Column(name = "driyng_temperature", columnDefinition = "int default 0", nullable = false)
-    private int materialDryingTemperature = 0;
+    private Integer materialDryingTemperature = 0;
 
     public boolean isDrying() {
         return drying;
@@ -23,19 +23,19 @@ public class MaterialType extends Material {
         this.drying = drying;
     }
 
-    public int getMaterialDryingTime() {
+    public Integer getMaterialDryingTime() {
         return materialDryingTime;
     }
 
-    public void setMaterialDryingTime(int materialDryingTime) {
+    public void setMaterialDryingTime(Integer materialDryingTime) {
         this.materialDryingTime = materialDryingTime;
     }
 
-    public int getMaterialDryingTemperature() {
+    public Integer getMaterialDryingTemperature() {
         return materialDryingTemperature;
     }
 
-    public void setMaterialDryingTemperature(int materialDryingTemperature) {
+    public void setMaterialDryingTemperature(Integer materialDryingTemperature) {
         this.materialDryingTemperature = materialDryingTemperature;
     }
 }

@@ -16,7 +16,7 @@ public class Product {
     @Column(name = "product_name", length = 40, nullable = false)
     private String productName;
     @Column(name = "number_details", nullable = false)
-    private int numberDetails;
+    private Integer numberDetails;
     @ManyToOne(targetEntity = ProductGroup.class)
     @JoinColumn(name = "product_group", referencedColumnName = "product_group_id", nullable = false)
     private ProductGroup productGroup;
@@ -47,11 +47,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getNumberDetails() {
+    public Integer getNumberDetails() {
         return numberDetails;
     }
 
-    public void setNumberDetails(int numberDetails) {
+    public void setNumberDetails(Integer numberDetails) {
         this.numberDetails = numberDetails;
     }
 
