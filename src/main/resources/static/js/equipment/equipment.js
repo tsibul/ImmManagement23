@@ -3,7 +3,6 @@ import initialize from '/js/main_modal.js';
 
 const equipmentType = document.querySelector("#url-parameters").dataset.eqypmenttype;
 
-
 function inputs(modal) {
     let dataDict = {
         equipmentId: modal.querySelector("#equipment-id"),
@@ -60,7 +59,7 @@ function emptyData(modal) {
 }
 
 function action() {
-    return "/equipment/02.02/add_equipment";
+    return "/equipment/" + equipmentType + "/add_equipment";
 }
 
 // Вызываем функцию initialize, передавая необходимые функции
