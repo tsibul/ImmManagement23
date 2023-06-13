@@ -1,16 +1,5 @@
 package com.immplan.injectionmanagement23.db.equipment;
 
-import com.immplan.injectionmanagement23.db.equipment.air.AirEquipment;
-import com.immplan.injectionmanagement23.db.equipment.conveior.Conveyor;
-import com.immplan.injectionmanagement23.db.equipment.cooling.CoolingEquipment;
-import com.immplan.injectionmanagement23.db.equipment.dozer.Dozer;
-import com.immplan.injectionmanagement23.db.equipment.dryer.Dryer;
-import com.immplan.injectionmanagement23.db.equipment.grinder.Grinder;
-import com.immplan.injectionmanagement23.db.equipment.materialloader.MaterialLoader;
-import com.immplan.injectionmanagement23.db.equipment.materialseparator.MaterialSeparator;
-import com.immplan.injectionmanagement23.db.equipment.mold.HydraulicCylinder;
-import com.immplan.injectionmanagement23.db.equipment.thermocontroller.ThermoController;
-import com.immplan.injectionmanagement23.db.equipment.thermostat.Thermostat;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -40,6 +29,15 @@ public class EquipmentField {
     private String nameRus;
     private String fieldClass;
     private String fieldType;
+    private Field fieldInstance;
+
+    public Field getFieldInstance() {
+        return fieldInstance;
+    }
+
+    public void setFieldInstance(Field fieldInstance) {
+        this.fieldInstance = fieldInstance;
+    }
 
     public void setEngName(Field field) {
         this.engName = field.getName();
@@ -187,9 +185,11 @@ public class EquipmentField {
             newField.setNameRus(field);
             newField.setFieldClass(field);
             newField.setFieldType(field);
+            newField.setFieldInstance(field);
             equipmentFieldList.add(newField);
         }
         return  equipmentFieldList;
     }
+
 
    }

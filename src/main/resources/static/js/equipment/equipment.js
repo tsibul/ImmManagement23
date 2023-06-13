@@ -1,6 +1,8 @@
 // Импортируем функции из main_modal.js
 import initialize from '/js/main_modal.js';
 
+const equipmentType = document.querySelector("#url-parameters").dataset.eqypmenttype;
+
 
 function inputs(modal) {
     let dataDict = {
@@ -17,22 +19,6 @@ function inputs(modal) {
         dataDict[element.name] = element;
     });
     return dataDict;
-    /*
-    return {
-
-        moldWeightKg: modal.querySelector("#mold-weight"),
-        moldHeightMm: modal.querySelector("#mold-height"),
-        ifAir: modal.querySelector("#air"),
-        numberAirValves: modal.querySelector("#number-air-valves"),
-        ifHydraulic: modal.querySelector("#hydraulic"),
-        numberHydraulicCylinders: modal.querySelector("#number-cylinders"),
-        ifChangeableInsert: modal.querySelector("#changeable-insert"),
-        modifierMountTime: modal.querySelector("#mount-time"),
-        modifierReleaseTime: modal.querySelector("#release-time"),
-        singleModifier: modal.querySelector("#single-modifier")
-    };
-
-     */
 }
 
 function fullData(row) {
@@ -43,7 +29,7 @@ function fullData(row) {
         equipmentCode: row.querySelector("[data-label='код']").textContent,
         producer: row.querySelector("[data-label='производитель']").dataset.id,
         partNumber: row.querySelector("[data-label='зав. номер']").textContent,
-        yearProduction: row.querySelector("[data-label='год вып.']").textContent,
+        yearProduction: row.querySelector("[data-label='год вып.']").textContent + '-01-01',
         receiveDate: row.querySelector("[data-label='на баланс']").textContent,
     };
     row.querySelectorAll(".equipment-data").forEach(function (element) {
@@ -52,23 +38,6 @@ function fullData(row) {
         } else dataDict[element.dataset.name] = element.dataset.bool;
     });
     return dataDict;
-
-
-    /*
-            return {
-
-                moldWeightKg: row.querySelector("[data-label='вес, кг']").textContent,
-                moldHeightMm: row.querySelector("[data-label='высота, мм']").textContent,
-                ifAir: row.querySelector("[data-label='воздух']").dataset.bool,
-                numberAirValves: row.querySelector("[data-label='кол-во клапанов']").textContent,
-                ifHydraulic: row.querySelector("[data-label='гидравлика']").dataset.bool,
-                numberHydraulicCylinders: row.querySelector("[data-label='кол-во цилиндров']").textContent,
-                ifChangeableInsert: row.querySelector("[data-label='сменная вставка']").dataset.bool,
-                modifierMountTime: row.querySelector("[data-label='время монтажа, мин']").textContent,
-                modifierReleaseTime: row.querySelector("[data-label='время  демонтажа, мин']").textContent,
-                singleModifier: row.querySelector("[data-label='единственный модификатор']").dataset.bool
-            };
-     */
 }
 
 function emptyData(modal) {
@@ -91,7 +60,7 @@ function emptyData(modal) {
 }
 
 function action() {
-    return "/equipment/02.02/add_mold_modifier";
+    return "/equipment/02.02/add_equipment";
 }
 
 // Вызываем функцию initialize, передавая необходимые функции
