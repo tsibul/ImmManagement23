@@ -1,7 +1,7 @@
 // Импортируем функции из main_modal.js
 import initialize from '/js/main_modal.js';
 
-const equipmentType = document.querySelector("#url-parameters").dataset.eqypmenttype;
+const equipmentType = document.querySelector("#url-parameters").dataset.equipmenttype;
 
 function inputs(modal) {
     let dataDict = {
@@ -49,8 +49,8 @@ function emptyData(modal) {
     modal.querySelectorAll(".equipment-data").forEach(function (element) {
         if (element.dataset.type == 'boolean') {
             dataDict[element.name] = 'false';
-        } else if (element.dataset.type == 'int' || element.dataset.type == 'Integer' || element.dataset.type == 'double'
-            || element.dataset.type == 'float') {
+        } else if (element.dataset.type == 'Integer' || element.dataset.type == 'Double'
+            || element.dataset.type == 'Float') {
             dataDict[element.name] = "0";
         }
     });
