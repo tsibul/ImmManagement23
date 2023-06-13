@@ -28,7 +28,7 @@ public class MoldBaseController extends BaseController {
         this.moldBaseRepository = moldBaseRepository;
         this.producerRepository = producerRepository;
     }
-    @GetMapping("/equipment/02.01")
+//    @GetMapping("/equipment/02.01")
     public String getMoldBase(Model model) {
         List<MoldBase> moldBases = moldBaseRepository.findMoldBaseByEquipmentActiveOrderByInventoryCode(true);
         List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Пресс-формы");
