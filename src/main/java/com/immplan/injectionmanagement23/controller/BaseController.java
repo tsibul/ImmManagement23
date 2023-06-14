@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentType.equipmentTypeDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTypeDict;
 
 public abstract class BaseController {
     protected final ColorGroupRepository colorGroupRepository;

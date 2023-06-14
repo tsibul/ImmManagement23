@@ -3,7 +3,7 @@ package com.immplan.injectionmanagement23.controller.equipment;
 import com.immplan.injectionmanagement23.controller.BaseController;
 import com.immplan.injectionmanagement23.db.equipment.Equipment;
 import com.immplan.injectionmanagement23.db.equipment.EquipmentField;
-import com.immplan.injectionmanagement23.db.equipment.EquipmentType;
+import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
 import com.immplan.injectionmanagement23.db.equipment.air.AirEquipmentRepository;
 import com.immplan.injectionmanagement23.db.equipment.conveior.ConveyorRepository;
 import com.immplan.injectionmanagement23.db.equipment.cooling.CoolingEquipmentRepository;
@@ -36,8 +36,8 @@ import java.util.*;
 import java.util.function.Supplier;
 
 import static com.immplan.injectionmanagement23.db.equipment.EquipmentField.equipmentFields;
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentType.equipmentTypeClassDict;
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentType.equipmentTypeDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTypeClassDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTypeDict;
 
 
 @Controller
@@ -98,8 +98,8 @@ public class EquipmentController extends BaseController {
         Class currentClass = equipmentTypeClassDict().get(equipmentType);
         String title = equipmentTypeDict().get(equipmentType);
         ArrayList<EquipmentField> equipmentFields = equipmentFields(currentClass);
-        EquipmentType equipmentTypeClass = equipmentTypeInstance();
-        Supplier<List<?>> query = equipmentTypeClass.equipmentAllQuery().get(currentClass);
+        EquipmentTypeRepository equipmentTypeRepositoryClass = equipmentTypeInstance();
+        Supplier<List<?>> query = equipmentTypeRepositoryClass.equipmentAllQuery().get(currentClass);
         List<?> equipment = query.get();
         List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Пресс-формы");
         populateModel(model);
@@ -206,13 +206,13 @@ public class EquipmentController extends BaseController {
     }
 
     private JpaRepository<Equipment, Long> equipmentRepository(String equipmentType) {
-        EquipmentType equipmentTypeInstance = equipmentTypeInstance();
-        LinkedHashMap<String, JpaRepository<?, Long>> equipmentRepositoryDict = equipmentTypeInstance.equipmentRepositoryDict();
+        EquipmentTypeRepository equipmentTypeRepositoryInstance = equipmentTypeInstance();
+        LinkedHashMap<String, JpaRepository<?, Long>> equipmentRepositoryDict = equipmentTypeRepositoryInstance.equipmentRepositoryDict();
         return (JpaRepository<Equipment, Long>) equipmentRepositoryDict.get(equipmentType);
     }
 
-    private EquipmentType equipmentTypeInstance(){
-        return new EquipmentType(injectionMoldingMachineRepository, spacerPlateRepository, moldBaseRepository,
+    private EquipmentTypeRepository equipmentTypeInstance(){
+        return new EquipmentTypeRepository(injectionMoldingMachineRepository, spacerPlateRepository, moldBaseRepository,
                 moldModifierRepository, moldInsertRepository, hydraulicCilinderRepository, coolingEquipmentRepository,
                 airEquipmentRepository, thermostatRepository, thermoControllerRepository, grinderRepository,
                 dryerRepository, materialLoaderRepository, dozerRepository, separatorRepository, conveyorRepository);
