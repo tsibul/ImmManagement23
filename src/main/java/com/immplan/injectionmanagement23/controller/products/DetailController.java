@@ -61,7 +61,7 @@ public class DetailController extends BaseController {
         List<MoldInsert> moldInserts = moldInsertRepository.findMoldInsertByEquipmentActiveOrderByEquipmentName(true);
 
         populateModel(model);
-        model.addAttribute("activePage", "products");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("products", products);
         model.addAttribute("details", details);
         model.addAttribute("materialTypes", materialTypes);

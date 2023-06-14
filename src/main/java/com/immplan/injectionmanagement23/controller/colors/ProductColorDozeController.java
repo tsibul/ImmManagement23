@@ -57,7 +57,7 @@ public class ProductColorDozeController extends BaseController {
         List<MasterBatch> masterBatches = masterBatchRepository.getMasterBatchByMaterialActiveOrderByMaterialName(true);
         List<MaterialType> materialTypes = materialTypeRepository.findMaterialTypeByMaterialActiveOrderByMaterialName(true);
         populateModel(model);
-        model.addAttribute("activePage", "colors");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("productColorDozes", productColorDozes);
         model.addAttribute("colors", colors);
         model.addAttribute("productGroups", productGroups);

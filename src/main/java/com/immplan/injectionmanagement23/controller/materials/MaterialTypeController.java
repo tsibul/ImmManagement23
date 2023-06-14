@@ -28,7 +28,7 @@ public class MaterialTypeController extends BaseController {
     public String getMaterialType(Model model) {
         populateModel(model);
         List<MaterialType> materialTypes = materialTypeRepository.findMaterialTypeByMaterialActiveOrderByMaterialName(true);
-        model.addAttribute("activePage", "materials");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("materialTypes", materialTypes);
         return "materials/materialtypes";
     }

@@ -41,7 +41,7 @@ public class ProductController extends BaseController {
                 findProductGroupsByProductGroupActiveOrderByProductGroupName(true);
 
         populateModel(model);
-        model.addAttribute("activePage", "products");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("products", products);
         model.addAttribute("productGroups", productGroups);
         model.addAttribute("productGroupsId", productGroupId);

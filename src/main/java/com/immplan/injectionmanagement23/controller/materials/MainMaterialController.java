@@ -60,7 +60,7 @@ public class MainMaterialController extends BaseController {
         List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Сырье");
 
         populateModel(model);
-        model.addAttribute("activePage", "materials");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("mainMaterials", mainMaterials);
         model.addAttribute("materialTypes", materialTypes);
         model.addAttribute("colors", colors);

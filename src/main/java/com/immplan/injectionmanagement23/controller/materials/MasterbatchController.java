@@ -45,7 +45,7 @@ public class MasterbatchController extends BaseController {
             model.addAttribute("producersId", 0);
         }
         populateModel(model);
-        model.addAttribute("activePage", "materials");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("masterBatches", masterBatches);
         model.addAttribute("producers", producers);
         return "materials/masterbatch";

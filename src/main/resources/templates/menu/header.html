@@ -12,25 +12,7 @@
                     <a href="/techcard" class="a_menu"
                        th:classappend="${activePage == 'techcard' ? 'menu_active' : ''}">Техкарта</a>
                 </li>
-                <li class="dropdown_button menu-button" data-menu="product-menu">
-                    <a href="" class="a_menu" th:classappend="${activePage == 'products' ? 'menu_active' : ''}">Продукция</a>
-                    <ul class="dropdown_menu" id="product-menu">
-                        <li class="drop_button">
-                            <a href="/products/0" class="a_menu menu_active">Готовая продукция</a>
-                        </li>
-                        <li class="drop_button">
-                            <a href="/detail/0/0" class="a_menu menu_active">Детали</a>
-                        </li>
-                        <li class="drop_button">
-                            <a href="/detail_to_product/0" class="a_menu menu_active">Комплектация</a>
-                        </li>
-                        <li class="drop_button">
-                            <a href="/product_group/0" class="a_menu menu_active">Группы товара</a>
-                        </li>
-                    </ul>
-
-                </li>
-                <li class="dropdown_button menu-button" data-menu="equipment-menu">
+                 <li class="dropdown_button menu-button" data-menu="equipment-menu">
                     <a href="" class="a_menu"
                        th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">Оборудование</a>
                     <ul class="dropdown_menu" id="equipment-menu">
@@ -41,53 +23,40 @@
                     </ul>
                 </li>
                 <li class="dropdown_button menu-button" data-menu="color-menu">
-                    <a href="" class="a_menu" th:classappend="${activePage == 'colors' ? 'menu_active' : ''}">Цвета</a>
-                    <ul class="dropdown_menu" id="color-menu">
-                        <li class="drop_button">
-                            <a href="/colorgroups" class="a_menu menu_active">Цветовые группы</a>
-                        </li>
-                        <li class="drop_button">
-                            <a href="/colors/0" class="a_menu menu_active">Цвета</a>
-                        </li>
-                        <li class="drop_button">
-                            <a href="/color_doze/0" class="a_menu menu_active">Рецептуры</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown_button menu-button" data-menu="color-menu">
-                    <a href="" class="a_menu"
-                       th:classappend="${activePage == 'materials' ? 'menu_active' : ''}">Сырье</a>
-                    <ul class="dropdown_menu" id="material-menu">
-                        <li class="drop_button">
-                            <a href="/materialtypes" class="a_menu menu_active">Тип материала</a>
-                        </li>
-                        <li class="drop_button">
-                            <a href="/main_material/0/0" class="a_menu menu_active">Материал</a>
-                        </li>
-                        <li class="drop_button">
-                            <a href="/masterbatch/0" class="a_menu menu_active">Краситель</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown_button menu-button" data-menu="color-menu">
                     <a href="" class="a_menu"
                        th:classappend="${activePage == 'dicts' ? 'menu_active' : ''}">Справочники</a>
                     <ul class="dropdown_menu" id="dicts-menu">
                         <div class="sub-menu-button">
+                            <li class="drop_button" data-menu="product-menu">
+                                <a href="/products/0" class="a_menu">Продукция</a></li>
+                            <li class="drop_button sub-menu-item">
+                                <a href="/products/0" class="a_menu menu_active">&#8226;&nbsp;Готовая продукция</a>
+                            </li>
+                            <li class="drop_button sub-menu-item">
+                                <a href="/detail/0/0" class="a_menu menu_active">&#8226;&nbsp;Детали</a>
+                            </li>
+                            <li class="drop_button sub-menu-item">
+                                <a href="/detail_to_product/0" class="a_menu menu_active">&#8226;&nbsp;Комплектация</a>
+                            </li>
+                            <li class="drop_button sub-menu-item">
+                                <a href="/product_group/0" class="a_menu menu_active">&#8226;&nbsp;Группы товара</a>
+                            </li>
+                        </div>
+                        <div class="sub-menu-button">
                             <li class="drop_button" data-menu="color-menu">
-                                <a href="" class="a_menu">Производитель</a>
+                                <a href="/producer/0/0" class="a_menu">Производитель</a>
                             </li>
                             <li class="drop_button sub-menu-item">
-                                <a href="/producer/0/0" class="a_menu menu_active">&#8226;Производитель</a>
+                                <a href="/producer/0/0" class="a_menu menu_active">&#8226;&nbsp;Производитель</a>
                             </li>
                             <li class="drop_button sub-menu-item">
-                                <a href="/country" class="a_menu menu_active">&#8226;Страна</a>
+                                <a href="/country" class="a_menu menu_active">&#8226;&nbsp;Страна</a>
                             </li>
                         </div>
 
                         <div class="sub-menu-button">
                             <li class="drop_button" data-menu="color-menu">
-                                <a href="" class="a_menu">Цвета</a>
+                                <a href="/colors/0" class="a_menu">Цвета</a>
                             </li>
                             <li class="drop_button sub-menu-item">
                                 <a href="/colorgroups" class="a_menu menu_active">&#8226;&nbsp;Цветовые группы</a>
@@ -101,7 +70,7 @@
                         </div>
                         <div class="sub-menu-button">
                             <li class="drop_button" data-menu="color-menu">
-                                <a href="" class="a_menu">Сырье</a>
+                                <a href="/materialtypes" class="a_menu">Сырье</a>
                             </li>
                             <li class="drop_button sub-menu-item">
                                 <a href="/materialtypes" class="a_menu menu_active ">&#8226;&nbsp;Тип материала</a>

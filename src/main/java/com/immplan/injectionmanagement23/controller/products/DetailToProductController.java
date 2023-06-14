@@ -44,7 +44,7 @@ public class DetailToProductController extends BaseController {
         List<Detail> details = detailRepository.findDetailByDetailActiveOrderByDetailCode(true);
 
         populateModel(model);
-        model.addAttribute("activePage", "products");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("products", products);
         model.addAttribute("productsId", productsId);
         model.addAttribute("details", details);

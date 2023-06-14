@@ -39,7 +39,7 @@ public class ColorController extends BaseController {
             model.addAttribute("colorGroupId", 0);
         }
         populateModel(model);
-        model.addAttribute("activePage", "colors");
+        model.addAttribute("activePage", "dicts");
         model.addAttribute("colors", colors);
         return "colors/colors";
     }

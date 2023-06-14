@@ -19,7 +19,7 @@ public class ColorGroupController extends BaseController {
     public String getColorGroup(Model model) {
 //        long idLong = (long) id;
         populateModel(model);
-        model.addAttribute("activePage", "colors");
+        model.addAttribute("activePage", "dicts");
         return "colors/colorgroups";
     }
 
