@@ -16,28 +16,30 @@
                     <a href="" class="a_menu"
                        th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">Оборудование</a>
                     <ul class="dropdown_menu" id="equipment-menu">
-                        <div class="sub-menu-button border-down">
-                            <li class="drop_button" >
-                                <a href="" class="a_menu">Совместимость оборудования</a></li>
-                            <li class="drop_button sub-menu-item">
-                                <a href="" class="a_menu menu_active">&#8226;&nbsp;ТПА&nbsp;-&nbsp;плита</a>
-                            </li>
-                            <li class="drop_button sub-menu-item">
-                                <a href="" class="a_menu menu_active">&#8226;&nbsp;ТПА&nbsp;-&nbsp;Пресс-форма</a>
-                            </li>
-                            <li class="drop_button sub-menu-item">
-                                <a href="" class="a_menu menu_active">&#8226;&nbsp;Пресс-форма&nbsp;комплект</a>
-                            </li>
-                        </div>
-                        <div class="sub-menu-button" th:each="eqKind : ${equipmentKind}">
-                            <li class="drop_button" >
-                                <a href="" class="a_menu"
-                                   th:text="${eqKind.getKey().getEquipmentKindName()}"></a></li>
-                            <li th:each="eqType:${eqKind.getValue()}" class="drop_button sub-menu-item">
-                                <a th:href="'/equipment/' + ${eqType.equipmentTypeId}" class="a_menu menu_active"
-                                   th:text="'• ' + ${eqType.equipmentTypeName}"></a>
-                            </li>
-                        </div>
+                        <li class="drop_button sub-menu-button border-down">
+                            <a href="" class="a_menu">Совместимость оборудования</a>
+                            <ul>
+                                <li class="drop_button sub-menu-item">
+                                    <a href="" class="a_menu menu_active">&#8226;&nbsp;ТПА&nbsp;-&nbsp;плита</a>
+                                </li>
+                                <li class="drop_button sub-menu-item">
+                                    <a href="" class="a_menu menu_active">&#8226;&nbsp;ТПА&nbsp;-&nbsp;Пресс-форма</a>
+                                </li>
+                                <li class="drop_button sub-menu-item">
+                                    <a href="" class="a_menu menu_active">&#8226;&nbsp;Пресс-форма&nbsp;комплект</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="drop_button sub-menu-button" th:each="eqKind : ${equipmentKind}">
+                            <a href="" class="a_menu"
+                               th:text="${eqKind.getKey().getEquipmentKindName()}"></a>
+                            <ul>
+                                <li th:each="eqType:${eqKind.getValue()}" class="drop_button sub-menu-item">
+                                    <a th:href="'/equipment/' + ${eqType.equipmentTypeId}" class="a_menu menu_active"
+                                       th:text="'• ' + ${eqType.equipmentTypeName}"></a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown_button menu-button" data-menu="color-menu">
