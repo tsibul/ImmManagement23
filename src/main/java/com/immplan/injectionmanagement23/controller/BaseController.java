@@ -1,26 +1,30 @@
 package com.immplan.injectionmanagement23.controller;
 
-import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
-import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
+import com.immplan.injectionmanagement23.db.equipment.EquipmentKind;
+import com.immplan.injectionmanagement23.db.equipment.EquipmentType;
 import org.springframework.ui.Model;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.stream.Collectors;
 
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTypeDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentKind.equipmentKindDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentType.equipmentTypeArrayList;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTotalTypeDict;
 
 public abstract class BaseController {
-    protected final ColorGroupRepository colorGroupRepository;
 
-    public BaseController(ColorGroupRepository colorGroupRepository) {
-        this.colorGroupRepository = colorGroupRepository;
-    }
+    public void populateModel(Model model) {
+        LinkedHashMap<String, EquipmentType> equipmentTypeList = equipmentTotalTypeDict();
+        LinkedHashMap<EquipmentKind, ArrayList<EquipmentType>> equipmentKind = new LinkedHashMap<>();
+        equipmentKindDict().forEach((key,value) -> {
+            ArrayList<EquipmentType> equipments = equipmentTypeArrayList().stream()
+                    .filter(equipment -> equipment.getEquipmentKind().getEquipmentKindId().equals(key))
+                    .collect(Collectors.toCollection(ArrayList::new));
+            equipmentKind.put(EquipmentKind.equipmentKindDict().get(key), equipments);
+        });
 
-    protected void populateModel(Model model) {
-        LinkedHashMap<String, String> equipmentTypeList = equipmentTypeDict();
-        List<ColorGroup> colorGroupList = colorGroupRepository
-                .findColorGroupByColorGroupActiveOrderByColorGroupName(true);
-        model.addAttribute("colorGroups", colorGroupList);
         model.addAttribute("equipmentTypes", equipmentTypeList);
+        model.addAttribute("equipmentKind", equipmentKind);
     }
 }
