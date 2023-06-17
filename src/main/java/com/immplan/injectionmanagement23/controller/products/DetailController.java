@@ -26,11 +26,9 @@ public class DetailController extends BaseController {
     private final MoldInsertRepository moldInsertRepository;
 
 
-    public DetailController(ColorGroupRepository colorGroupRepository, ProductRepository productRepository,
+    public DetailController(ProductRepository productRepository,
                             MaterialTypeRepository materialTypeRepository, MoldInsertRepository moldInsertRepository,
                             DetailRepository detailRepository) {
-        super(colorGroupRepository);
-
         this.detailRepository = detailRepository;
         this.productRepository = productRepository;
         this.moldInsertRepository = moldInsertRepository;
