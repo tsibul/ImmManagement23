@@ -25,7 +25,7 @@ public abstract class Equipment {
     private String equipmentTypeId;
     @Column(name = "equipment_type", length = 140, nullable = false)
     private String equipmentType;
-    @Column(length = 2, name = "equipment_code")
+    @Column(length = 11, name = "equipment_code")
     private String equipmentCode;
     @ManyToOne(targetEntity = Producer.class)
     @JoinColumn(name = "producer", referencedColumnName = "id")
