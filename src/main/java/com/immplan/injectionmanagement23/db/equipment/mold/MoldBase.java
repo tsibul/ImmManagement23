@@ -11,8 +11,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class MoldBase extends Equipment {
     public MoldBase(){
         super();
-        setEquipmentType("02.01");
-        setEquipmentKind("02");
+        setEquipmentTypeId("02.01");
     }
     @Column(name = "mold_base_width_mm")
     private Integer moldBaseWidthMm;

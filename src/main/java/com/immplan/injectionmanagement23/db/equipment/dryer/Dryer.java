@@ -9,8 +9,7 @@ import jakarta.persistence.Table;
 public class Dryer extends Equipment {
     public Dryer(){
         super();
-        setEquipmentType("03.06");
-        setEquipmentKind("03");
+        setEquipmentTypeId("03.06");
     }
 
 }

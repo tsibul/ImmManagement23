@@ -10,8 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class MoldModifier extends Equipment {
     public MoldModifier() {
         super();
-        setEquipmentType("02.02");
-        setEquipmentKind("02");
+        setEquipmentTypeId("02.02");
     }
 
     @Column(name = "mold_weight_kg")

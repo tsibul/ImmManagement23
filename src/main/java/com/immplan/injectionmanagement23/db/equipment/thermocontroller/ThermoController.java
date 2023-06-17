@@ -10,8 +10,7 @@ import jakarta.persistence.Table;
 public class ThermoController extends Equipment {
     public ThermoController(){
         super();
-        setEquipmentType("03.04");
-        setEquipmentKind("03");
+        setEquipmentTypeId("03.04");
     }
 
 }

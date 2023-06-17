@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 public class MaterialSeparator extends Equipment {
     public MaterialSeparator(){
         super();
-        setEquipmentType("03.09");
-        setEquipmentKind("03");
+        setEquipmentTypeId("03.09");
     }
 }

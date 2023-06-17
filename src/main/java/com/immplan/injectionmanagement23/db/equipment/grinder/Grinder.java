@@ -10,8 +10,7 @@ import jakarta.persistence.Table;
 public class Grinder extends Equipment {
     public Grinder(){
         super();
-        setEquipmentType("03.05");
-        setEquipmentKind("03");
+        setEquipmentTypeId("03.05");
     }
 
 }

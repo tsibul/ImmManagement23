@@ -10,8 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class HydraulicCylinder extends Equipment {
     public HydraulicCylinder(){
         super();
-        setEquipmentType("02.04");
-        setEquipmentKind("02");
+        setEquipmentTypeId("02.04");
     }
 
     @Column(name = "stroke_length", nullable = false)

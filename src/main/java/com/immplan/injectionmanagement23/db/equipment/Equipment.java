@@ -17,14 +17,8 @@ public abstract class Equipment {
     protected String equipmentName;
     @Column(length = 14, name = "inventory_code")
     private String inventoryCode;
-    @Column(name = "equipment_kind_id", length = 2, nullable = false)
-    private String equipmentKindId;
-    @Column(name = "equipment_kind", length = 140, nullable = false)
-    private String equipmentKind;
     @Column(name = "equipment_type_id", length = 5, nullable = false)
     private String equipmentTypeId;
-    @Column(name = "equipment_type", length = 140, nullable = false)
-    private String equipmentType;
     @Column(length = 11, name = "equipment_code")
     private String equipmentCode;
     @ManyToOne(targetEntity = Producer.class)
@@ -44,32 +38,16 @@ public abstract class Equipment {
         return equipmentId;
     }
 
-    public String getEquipmentKind() {
-        return equipmentKind;
-    }
-
-    public void setEquipmentKind(String kindId) {
-        if (equipmentKindDict().get(kindId) != null)
-            this.equipmentKindId = kindId;
-        this.equipmentKind = equipmentKindDict().get(kindId).getEquipmentKindName();
-    }
-
-    public String getEquipmentType() {
-        return equipmentType;
-    }
-
-    public void setEquipmentType(String typeId) {
-        if (equipmentTotalTypeDict().get(typeId) != null)
-            this.equipmentTypeId = typeId;
-        this.equipmentType = equipmentTotalTypeDict().get(typeId).getEquipmentTypeName();
-    }
-
     public String getEquipmentCode() {
         return equipmentCode;
     }
 
     public void setEquipmentCode(String equipmentCode) {
         this.equipmentCode = equipmentCode;
+    }
+
+    public void setEquipmentTypeId(String equipmentTypeId) {
+        this.equipmentTypeId = equipmentTypeId;
     }
 
     public String getEquipmentName() {
@@ -118,18 +96,6 @@ public abstract class Equipment {
 
     public String getInventoryCode() {
         return inventoryCode;
-    }
-
-    /*
-        public void setInventoryCode(String inventoryCode) {
-            this.inventoryCode = this.equipmentKind.getKindCode() + "." + this.equipmentType.getTypeCode() + "." + this.equipmentCode;
-        }
-
-
-     */
-
-    public String getEquipmentKindId() {
-        return equipmentKindId;
     }
 
     public String getEquipmentTypeId() {

@@ -9,8 +9,7 @@ import jakarta.persistence.Table;
 public class Dozer extends Equipment {
     public Dozer(){
         super();
-        setEquipmentType("03.08");
-        setEquipmentKind("03");
+        setEquipmentTypeId("03.08");
     }
 
 }

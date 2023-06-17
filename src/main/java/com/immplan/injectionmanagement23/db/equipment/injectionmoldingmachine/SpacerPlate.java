@@ -10,8 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class SpacerPlate extends Equipment {
     public SpacerPlate(){
         super();
-        setEquipmentType("01.02");
-        setEquipmentKind("01");
+        setEquipmentTypeId("01.02");
     }
 
     @Column(name = "plate_height_mm", nullable = false)

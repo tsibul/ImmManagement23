@@ -9,8 +9,7 @@ import jakarta.persistence.Table;
 public class Conveyor extends Equipment {
     public Conveyor(){
         super();
-        setEquipmentType("03.10");
-        setEquipmentKind("03");
+        setEquipmentTypeId("03.10");
     }
 
 }

@@ -10,8 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class MoldInsert extends Equipment {
     public MoldInsert(){
         super();
-        setEquipmentType("02.03");
-        setEquipmentKind("02");
+        setEquipmentTypeId("02.03");
     }
     @Column(name = "number_cavities", nullable = false)
     private Integer numberCavities;
