@@ -37,7 +37,7 @@
                     <tr>
                         <th>название</th>
                         <th>инв. номер</th>
-                        <th class="bux unshow">код</th>
+                        <th class="">код</th>
                         <th class="bux unshow">производитель</th>
                         <th class="bux unshow">зав. номер</th>
                         <th class="bux unshow">год вып.</th>
@@ -52,7 +52,7 @@
                         th:data-equipmentid="${equipment.equipmentId}">
                         <td th:text="${equipment.equipmentName}" data-label="название"></td>
                         <td th:text="${equipment.inventoryCode}" data-label="инв. номер"></td>
-                        <td class="bux unshow" th:text="${equipment.equipmentCode}" data-label="код"></td>
+                        <td class="" th:text="${equipment.equipmentCode}" data-label="код"></td>
                         <td class="bux unshow"
                             th:text="${equipment.equipmentProducer} != null ?${equipment.equipmentProducer.producerName} : ''"
                             data-label="производитель"
