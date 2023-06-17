@@ -47,6 +47,10 @@
     padding: 6px;
 }
 
+.border-down{
+    border-bottom: 1px solid #ffffff;
+}
+
 .menu_active {
     color: #ffffff;
 }

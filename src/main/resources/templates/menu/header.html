@@ -16,6 +16,19 @@
                     <a href="" class="a_menu"
                        th:classappend="${activePage == 'equipment' ? 'menu_active' : ''}">Оборудование</a>
                     <ul class="dropdown_menu" id="equipment-menu">
+                        <div class="sub-menu-button border-down">
+                            <li class="drop_button" >
+                                <a href="" class="a_menu">Совместимость оборудования</a></li>
+                            <li class="drop_button sub-menu-item">
+                                <a href="" class="a_menu menu_active">&#8226;&nbsp;ТПА&nbsp;-&nbsp;плита</a>
+                            </li>
+                            <li class="drop_button sub-menu-item">
+                                <a href="" class="a_menu menu_active">&#8226;&nbsp;ТПА&nbsp;-&nbsp;Пресс-форма</a>
+                            </li>
+                            <li class="drop_button sub-menu-item">
+                                <a href="" class="a_menu menu_active">&#8226;&nbsp;Пресс-форма&nbsp;комплект</a>
+                            </li>
+                        </div>
                         <div class="sub-menu-button" th:each="eqKind : ${equipmentKind}">
                             <li class="drop_button" >
                                 <a href="" class="a_menu"
