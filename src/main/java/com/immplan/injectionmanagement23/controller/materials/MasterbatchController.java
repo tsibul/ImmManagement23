@@ -22,9 +22,8 @@ public class MasterbatchController extends BaseController {
     private final ProducerRepository producerRepository;
     private final MasterBatchRepository masterBatchRepository;
 
-    public MasterbatchController(ColorGroupRepository colorGroupRepository, ProducerRepository producerRepository,
+    public MasterbatchController(ProducerRepository producerRepository,
                                  MasterBatchRepository masterBatchRepository) {
-        super(colorGroupRepository);
         this.masterBatchRepository = masterBatchRepository;
         this.producerRepository = producerRepository;
     }

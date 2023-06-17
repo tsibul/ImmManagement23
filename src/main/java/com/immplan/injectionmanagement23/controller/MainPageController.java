@@ -15,10 +15,7 @@ public class MainPageController  extends BaseController{
 
     private final InjectionMoldingMachineRepository injectionMoldingMachineRepository;
 
-    public MainPageController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
-                              ColorGroupRepository colorGroupRepository) {
-        super(colorGroupRepository);
-
+    public MainPageController(InjectionMoldingMachineRepository injectionMoldingMachineRepository) {
         this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
     }
 

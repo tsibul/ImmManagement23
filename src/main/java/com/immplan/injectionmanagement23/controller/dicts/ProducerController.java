@@ -22,9 +22,7 @@ public class ProducerController extends BaseController {
     private final CountryRepository countryRepository;
     private final ProducerRepository producerRepository;
 
-    public ProducerController(ColorGroupRepository colorGroupRepository,
-                              CountryRepository countryRepository, ProducerRepository producerRepository) {
-        super(colorGroupRepository);
+    public ProducerController(CountryRepository countryRepository, ProducerRepository producerRepository) {
 
         this.countryRepository = countryRepository;
         this.producerRepository = producerRepository;

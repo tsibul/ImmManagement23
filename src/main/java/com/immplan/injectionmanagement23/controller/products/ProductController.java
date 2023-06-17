@@ -19,10 +19,8 @@ public class ProductController extends BaseController {
     private final ProductRepository productRepository;
     private final ProductGroupRepository productGroupRepository;
 
-    public ProductController(ColorGroupRepository colorGroupRepository, ProductRepository productRepository,
+    public ProductController(ProductRepository productRepository,
                              ProductGroupRepository productGroupRepository) {
-        super(colorGroupRepository);
-
         this.productRepository = productRepository;
         this.productGroupRepository = productGroupRepository;
     }

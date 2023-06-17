@@ -16,10 +16,7 @@ public class InjectionMoldingMachineController extends BaseController {
 
     private final InjectionMoldingMachineRepository injectionMoldingMachineRepository;
 
-    public InjectionMoldingMachineController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
-                                             ColorGroupRepository colorGroupRepository) {
-        super(colorGroupRepository);
-
+    public InjectionMoldingMachineController(InjectionMoldingMachineRepository injectionMoldingMachineRepository) {
         this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
     }
 

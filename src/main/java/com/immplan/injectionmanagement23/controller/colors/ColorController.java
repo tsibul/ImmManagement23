@@ -16,18 +16,17 @@ import java.util.List;
 public class ColorController extends BaseController {
 
     private final ColorRepository colorRepository;
+    private final ColorGroupRepository colorGroupRepository;
 
     public ColorController(ColorRepository colorRepository,
                            ColorGroupRepository colorGroupRepository) {
-        super(colorGroupRepository);
-
         this.colorRepository = colorRepository;
+        this.colorGroupRepository = colorGroupRepository;
     }
 
 
     @GetMapping("/colors/{id}")
     public String getColor(@PathVariable("id") int id, Model model) {
-//        long idLong = (long) id;
         ColorGroup colorGroup;
         List<Color> colors;
         if(id != 0) {

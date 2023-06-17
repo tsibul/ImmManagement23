@@ -22,10 +22,8 @@ public class DetailToProductController extends BaseController {
     private final DetailRepository detailRepository;
     private final DetailToProductRepository detailToProductRepository;
 
-    public DetailToProductController(ColorGroupRepository colorGroupRepository, ProductRepository productRepository,
-                                     DetailRepository detailRepository, DetailToProductRepository detailToProductRepository) {
-        super(colorGroupRepository);
-
+    public DetailToProductController(ProductRepository productRepository, DetailRepository detailRepository,
+                                     DetailToProductRepository detailToProductRepository) {
         this.productRepository = productRepository;
         this.detailRepository = detailRepository;
         this.detailToProductRepository = detailToProductRepository;

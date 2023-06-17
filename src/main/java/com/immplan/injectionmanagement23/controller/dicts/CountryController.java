@@ -19,8 +19,7 @@ public class CountryController extends BaseController {
 
     private final CountryRepository countryRepository;
 
-    public CountryController(ColorGroupRepository colorGroupRepository, CountryRepository countryRepository) {
-        super(colorGroupRepository);
+    public CountryController(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;
     }
 

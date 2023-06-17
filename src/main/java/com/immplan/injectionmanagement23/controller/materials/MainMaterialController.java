@@ -25,10 +25,8 @@ public class MainMaterialController extends BaseController {
     private final ProducerRepository producerRepository;
     private final MainMaterialRepository mainMaterialRepository;
 
-    public MainMaterialController(ColorGroupRepository colorGroupRepository,
-                                  MaterialTypeRepository materialTypeRepository, ColorRepository colorRepository,
+    public MainMaterialController(MaterialTypeRepository materialTypeRepository, ColorRepository colorRepository,
                                   ProducerRepository producerRepository, MainMaterialRepository mainMaterialRepository) {
-        super(colorGroupRepository);
         this.materialTypeRepository = materialTypeRepository;
         this.colorRepository = colorRepository;
         this.producerRepository = producerRepository;

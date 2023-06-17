@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ColorGroupController extends BaseController {
+    private final  ColorGroupRepository colorGroupRepository;
 
     public ColorGroupController(ColorGroupRepository colorGroupRepository) {
-        super(colorGroupRepository);
+        this.colorGroupRepository = colorGroupRepository;
     }
 
     @GetMapping("/colorgroups")

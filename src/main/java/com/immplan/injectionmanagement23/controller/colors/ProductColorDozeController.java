@@ -27,12 +27,10 @@ public class ProductColorDozeController extends BaseController {
     private final MaterialTypeRepository materialTypeRepository;
     private final ProductColorDozeRepository productColorDozeRepository;
 
-    public ProductColorDozeController(ColorRepository colorRepository,
-                                      ColorGroupRepository colorGroupRepository, ProductGroupRepository productGroupRepository,
-                                      MasterBatchRepository masterBatchRepository, MaterialTypeRepository materialTypeRepository,
+    public ProductColorDozeController(ColorRepository colorRepository, ProductGroupRepository productGroupRepository,
+                                      MasterBatchRepository masterBatchRepository,
+                                      MaterialTypeRepository materialTypeRepository,
                                       ProductColorDozeRepository productColorDozeRepository) {
-        super(colorGroupRepository);
-
         this.colorRepository = colorRepository;
         this.productGroupRepository = productGroupRepository;
         this.masterBatchRepository = masterBatchRepository;

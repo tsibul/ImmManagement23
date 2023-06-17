@@ -11,7 +11,6 @@ public class ProducerTypeController extends BaseController {
 //    private final ProducerTypeRepository producerTypeRepository;
 
     public ProducerTypeController(ColorGroupRepository colorGroupRepository) {
-        super(colorGroupRepository);
 //        this.producerTypeRepository = producerTypeRepository;
     }
 /*

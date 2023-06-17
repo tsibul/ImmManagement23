@@ -19,8 +19,7 @@ public class MaterialTypeController extends BaseController {
 
     private final MaterialTypeRepository materialTypeRepository;
 
-    public MaterialTypeController(ColorGroupRepository colorGroupRepository, MaterialTypeRepository materialTypeRepository) {
-        super(colorGroupRepository);
+    public MaterialTypeController(MaterialTypeRepository materialTypeRepository) {
         this.materialTypeRepository = materialTypeRepository;
     }
 
