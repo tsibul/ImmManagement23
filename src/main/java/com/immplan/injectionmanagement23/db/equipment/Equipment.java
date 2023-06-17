@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 import static com.immplan.injectionmanagement23.db.equipment.EquipmentKind.equipmentKindDict;
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTypeDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTotalTypeDict;
 
 @MappedSuperclass
 public abstract class Equipment {
@@ -59,9 +59,9 @@ public abstract class Equipment {
     }
 
     public void setEquipmentType(String typeId) {
-        if (equipmentTypeDict().get(typeId) != null)
+        if (equipmentTotalTypeDict().get(typeId) != null)
             this.equipmentTypeId = typeId;
-        this.equipmentType = equipmentTypeDict().get(typeId);
+        this.equipmentType = equipmentTotalTypeDict().get(typeId).getEquipmentTypeName();
     }
 
     public String getEquipmentCode() {
