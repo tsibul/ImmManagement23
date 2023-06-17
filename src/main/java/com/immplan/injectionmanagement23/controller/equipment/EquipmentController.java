@@ -1,6 +1,7 @@
 package com.immplan.injectionmanagement23.controller.equipment;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
+import com.immplan.injectionmanagement23.db.common.CommonEquipmentRepository;
 import com.immplan.injectionmanagement23.db.equipment.Equipment;
 import com.immplan.injectionmanagement23.db.equipment.EquipmentField;
 import com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository;
@@ -36,8 +37,7 @@ import java.util.*;
 import java.util.function.Supplier;
 
 import static com.immplan.injectionmanagement23.db.equipment.EquipmentField.equipmentFields;
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTypeClassDict;
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTypeDict;
+import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.*;
 
 
 @Controller
@@ -61,7 +61,7 @@ public class EquipmentController extends BaseController {
 
     private final ProducerRepository producerRepository;
 
-    public EquipmentController(ColorGroupRepository colorGroupRepository, InjectionMoldingMachineRepository injectionMoldingMachineRepository,
+    public EquipmentController(InjectionMoldingMachineRepository injectionMoldingMachineRepository,
                                SpacerPlateRepository spacerPlateRepository,
                                MoldBaseRepository moldBaseRepository, MoldModifierRepository moldModifierRepository,
                                MoldInsertRepository moldInsertRepository,
@@ -73,7 +73,6 @@ public class EquipmentController extends BaseController {
                                DozerRepository dozerRepository, MaterialSeparatorRepository separatorRepository,
                                ConveyorRepository conveyorRepository,
                                ProducerRepository producerRepository) {
-        super(colorGroupRepository);
         this.producerRepository = producerRepository;
         this.injectionMoldingMachineRepository = injectionMoldingMachineRepository;
         this.spacerPlateRepository = spacerPlateRepository;
@@ -95,8 +94,8 @@ public class EquipmentController extends BaseController {
 
     @GetMapping("/equipment/{equipmentType}")
     public String getEquipment(Model model, @PathVariable String equipmentType) {
-        Class currentClass = equipmentTypeClassDict().get(equipmentType);
-        String title = equipmentTypeDict().get(equipmentType);
+        Class<? extends Equipment> currentClass = equipmentTotalTypeDict().get(equipmentType).getEquipmentClass();
+        String title = equipmentTotalTypeDict().get(equipmentType).getEquipmentTypeName();
         ArrayList<EquipmentField> equipmentFields = equipmentFields(currentClass);
         EquipmentTypeRepository equipmentTypeRepositoryClass = equipmentTypeInstance();
         Supplier<List<?>> query = equipmentTypeRepositoryClass.equipmentAllQuery().get(currentClass);
@@ -115,7 +114,7 @@ public class EquipmentController extends BaseController {
     @PostMapping("/equipment/{equipmentType}/add_equipment")
     public String addMoldBase(HttpServletRequest request,
                               @PathVariable String equipmentType) throws InstantiationException, IllegalAccessException {
-        Class currentClass = equipmentTypeClassDict().get(equipmentType);
+        Class<? extends Equipment> currentClass = equipmentTotalTypeDict().get(equipmentType).getEquipmentClass();
         JpaRepository<Equipment, Long> equipmentRepository = equipmentRepository(equipmentType);
         Equipment equipment;
         if (request.getParameter("equipmentId").equals("")) {
@@ -135,7 +134,7 @@ public class EquipmentController extends BaseController {
         for(EquipmentField equipmentField: equipmentFields){
             Field field = equipmentField.getFieldInstance();
             field.setAccessible(true);
-            if(postRequest.keySet().contains(equipmentField.getEngName())){
+            if(postRequest.containsKey(equipmentField.getEngName())){
                 field.set(equipment, postRequest.get(equipmentField.getEngName()));
             }
         }
@@ -162,7 +161,7 @@ public class EquipmentController extends BaseController {
      * @param request     объект HttpServletRequest с данными post-запроса
      * @return словарь, где ключами являются имена полей класса, а значениями - соответствующие значения из post-запроса
      */
-    private LinkedHashMap<String, Object> postRequest(Class currentClass, HttpServletRequest request) {
+    private LinkedHashMap<String, Object> postRequest(Class<? extends Equipment> currentClass, HttpServletRequest request) {
         //Подготовка данных из запроса
         LinkedHashMap<String, Object> postRequest = new LinkedHashMap<>();
         //Данные родительского класса
@@ -195,9 +194,10 @@ public class EquipmentController extends BaseController {
                 case "Integer" -> value = Integer.parseInt(requestParamGet);
                 case "Double" -> value = Double.parseDouble(requestParamGet);
                 case "Float" -> value = Float.parseFloat(requestParamGet);
-                case "boolean" -> value = (requestParamGet.equals("true")) ? true :  false;
+                case "boolean" -> value = requestParamGet.equals("true");
                 case "String" -> value = (String) requestParamGet;
-                default -> value = null;
+                default -> {
+                }
             }
             if (value != null) postRequest.put(field.getEngName(), value);
 
@@ -207,7 +207,7 @@ public class EquipmentController extends BaseController {
 
     private JpaRepository<Equipment, Long> equipmentRepository(String equipmentType) {
         EquipmentTypeRepository equipmentTypeRepositoryInstance = equipmentTypeInstance();
-        LinkedHashMap<String, JpaRepository<?, Long>> equipmentRepositoryDict = equipmentTypeRepositoryInstance.equipmentRepositoryDict();
+        LinkedHashMap<String, CommonEquipmentRepository<? extends Equipment>> equipmentRepositoryDict = equipmentTypeRepositoryInstance.equipmentRepositoryDict();
         return (JpaRepository<Equipment, Long>) equipmentRepositoryDict.get(equipmentType);
     }
 
