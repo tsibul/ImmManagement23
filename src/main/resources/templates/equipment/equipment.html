@@ -110,15 +110,17 @@
                         <input type="hidden" id="equipment-id" name="equipmentId">
                         <div class="modal-block">
                             <label for="mold-base-name">название:</label>
-                            <input type="text" id="mold-base-name" name="equipmentName" required class="modal-input">
+                            <input type="text" id="mold-base-name" name="equipmentName" maxlength="255"
+                                   required class="modal-input">
                         </div>
                         <div class="modal-block">
                             <label for="inventory-code">инвентарный номер:</label>
-                            <input type="text" id="inventory-code" name="invCode" required class="modal-input">
+                            <input type="text" id="inventory-code" name="invCode" maxlength="14"
+                                   required class="modal-input">
                         </div>
                         <div class="modal-block ">
-                            <label for="code" class="bux unshow">код:</label>
-                            <input type="text" id="code" name="equipmentCode" class="modal-input bux unshow">
+                            <label for="code" class="">код:</label>
+                            <input type="text" id="code" name="equipmentCode" maxlength="11" class="modal-input">
                         </div>
                         <div class="modal-block bux unshow">
                             <label for="producer" class="bux unshow">производитель:</label>
