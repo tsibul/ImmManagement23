@@ -10,12 +10,10 @@ import java.util.stream.Collectors;
 
 import static com.immplan.injectionmanagement23.db.equipment.EquipmentKind.equipmentKindDict;
 import static com.immplan.injectionmanagement23.db.equipment.EquipmentType.equipmentTypeArrayList;
-import static com.immplan.injectionmanagement23.db.equipment.EquipmentTypeRepository.equipmentTotalTypeDict;
 
 public abstract class BaseController {
 
     public void populateModel(Model model) {
-        LinkedHashMap<String, EquipmentType> equipmentTypeList = equipmentTotalTypeDict();
         LinkedHashMap<EquipmentKind, ArrayList<EquipmentType>> equipmentKind = new LinkedHashMap<>();
         equipmentKindDict().forEach((key,value) -> {
             ArrayList<EquipmentType> equipments = equipmentTypeArrayList().stream()
@@ -23,8 +21,6 @@ public abstract class BaseController {
                     .collect(Collectors.toCollection(ArrayList::new));
             equipmentKind.put(EquipmentKind.equipmentKindDict().get(key), equipments);
         });
-
-        model.addAttribute("equipmentTypes", equipmentTypeList);
         model.addAttribute("equipmentKind", equipmentKind);
     }
 }
