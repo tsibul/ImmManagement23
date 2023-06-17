@@ -18,7 +18,7 @@
                     <ul class="dropdown_menu" id="equipment-menu">
                         <li class="drop_button" th:each="eqType : ${equipmentTypes}">
                             <a th:href="'/equipment/' + ${eqType.getKey()}" class="a_menu menu_active"
-                               th:text="${eqType.getValue()}"></a>
+                               th:text="${eqType.getValue().equipmentTypeName}"></a>
                         </li>
                     </ul>
                 </li>
