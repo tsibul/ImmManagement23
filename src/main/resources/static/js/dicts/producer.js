@@ -8,7 +8,7 @@ function inputs(modal) {
     return {
         producerId: modal.querySelector("#producer-id"),
         producerName: modal.querySelector("#producer-name"),
-        countryInput: modal.querySelector("#country"),
+        country: modal.querySelector("#country"),
         producerType: modal.querySelector("#producer-type"),
     };
 }
@@ -18,7 +18,7 @@ function fullData(row) {
         producerId: row.dataset.producerid,
         producerName: row.querySelector("[data-label='название']").textContent,
         country: row.querySelector("[data-label='страна']").dataset.id,
-        producerTypeId: row.querySelector("[data-label='специализация']").dataset.id,
+        producerType: row.querySelector("[data-label='специализация']").dataset.id,
     };
 }
 
