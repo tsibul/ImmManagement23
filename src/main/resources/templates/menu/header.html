@@ -1,9 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <body>
 <div th:fragment="header">
-    <ul class="header">
+    <div class="header">
         <ul class="main_menu">
-            <div class="nav_button"><img src="/image/list.svg" alt="navi"></div>
+            <li class="nav_button"><img src="/image/list.svg" alt="navi"></li>
             <ul class="dropdown_list">
                 <li class="dropdown_button">
                     <a href="/" class="a_menu" th:classappend="${activePage == 'home' ? 'menu_active' : ''}">Главная</a>
@@ -107,7 +107,7 @@
                 </li>
             </ul>
         </ul>
-    </ul>
+    </div>
 </div>
 <script src="/js/header.js"></script>
 </body>
