@@ -37,9 +37,11 @@ public class ColorController extends BaseController {
             colors = colorRepository.findColorByColorActiveOrderByColorGroupAscColorCode(true);
             model.addAttribute("colorGroupId", 0);
         }
+        List<ColorGroup> colorGroups = colorGroupRepository.findColorGroupByColorGroupActiveOrderByColorGroupName(true);
         populateModel(model);
         model.addAttribute("activePage", "dicts");
         model.addAttribute("colors", colors);
+        model.addAttribute("colorGroups", colorGroups);
         return "colors/colors";
     }
 

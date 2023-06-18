@@ -4,6 +4,7 @@ import com.immplan.injectionmanagement23.controller.BaseController;
 import com.immplan.injectionmanagement23.db.producer.Producer;
 import com.immplan.injectionmanagement23.db.producer.repository.ProducerRepository;
 import com.immplan.injectionmanagement23.db.product.color.Color;
+import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorRepository;
 import com.immplan.injectionmanagement23.db.rawmaterial.MainMaterial;
@@ -24,13 +25,15 @@ public class MainMaterialController extends BaseController {
     private final ColorRepository colorRepository;
     private final ProducerRepository producerRepository;
     private final MainMaterialRepository mainMaterialRepository;
-
+    private final ColorGroupRepository colorGroupRepository;
     public MainMaterialController(MaterialTypeRepository materialTypeRepository, ColorRepository colorRepository,
-                                  ProducerRepository producerRepository, MainMaterialRepository mainMaterialRepository) {
+                                  ProducerRepository producerRepository, MainMaterialRepository mainMaterialRepository,
+                                  ColorGroupRepository colorGroupRepository) {
         this.materialTypeRepository = materialTypeRepository;
         this.colorRepository = colorRepository;
         this.producerRepository = producerRepository;
         this.mainMaterialRepository = mainMaterialRepository;
+        this.colorGroupRepository = colorGroupRepository;
 
     }
 
@@ -56,14 +59,14 @@ public class MainMaterialController extends BaseController {
                 findMaterialTypeByMaterialActiveOrderByMaterialName(true);
         List<Color> colors = colorRepository.findColorByColorActiveOrderByColorGroupAscColorCode(true);
         List<Producer> producers = producerRepository.findProducerByProducerActiveAndProducerTypeOrderByProducerName(true, "Сырье");
-
+        List<ColorGroup> colorGroups = colorGroupRepository.findColorGroupByColorGroupActiveOrderByColorGroupName(true);
         populateModel(model);
         model.addAttribute("activePage", "dicts");
         model.addAttribute("mainMaterials", mainMaterials);
         model.addAttribute("materialTypes", materialTypes);
         model.addAttribute("colors", colors);
         model.addAttribute("producers", producers);
-
+        model.addAttribute("colorGroups", colorGroups);
         model.addAttribute("materialTypesId", materialTypesId);
         model.addAttribute("producersId", producersId);
         return "materials/main_material";
