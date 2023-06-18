@@ -1,6 +1,7 @@
 package com.immplan.injectionmanagement23.controller.products;
 
 import com.immplan.injectionmanagement23.controller.BaseController;
+import com.immplan.injectionmanagement23.db.product.color.ColorGroup;
 import com.immplan.injectionmanagement23.db.product.color.repository.ColorGroupRepository;
 import com.immplan.injectionmanagement23.db.product.product.ProductGroup;
 import com.immplan.injectionmanagement23.db.product.product.repository.ProductGroupRepository;
@@ -15,9 +16,11 @@ import java.util.List;
 public class ProductGroupController extends BaseController {
 
     private final ProductGroupRepository productGroupRepository;
+    private final ColorGroupRepository colorGroupRepository;
 
-    public ProductGroupController(ProductGroupRepository productGroupRepository) {
+    public ProductGroupController(ProductGroupRepository productGroupRepository, ColorGroupRepository colorGroupRepository) {
         this.productGroupRepository = productGroupRepository;
+        this.colorGroupRepository = colorGroupRepository;
     }
 
     @GetMapping("/product_group/{colorGroupsId}")
@@ -30,9 +33,11 @@ public class ProductGroupController extends BaseController {
             productGroups = productGroupRepository.
                     findProductGroupsByProductGroupActiveAndColorGroupColorGroupIdOrderByProductGroupName(true, (long) colorGroupsId);
         }
+        List<ColorGroup> colorGroups = colorGroupRepository.findColorGroupByColorGroupActiveOrderByColorGroupName(true);
         populateModel(model);
         model.addAttribute("activePage", "dicts");
         model.addAttribute("productGroups", productGroups);
+        model.addAttribute("colorGroups", colorGroups);
         model.addAttribute("colorGroupsId", colorGroupsId);
         return "products/product_group";
     }
