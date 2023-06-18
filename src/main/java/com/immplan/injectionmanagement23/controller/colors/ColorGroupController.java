@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
 public class ColorGroupController extends BaseController {
@@ -18,9 +20,10 @@ public class ColorGroupController extends BaseController {
 
     @GetMapping("/colorgroups")
     public String getColorGroup(Model model) {
-//        long idLong = (long) id;
+        List<ColorGroup> colorGroups = colorGroupRepository.findColorGroupByColorGroupActiveOrderByColorGroupName(true);
         populateModel(model);
         model.addAttribute("activePage", "dicts");
+        model.addAttribute("colorGroups", colorGroups);
         return "colors/colorgroups";
     }
 
