@@ -69,6 +69,13 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+@media screen and (max-width: 600px) {
+    h2{
+        font-size: 100%;
+        text-transform: uppercase;
+    }
+}
 /* Стили кнопок */
 .button {
     display: inline-block;
